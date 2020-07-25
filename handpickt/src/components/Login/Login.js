@@ -1,10 +1,31 @@
 import React, { useState } from 'react'
 import { Link } from 'react-router-dom'
 import { Button } from 'react-bootstrap'
+import helper from "../Helpers/Helper"
+import API from "../Server/HandPicktAPI"
 import "./Login.css"
 
 const Login = (props) => {
-    const [passwordView, setPasswordView] = useState(false)
+    const [passwordView, setPasswordView] = useState(true)
+    // const [authenticated, setAuthenticated] = useState(false)
+    const [badAccountName, setBadAccountName] = useState (false)
+    const [badPassword, setBadPassword] = useState (false)
+
+    //Testing functions//
+
+    const toggleBadAccount = () => {
+        setBadAccountName(!badAccountName)
+    }
+    const toggleBadPassword = () => {
+        setBadPassword(!badPassword)
+    }
+
+    // <Button  variant="light" onClick={toggleBadAccount} >Toggle bad account</Button>{' '}
+    // <Button  variant="light" onClick={toggleBadPassword} >Toggle bad password</Button>{' '}
+
+    //End of testing functions//
+
+
     const togglePasswordView = () => {
         setPasswordView(!passwordView)
     }
@@ -23,16 +44,49 @@ const Login = (props) => {
         }
     })
 
-    //
+    //Handle the user input from the entry fields//
     const handleChange = (e) => {
+        setBadAccountName(false)
+        setBadPassword(false)
         const change = { ...loginForm};
         change[e.target.id] = e.target.value;
         setLoginForm(change);
     }
-
+    //Query the database to see if the user exists//
     const handleLogin = () => {
 
+                //Remove any whitespace from the User Name
+        const loginSearchQuery = helper.removeSpace(loginForm.userName);
+
+        let foundUser
+               //Query the Database//
+               API.loginQuery(loginSearchQuery)
+               .then((response) => {
+                    foundUser = response[0];
+                    if (foundUser === undefined) {
+                        toggleBadAccount()
+                    }
+
+                    else {
+                    //Verify the user//
+                    authenticateUser(foundUser)
+                    }
+               })
     }
+
+                //Authenticate the User entry//
+        const authenticateUser = (foundUser) => {
+            if (loginForm.userName === foundUser.userName && loginForm.password === foundUser.password) {
+                sessionStorage.setItem("credentials", JSON.stringify(foundUser))
+                // props.history.push("/dashboard")
+            }
+            else if (loginForm.userName !== foundUser.userName) {
+                toggleBadAccount()
+            }
+            else if (loginForm.password !== foundUser.password) {
+                toggleBadPassword()
+            }
+        }
 
 
     return (
@@ -51,9 +105,10 @@ const Login = (props) => {
                             type="text" 
                             id="userName" 
                             value={loginForm.userName}
-                            placeholder="UserName"
+                            placeholder="Account Name"
                             onChange={handleChange}
                             />
+                        <p hidden={!badAccountName} className="warning__field__Name">Sorry, that account name does not exist</p>
                         <div className="password__Field">
                             <input 
                                 className="individual__Login__Field2" 
@@ -63,13 +118,15 @@ const Login = (props) => {
                                 placeholder="Password"
                                 onChange={handleChange}
                                 />
-                            <button onClick={togglePasswordView}>{passwordView ? <i class="far fa-eye-slash"></i> : <i class="far fa-eye"></i>}</button>
+                                <p hidden={!badPassword} className="warning__field__Password">Sorry, the password does not match</p>
+                            <button onClick={togglePasswordView}>{passwordView ? <i className="far fa-eye-slash"></i> : <i className="far fa-eye"></i>}</button>
                         </div>
                     </fieldset>
                     <Link to="/registration" className="reg__Link" onClick={handleLogin}>New to HandPickt? Register here</Link>
                 </div>
                 <div className="login__Button">
-                    <Button  variant="light">Login</Button>{' '}
+                    <Button  variant="light" onClick={handleLogin} >Login</Button>
+                    
                 </div>
             </div>
         </div>

@@ -33,12 +33,27 @@
     font-size: 1em;
     width: 15em;
 }
+
 .individual__Login__Field2 {
     margin-left: 3em;
     font-size: 1em;
     width: 15em;
 }
 
+.warning__field__Name {
+    font-size: .8em;
+    margin-left: 4em;
+    margin-top: -3.5em;
+    color: red;
+    position: absolute;
+}
+
+.warning__field__Password {
+    font-size: .8em;
+    margin-left: 4em;
+    color: red;
+    position: absolute;
+}
 
 .reg__Link {
     color: black;
@@ -53,3 +68,4 @@
     margin-right: 3em;
     justify-content: flex-end;
 }
+

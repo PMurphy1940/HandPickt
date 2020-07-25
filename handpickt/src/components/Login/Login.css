@@ -1,0 +1,52 @@
+.login_Containter{
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    background-color: #c0f2ce;
+}
+
+.HPLogo {
+    height: 70vw;
+
+}
+
+.login_Outline {
+    border-left: 12px solid rgba(0, 255, 255, 0.4);
+    border-right: 12px solid rgba(0, 255, 255, 0.4);
+    border-radius: 10%;
+    padding-top: 2em;
+    padding-bottom: 2em;
+}
+
+.loginFields {
+    display: flex;
+    align-items: center;
+
+}
+.login_Outline > p {
+
+    margin-left: 3em;
+}
+.individual__Login__Field1 {
+    margin: 0 3em 3em 3em;
+    font-size: 1em;
+    width: 15em;
+}
+.individual__Login__Field2 {
+    margin: 0 3em 2em 3em;
+    font-size: 1em;
+    width: 15em;
+}
+
+.reg__Link {
+    color: black;
+    font-size: .8em;
+    margin-left: 4em;
+}
+
+.login__Button {
+    display: flex;
+    margin-top: 3em;
+    margin-right: 3em;
+    justify-content: flex-end;
+}

@@ -53,7 +53,7 @@ const Login = (props) => {
 
         let foundUser
                //Query the Database//
-               API.loginQuery(loginSearchQuery)
+               API.loginQuery(loginSearchQuery, "userName")
                .then((response) => {
                     foundUser = response[0];
                     if (foundUser === undefined) {
@@ -72,7 +72,7 @@ const Login = (props) => {
             if (loginForm.userName === foundUser.userName && loginForm.password === foundUser.passwords[0].password) {
                 delete foundUser.passwords
                 sessionStorage.setItem("credentials", JSON.stringify(foundUser))
-                // props.history.push("/dashboard")
+                props.history.push("/dashboard")
             }
             else if (loginForm.userName !== foundUser.userName) {
                 toggleBadAccount()

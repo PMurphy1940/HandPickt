@@ -8,6 +8,7 @@ import "./Registration.css"
 const Registration = (props) => {
     const [passwordView, setPasswordView] = useState(true)
     const [badEmail, setBadEmail] = useState(false)
+    const [existingEmail, setExistingEmail] = useState(false)
     const [badAccountName, setBadAccountName] = useState (false)
     const [emptyAccountName, setEmptyAccountName] = useState (false)
     const [badPassword, setBadPassword] = useState (false)
@@ -27,11 +28,17 @@ const Registration = (props) => {
     const toggleBadAccount = () => {
         setBadAccountName(!badAccountName)
     }
+    const toggleEmptyAccountName = () => {
+        setEmptyAccountName(!emptyAccountName)
+    }
     const toggleBadPassword = () => {
         setBadPassword(!badPassword)
     }
     const toggleBadEmail = () => {
         setBadEmail(!badEmail)
+    }
+    const toggleExistingEmail = () => {
+        setExistingEmail(!existingEmail)
     }
     const toggleBadPasswordMatch = () => {
         setBadPasswordMatch(!badPasswordMatch)
@@ -43,7 +50,7 @@ const Registration = (props) => {
     // <Button  variant="light" onClick={toggleBadPasswordMatch} >Toggle bad Match</Button>{' '}  
     //End of testing buttons//
 
-    //Make password visible//
+    //Make password visible or hidden again//
     const togglePasswordView = () => {
         setPasswordView(!passwordView)
     }
@@ -67,7 +74,7 @@ const Registration = (props) => {
         if (registrationForm.userName === "" || registrationForm.email === "" || registrationForm.password === "" || registrationForm.password !== registrationForm.confirmPassword) {
             //Indicate bad fields//
             if (registrationForm.userName === "") {
-                toggleBadAccount()
+                toggleEmptyAccountName()
              }
             else if (registrationForm.email === "") {
                 toggleBadEmail()
@@ -79,12 +86,33 @@ const Registration = (props) => {
                 toggleBadPasswordMatch()
                 }
             }
-        //On valid fields, call the function to build the user object and send to the database//
+        //On valid fields, call the function to build the user object, check the Account name isn't already in use, and then send to the database//
         else {
-            constructNewUserObject()
-        }  
-    }
 
+            //Refactor any spaces in the Account Name for use in a search//
+            const registrationSearchQuery = helper.removeSpace(registrationForm.userName);
+            let foundUser
+                //Query the Database to check account name//
+                API.loginQuery(registrationSearchQuery, "userName")
+                .then((response) => {
+                    foundUser = response[0];
+                       API.loginQuery(registrationForm.email, "email")
+                        .then((response) => {
+                            let foundEmail = response[0];
+
+                                if (foundUser !== undefined) {
+                                    toggleBadAccount()
+                                        }
+                                else if (foundEmail !== undefined) {
+                                    toggleExistingEmail()
+                                }
+                                else {
+                                    constructNewUserObject()
+                                    }
+                                }) 
+            })
+}
+        //Make the new user object to send to the database
     const constructNewUserObject = () => {
         let newUserObject = {
             userName: registrationForm.userName,
@@ -98,25 +126,28 @@ const Registration = (props) => {
     const attachUserIdAndSavePassword = () => {
         //Remove any whitespace from the User Name
         const registrationSearchQuery = helper.removeSpace(registrationForm.userName);
-
         let foundUser
-                //Query the Database//
-                API.loginQuery(registrationSearchQuery)
-                .then((response) => {
-                    foundUser = response[0];
+            //Query the Database to get the newly saved users id/
+            API.loginQuery(registrationSearchQuery, "userName")
+            .then((response) => {
+                foundUser = response[0];       
+                    //Make the password object to send to the database//
                     let passwordObject = {
                         userId: foundUser.id,
                         password: registrationForm.password
                     }
+                    //Store the user's password in a seperate database file//
                     API.addNew( passwordObject, "passwords" )
                     .then(() => placeNewUserIntoSessionStorage(foundUser))
                 })
-        }
+            }
+    }
 
     const placeNewUserIntoSessionStorage = (foundUser) => {
-            delete foundUser.passwords
+            delete foundUser.passwords;
             //Set the new users credentials to session storage//
-            sessionStorage.setItem("credentials", JSON.stringify(foundUser))
+            sessionStorage.setItem("credentials", JSON.stringify(foundUser));
+            props.history.push("/dashboard");
             }
   
             
@@ -143,7 +174,7 @@ const Registration = (props) => {
                             onChange={handleChange}
                             />
                         <p hidden={!emptyAccountName} className="warning__field__Name">This field is required</p>
-                        <p hidden={!badAccountName} className="warning__field__Name">Sorry, This account name is already in use</p>
+                        <p hidden={!badAccountName} className="warning__field__Name">Sorry, this account name is already in use</p>
                         <input
                             className="individual__Login__Field2" 
                             type="email" 
@@ -153,6 +184,7 @@ const Registration = (props) => {
                             onChange={handleChange}
                             />
                         <p hidden={!badEmail} className="warning__field__Email">Must be a valid email address</p>
+                        <p hidden={!existingEmail} className="warning__field__Email">Sorry, this email is already in use</p>
                         <div className="password__Field">
                             <input 
                                 className="individual__Login__Field3" 

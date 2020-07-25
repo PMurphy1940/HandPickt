@@ -11,8 +11,7 @@ const Login = (props) => {
     const [badAccountName, setBadAccountName] = useState (false)
     const [badPassword, setBadPassword] = useState (false)
 
-    //Testing functions//
-
+        //warning field indicators//
     const toggleBadAccount = () => {
         setBadAccountName(!badAccountName)
     }
@@ -20,12 +19,14 @@ const Login = (props) => {
         setBadPassword(!badPassword)
     }
 
+    //Testing buttons//
+
     // <Button  variant="light" onClick={toggleBadAccount} >Toggle bad account</Button>{' '}
     // <Button  variant="light" onClick={toggleBadPassword} >Toggle bad password</Button>{' '}
 
-    //End of testing functions//
+    //End of testing buttons//
 
-
+    //Make password visible//
     const togglePasswordView = () => {
         setPasswordView(!passwordView)
     }
@@ -35,14 +36,6 @@ const Login = (props) => {
             userName:"", 
             password:""
         })
-    const [registrationForm, setRegistrationForm] = useState({
-        user: {
-            userName: "",
-            email:"",
-            password: "",
-            confirmPassword: ""
-        }
-    })
 
     //Handle the user input from the entry fields//
     const handleChange = (e) => {
@@ -76,14 +69,15 @@ const Login = (props) => {
 
                 //Authenticate the User entry//
         const authenticateUser = (foundUser) => {
-            if (loginForm.userName === foundUser.userName && loginForm.password === foundUser.password) {
+            if (loginForm.userName === foundUser.userName && loginForm.password === foundUser.passwords[0].password) {
+                delete foundUser.passwords
                 sessionStorage.setItem("credentials", JSON.stringify(foundUser))
                 // props.history.push("/dashboard")
             }
             else if (loginForm.userName !== foundUser.userName) {
                 toggleBadAccount()
             }
-            else if (loginForm.password !== foundUser.password) {
+            else if (loginForm.password !== foundUser.passwords[0].password) {
                 toggleBadPassword()
             }
         }
@@ -122,7 +116,7 @@ const Login = (props) => {
                             <button onClick={togglePasswordView}>{passwordView ? <i className="far fa-eye-slash"></i> : <i className="far fa-eye"></i>}</button>
                         </div>
                     </fieldset>
-                    <Link to="/registration" className="reg__Link" onClick={handleLogin}>New to HandPickt? Register here</Link>
+                    <Link to="/registration" className="reg__Link" >New to HandPickt? Register here</Link>
                 </div>
                 <div className="login__Button">
                     <Button  variant="light" onClick={handleLogin} >Login</Button>

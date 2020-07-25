@@ -21,6 +21,7 @@
 .loginFields {
     display: flex;
     align-items: center;
+    margin-bottom: 2em;
 
 }
 .login_Outline > p {
@@ -33,15 +34,17 @@
     width: 15em;
 }
 .individual__Login__Field2 {
-    margin: 0 3em 2em 3em;
+    margin-left: 3em;
     font-size: 1em;
     width: 15em;
 }
+
 
 .reg__Link {
     color: black;
     font-size: .8em;
     margin-left: 4em;
+    padding-top: 3em;
 }
 
 .login__Button {

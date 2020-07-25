@@ -4,7 +4,31 @@ import { Button } from 'react-bootstrap'
 import "./Login.css"
 
 const Login = (props) => {
-    const [loginForm, setLoginForm] = useState({userName:"", password:""})
+    const [passwordView, setPasswordView] = useState(false)
+    const togglePasswordView = () => {
+        setPasswordView(!passwordView)
+    }
+ 
+    //Declare and set initial state on Login and Registration forms//
+    const [loginForm, setLoginForm] = useState({
+            userName:"", 
+            password:""
+        })
+    const [registrationForm, setRegistrationForm] = useState({
+        user: {
+            userName: "",
+            email:"",
+            password: "",
+            confirmPassword: ""
+        }
+    })
+
+    //
+    const handleChange = (e) => {
+        const change = { ...loginForm};
+        change[e.target.id] = e.target.value;
+        setLoginForm(change);
+    }
 
     const handleLogin = () => {
 
@@ -26,22 +50,23 @@ const Login = (props) => {
                             className="individual__Login__Field1" 
                             type="text" 
                             id="userName" 
-                            name="userName" 
                             value={loginForm.userName}
                             placeholder="UserName"
-                            onChange={handleLogin}
+                            onChange={handleChange}
                             />
-                        <input 
-                            className="individual__Login__Field2" 
-                            type="text" 
-                            id="password" 
-                            name="password" 
-                            value={loginForm.password}
-                            placeholder="Password"
-                            onChange={handleLogin}
-                            />
+                        <div className="password__Field">
+                            <input 
+                                className="individual__Login__Field2" 
+                                type={passwordView ? "password" : "text"} 
+                                id="password"  
+                                value={loginForm.password}
+                                placeholder="Password"
+                                onChange={handleChange}
+                                />
+                            <button onClick={togglePasswordView}>{passwordView ? <i class="far fa-eye-slash"></i> : <i class="far fa-eye"></i>}</button>
+                        </div>
                     </fieldset>
-                    <Link to="/registration" className="reg__Link">New to HandPickt? Register here</Link>
+                    <Link to="/registration" className="reg__Link" onClick={handleLogin}>New to HandPickt? Register here</Link>
                 </div>
                 <div className="login__Button">
                     <Button  variant="light">Login</Button>{' '}

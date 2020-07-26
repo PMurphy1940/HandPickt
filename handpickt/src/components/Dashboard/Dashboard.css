@@ -1,0 +1,41 @@
+.dashboard__Container {
+    background-color: #c0f2ce;
+}
+
+
+.dashboard__Header{
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+
+}
+
+.HPLogo__InApp {
+    width: 35vw;
+    margin-left: 10vw;
+}
+
+.search__button {
+    margin-right: 25vw;
+}
+
+.user__Container__Dashboard {
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.logout__Grouping {
+    margin: 3vw 15vw 0 0;
+}
+
+.logout__Text {
+    font-size: 3vw;
+    font-family: 'Gill Sans', 'Gill Sans MT', Calibri, 'Trebuchet MS', sans-serif;
+}
+
+.user__Image__Dashboard {
+    width: 12vw;
+    margin-top: 5vw;
+}

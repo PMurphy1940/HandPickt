@@ -1,8 +1,9 @@
 import React from 'react'
-import { Route, Redirect } from 'react-router-dom'
+import { Route } from 'react-router-dom'
 import Login from "./Login/Login"
 import Registration from "./Registration/Registration"
 import Dashboard from "./Dashboard/Dashboard"
+import Logout from "./Logout/Logout"
 
 const ApplicationViews = (props) => {
 
@@ -25,6 +26,13 @@ const ApplicationViews = (props) => {
             path="/dashboard"
             render={props => {
                 return <Dashboard {...props} />
+            }} /> 
+
+            <Route
+            exact
+            path="/logout"
+            render={props => {
+                return <Logout {...props} />
             }} />
 
         </>

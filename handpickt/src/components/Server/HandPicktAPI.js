@@ -3,7 +3,7 @@ const routeURL = "http://localhost:5002"
 export default {
 
     loginQuery(value, searchType) {
-    return fetch(`${routeURL}/users?${searchType}=${value}&_embed=passwords`)
+    return fetch(`${routeURL}/users?${searchType}=${value}`)
     .then((response) => response.json())
     },
 

@@ -1,5 +1,6 @@
 import React from 'react'
 import { Route, Redirect } from 'react-router-dom'
+import WithAuthentication from "../Auth/WithAuthentication"
 
 const Dashboard = () => {
 
@@ -11,4 +12,4 @@ const Dashboard = () => {
     )
 }
 
-export default Dashboard
+export default WithAuthentication(Dashboard) 

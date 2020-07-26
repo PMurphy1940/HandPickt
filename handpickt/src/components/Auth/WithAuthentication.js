@@ -6,9 +6,13 @@ const WithAuthentication = (View) => {
         return sessionStorage.credentials ? true : false
     }
 
-    return (props) => {
-        (isAuthenticated) ? 
-         <View {...props} /> : <Redirect to="/login" />
+    return (...props) => {
+       if (isAuthenticated()) {
+            return <View {...props} />
+       }
+       else {
+            return <Redirect to="/login" />
+        }
     }
 }
 

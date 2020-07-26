@@ -118,6 +118,7 @@ const Registration = (props) => {
         let newUserObject = {
             userName: registrationForm.userName,
             email: registrationForm.email,
+            password: registrationForm.password,
             image: registrationForm.image
         }
        API.addNew( newUserObject, "users" )

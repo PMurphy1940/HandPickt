@@ -110,8 +110,9 @@ const Registration = (props) => {
                                     constructNewUserObject()
                                     }
                                 }) 
-            })
-}
+                            })
+                        }       
+    }
         //Make the new user object to send to the database
     const constructNewUserObject = () => {
         let newUserObject = {
@@ -120,36 +121,25 @@ const Registration = (props) => {
             image: registrationForm.image
         }
        API.addNew( newUserObject, "users" )
-       .then(() => attachUserIdAndSavePassword())
+       .then(() => placeNewUserIntoSessionStorage())
     }
 
-    const attachUserIdAndSavePassword = () => {
-        //Remove any whitespace from the User Name
-        const registrationSearchQuery = helper.removeSpace(registrationForm.userName);
-        let foundUser
+    
+
+    const placeNewUserIntoSessionStorage = () => {
+            const registrationSearchQuery = helper.removeSpace(registrationForm.userName);
+            let foundUser
             //Query the Database to get the newly saved users id/
             API.loginQuery(registrationSearchQuery, "userName")
             .then((response) => {
-                foundUser = response[0];       
-                    //Make the password object to send to the database//
-                    let passwordObject = {
-                        userId: foundUser.id,
-                        password: registrationForm.password
-                    }
-                    //Store the user's password in a seperate database file//
-                    API.addNew( passwordObject, "passwords" )
-                    .then(() => placeNewUserIntoSessionStorage(foundUser))
-                })
-            }
-    }
+                foundUser = response[0]; 
 
-    const placeNewUserIntoSessionStorage = (foundUser) => {
-            delete foundUser.passwords;
+            delete foundUser.password;
             //Set the new users credentials to session storage//
             sessionStorage.setItem("credentials", JSON.stringify(foundUser));
             props.history.push("/dashboard");
-            }
-  
+            })
+        }
             
     
 

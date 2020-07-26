@@ -69,15 +69,15 @@ const Login = (props) => {
 
                 //Authenticate the User entry//
         const authenticateUser = (foundUser) => {
-            if (loginForm.userName === foundUser.userName && loginForm.password === foundUser.passwords[0].password) {
-                delete foundUser.passwords
+            if (loginForm.userName === foundUser.userName && loginForm.password === foundUser.password) {
+                delete foundUser.password
                 sessionStorage.setItem("credentials", JSON.stringify(foundUser))
                 props.history.push("/dashboard")
             }
             else if (loginForm.userName !== foundUser.userName) {
                 toggleBadAccount()
             }
-            else if (loginForm.password !== foundUser.passwords[0].password) {
+            else if (loginForm.password !== foundUser.password) {
                 toggleBadPassword()
             }
         }

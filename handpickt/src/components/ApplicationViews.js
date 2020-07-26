@@ -3,7 +3,7 @@ import { Route } from 'react-router-dom'
 import Login from "./Login/Login"
 import Registration from "./Registration/Registration"
 import Dashboard from "./Dashboard/Dashboard"
-import Logout from "./Logout/Logout"
+import LogOut from "./LogOut/LogOut"
 
 const ApplicationViews = (props) => {
 
@@ -32,7 +32,7 @@ const ApplicationViews = (props) => {
             exact
             path="/logout"
             render={props => {
-                return <Logout {...props} />
+                return <LogOut {...props} />
             }} />
 
         </>

@@ -48,3 +48,13 @@
     width: 25vw;
     margin-top: 5vw;
 }
+
+.dashboard__Row1 {
+    display: flex;
+    justify-content: space-evenly;
+}
+
+.dashboard__Row2 {
+    display: flex;
+    justify-content: space-evenly;
+}

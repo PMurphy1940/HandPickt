@@ -3,6 +3,7 @@ import { Route } from 'react-router-dom'
 import Login from "./Login/Login"
 import Registration from "./Registration/Registration"
 import Dashboard from "./Dashboard/Dashboard"
+import MyGarden from "./MyGarden/MyGarden"
 import LogOut from "./LogOut/LogOut"
 
 const ApplicationViews = (props) => {
@@ -36,6 +37,12 @@ const ApplicationViews = (props) => {
             path="/dashboard"
             render={props => {
                 return <Dashboard {...props} activeUser={activeUser} setUser={setUser}/>
+            }} /> 
+            <Route
+            exact
+            path="/mygarden"
+            render={props => {
+                return <MyGarden {...props} activeUser={activeUser} setUser={setUser}/>
             }} /> 
 
             <Route

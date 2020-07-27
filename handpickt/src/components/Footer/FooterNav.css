@@ -8,6 +8,11 @@
 }
 
 .center__Nav__Dashboard {
+    width: 14vw;
+    margin: 0 0 0 2vw;
+}
+
+.center__Nav__Garden {
     width: 15vw;
-    margin: 0 2vw 0 2vw;
+    margin: 0 -1vw 0 2vw;
 }

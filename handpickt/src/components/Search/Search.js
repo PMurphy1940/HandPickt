@@ -4,8 +4,8 @@ import WithAuthentication from "../Auth/WithAuthentication"
 import BottomNavbar from "../Footer/FooterNav"
 import { Navbar } from 'react-bootstrap';
 import Image from 'react-bootstrap/Image'
-import "./MyGarden.css"
-const MyGarden = (props) => {
+import "./Search.css"
+const Search = (props) => {
 
     const handleLogout = () => {
         sessionStorage.removeItem("credentials")
@@ -40,7 +40,7 @@ const MyGarden = (props) => {
     )
 }
 
-export default WithAuthentication(MyGarden)
+export default WithAuthentication(Search)
 
 
                 

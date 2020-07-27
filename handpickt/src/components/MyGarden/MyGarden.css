@@ -1,0 +1,11 @@
+.user__Image__Garden {
+    width: 15vw;
+
+}
+
+.logout__Grouping {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    margin: 5vw 15vw 0 0;
+}

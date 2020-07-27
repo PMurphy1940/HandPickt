@@ -5,7 +5,7 @@ import "./FooterNav.css"
 const BottomNavbar = (props) => {
     //generate the center position NavBar link image and route according to the current path//
     const centerFunction = () => {
-        if (props[0][0].location.pathname === "/dashboard" || props[0][0].location.pathname === "/addplant" || props[0][0].location.pathname === "/archive" || props[0][0].location.pathname === "/addnote") {
+        if (props[0][0].location.pathname === "/dashboard" || props[0][0].location.pathname === "/addplant" || props[0][0].location.pathname === "/archive" || props[0][0].location.pathname === "/addnote" || props[0][0].location.pathname === "/search") {
             return (
                 <>
                     <img className="center__Nav__Dashboard" src={require(`../images/HPbottomNavPic.png`)} alt="HandPickt Logo" />

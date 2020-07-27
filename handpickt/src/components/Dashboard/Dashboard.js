@@ -7,7 +7,7 @@ import Image from 'react-bootstrap/Image'
 import "./Dashboard.css"
 
 const Dashboard = (props) => {
-console.log(props[0])
+
     const handleLogout = () => {
         sessionStorage.removeItem("credentials")
         props[0].setUser()
@@ -15,13 +15,7 @@ console.log(props[0])
 
     }
     // <button type="button" className="fas fa-search search__button"></button>
-                //  <div className="logout__Grouping">
-                //     <button type="button" className="logout__Button" onClick={handleLogout}>
-                //         { (activeUser !== undefined) &&
-                //             <Image src={require(`../images/${activeUser.image}`)} roundedCircle className="user__Image__Dashboard" />
-                //         }
-                //     <p className="logout__Text">Log Out</p></button>
-                // </div>
+        
     return (
         <div className="dashboard__Container">
             <button type="button" className="logout__Button" onClick={handleLogout}>Logout</button>
@@ -29,7 +23,9 @@ console.log(props[0])
                 <picture >               
                     <img className="HPLogo__InApp" src={require(`../images/HandPickt_3.png`)} alt="HandPickt Logo" />
                 </picture>
-                
+                <Link to="/search" className="search__Object" >
+                <p>Search myHandPickt</p>&#x1F50D;
+                </Link>
             </div>
             <div className="user__Container__Dashboard">
                 { (props[0].activeUser.image !== "") &&
@@ -37,13 +33,35 @@ console.log(props[0])
                         }
                 <p>Welcome<br></br><strong>{props[0].activeUser.userName}</strong></p>                   
             </div>
-            <div className="dashboard__Row1">
-                <Link to="/mygarden" className="returnTo__Login" >My Garden</Link>
-                <Link to="/notes" className="returnTo__Login" >Notes</Link>
-            </div>
-            <div className="dashboard__Row2">
-                <Link to="/addplant" className="returnTo__Login" >Add a Plant</Link>
-                <Link to="/archives" className="returnTo__Login" >Archives</Link>
+            <div className="dashboard__Linkbox">
+                <div className="dashboard__Row1">
+                    <Link to="/mygarden" className="link__Dashboard" >
+                        <div className="gradient__Button">
+                            <Image src={require(`../images/blueMeanie.png`)} rounded className="image1__Dashboard" />
+                        </div>
+                        <p>My Garden</p>
+                    </Link>
+                    <Link to="/notes" className="link__Dashboard" >
+                    <div className="gradient__Button">
+                        <Image src={require(`../images/cuttingboard.png`)} rounded className="image1__Dashboard" />
+                            </div>
+                        <p>Notes</p>
+                    </Link>
+                </div>
+                <div className="dashboard__Row2">
+                    <Link to="/addplant" className="link__Dashboard" >
+                        <div className="gradient__Button">
+                            <Image src={require(`../images/Tomato1.png`)} rounded className="image1__Dashboard" />
+                        </div>
+                        <p>Add a Plant</p>
+                    </Link>
+                    <Link to="/archive" className="link__Dashboard" >
+                        <div className="gradient__Button">
+                            <Image src={require(`../images/Peppers.png`)} rounded className="image1__Dashboard" />
+                        </div>
+                        <p>Archives</p>
+                    </Link>
+                </div>
             </div>
             <Navbar fixed="bottom" className="bottom__Nav">
                 <div >

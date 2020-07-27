@@ -2,6 +2,11 @@
     background-color: #c0f2ce;
 }
 
+.logout__Button {
+    position: absolute;
+    right: 0;
+    margin: 2vw;
+}
 
 .dashboard__Header{
     display: flex;
@@ -26,6 +31,10 @@
     align-items: center;
 }
 
+.user__Container__Dashboard > p {
+    text-align: center;
+}
+
 .logout__Grouping {
     margin: 3vw 15vw 0 0;
 }
@@ -36,6 +45,6 @@
 }
 
 .user__Image__Dashboard {
-    width: 12vw;
+    width: 25vw;
     margin-top: 5vw;
 }

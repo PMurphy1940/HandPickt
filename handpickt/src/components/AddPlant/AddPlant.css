@@ -1,0 +1,14 @@
+.plant__Category__Scroll {
+    display: flex;
+    /* flex-direction: column; */
+    flex-wrap: nowrap;
+    overflow-x: auto;
+    min-width: 100%;
+    min-height: 30%;
+}
+
+.plant__Card {
+    display: flex;
+    min-width: 200px;
+    margin: 2vw;
+}

@@ -13,5 +13,10 @@ export default {
             headers: {"Content-Type": "application/json"},
             body: JSON.stringify(newOject)
         }).then(data => data.json())
+    },
+
+    getAll(route) {
+        return fetch(`${routeURL}/${route}` )
+        .then((response) => response.json())
     }
 }

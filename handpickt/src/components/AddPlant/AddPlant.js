@@ -1,17 +1,45 @@
-import React from 'react'
+import React, { useState, useEffect } from 'react'
 import { Link } from 'react-router-dom'
 import WithAuthentication from "../Auth/WithAuthentication"
+import API from "../Server/HandPicktAPI"
 import BottomNavbar from "../Footer/FooterNav"
 import { Navbar } from 'react-bootstrap';
 import Image from 'react-bootstrap/Image'
 import "./AddPlant.css"
 const AddPlant = (props) => {
+    const [plantList, setPlantList] = useState([])
+
+    //Get All the plant data from the database to build the Add list//
+    const generatePlantList = () => {
+        API.getAll("plants")
+        .then((plantsdata) => {
+            //Sort the returned data so it is ordered by category for easy display//
+           let sortedplantsdata = plantsdata.sort((a, b) => {                
+                let catA = a.category.toLowerCase()
+                let catB = b.category.toLowerCase()
+                if (catA < catB) {
+                    return -1;
+                }
+                if (catA > catB) {
+                    return 1;
+                }
+                return 0           
+            })
+            setPlantList(sortedplantsdata)
+        })   
+    }
+
+    useEffect(() => {
+        generatePlantList()
+    }, [])
 
     const handleLogout = () => {
         sessionStorage.removeItem("credentials")
         props[0].setUser()
         props[0].history.push("/logout");
     }
+
+
 
     return(
         <div className="dashboard__Container">
@@ -27,8 +55,10 @@ const AddPlant = (props) => {
                     <p className="logout__Text">Log Out</p></button>
                 </div>
             </div>
-            <div className="user__Container__Garden">
-                                  
+            <div className="user__Container__AddPlant">
+                  <div className="plant__Category__Scroll">
+                        
+                  </div>                
             </div>
         
             <Navbar fixed="bottom" className="bottom__Nav">

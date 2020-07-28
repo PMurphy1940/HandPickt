@@ -66,7 +66,7 @@ const Login = (props) => {
                     }
                })
     }
-console.log(props)
+
                 //Authenticate the User entry//
         const authenticateUser = (foundUser) => {
             if (loginForm.userName === foundUser.userName && loginForm.password === foundUser.password) {

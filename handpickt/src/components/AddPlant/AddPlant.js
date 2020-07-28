@@ -11,7 +11,14 @@ import "./AddPlant.css"
 const AddPlant = (props) => {
     const [plantList, setPlantList] = useState([])
     const [categories, setCategories] = useState([])
-
+    const [showCategories, setShowCategories] = useState(true)
+    const [selectedPlantArray, setSelectedPlantArray] = useState([])
+   
+    const handleLogout = () => {
+        sessionStorage.removeItem("credentials")
+        props[0].setUser()
+        props[0].history.push("/logout");
+    }
     //Get All the plant data from the database to build the Add list//
     const generatePlantList = () => {
         API.getAll("plants")
@@ -40,11 +47,11 @@ const AddPlant = (props) => {
         setCategories(categoryArrayMaker)
     }, [plantList])
 
-    const handleLogout = () => {
-        sessionStorage.removeItem("credentials")
-        props[0].setUser()
-        props[0].history.push("/logout");
-    }
+    // useEffect(() => {
+    //     setShowCategories(true)
+    // }, [selectedPlantArray])
+
+
     //Produce an array of the available categories//
     const categoryArrayMaker = () => {
             const categoryArrayWithDuplicates = plantList.map(plant => {
@@ -61,9 +68,26 @@ const AddPlant = (props) => {
             return categoryArray
           
     }
-    //Use the category array to display the list of available categories//
+    //Make the array of available plants within a category the the user has selected//
+    const selectCategory = (selectedCategory) => {
+        console.log(selectedCategory)
+        let plantArray = []
+        plantList.map(plant => {
+            if (helper.firstLetterCase(plant.category) == selectedCategory)  {
+                plantArray.push(plant)
+            }
+        })
+        setSelectedPlantArray(plantArray);
+        setShowCategories(false)
 
 
+    }
+console.log(selectedPlantArray)
+    const selectPlant = (selectedPlant) => {
+        console.log(selectedPlant)
+        
+    }
+console.log("Categories", showCategories)
     return(
         <div className="addplant__Container">
             <div className="dashboard__Header">
@@ -78,10 +102,18 @@ const AddPlant = (props) => {
                     <p className="logout__Text">Log Out</p></button>
                 </div>
             </div>
-            <h3 className="category__Headline">Select A Category</h3>
+            { showCategories ? 
+                <h3 className="category__Headline">Select A Category</h3>
+                :
+                <h3 className="category__Headline">Select A Plant</h3>
+            }
             <div className="user__Container__AddPlant">
                   <div className="plant__Category__Scroll">
-                      {categories.map(category => <PlantCategoryCard key={category} category={category}/>)}
+                  { showCategories ?
+                      categories.map(category => <PlantCategoryCard key={category} name={category} selectType={selectCategory}/>) 
+                      : 
+                      selectedPlantArray.map(plant => <PlantCategoryCard key={plant.id} name={plant.common_name} selectType={selectPlant}/>)
+                    }
                   </div>                
             </div>
         

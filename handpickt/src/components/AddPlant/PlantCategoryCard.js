@@ -3,7 +3,12 @@ import { Card, Button } from 'react-bootstrap'
 
 const PlantCategoryCard = (props) => {
 
+
+    
+
+
     return (
+      <div className="plant__Card">
         <Card style={{ width: '14rem' }} className="plant__Card">
             
             <Card.Header as="h5">{props.category}</Card.Header>
@@ -12,9 +17,10 @@ const PlantCategoryCard = (props) => {
                 <Card.Text>
                 With supporting text below as a natural lead-in to additional content.
                 </Card.Text>
-            <Button variant="primary">Go somewhere</Button>
+                <Button variant="primary">Select</Button>
             </Card.Body>
         </Card>
+      </div>
     )
 }
 

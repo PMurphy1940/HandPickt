@@ -65,7 +65,7 @@ const AddPlant = (props) => {
 
 
     return(
-        <div className="dashboard__Container">
+        <div className="addplant__Container">
             <div className="dashboard__Header">
                 <picture >               
                     <img className="HPLogo__InApp" src={require(`../images/HandPickt_3.png`)} alt="HandPickt Logo" />
@@ -78,6 +78,7 @@ const AddPlant = (props) => {
                     <p className="logout__Text">Log Out</p></button>
                 </div>
             </div>
+            <h3 className="category__Headline">Select A Category</h3>
             <div className="user__Container__AddPlant">
                   <div className="plant__Category__Scroll">
                       {categories.map(category => <PlantCategoryCard key={category} category={category}/>)}

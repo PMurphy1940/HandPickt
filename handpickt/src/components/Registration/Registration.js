@@ -138,6 +138,7 @@ const Registration = (props) => {
             delete foundUser.password;
             //Set the new users credentials to session storage//
             sessionStorage.setItem("credentials", JSON.stringify(foundUser));
+            props.setUser()
             props.history.push("/dashboard");
             })
         }

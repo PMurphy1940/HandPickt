@@ -1,0 +1,95 @@
+.dashboard__Container {
+    background-color: #c0f2ce;
+}
+
+.logout__Button {
+    position: absolute;
+    right: 0;
+    margin: 2vw;
+}
+
+.dashboard__Header{
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+}
+
+.search__Object {
+    display: flex;
+    margin: 13vw 10vw 0 0;
+}
+
+.search__Object > p {
+    font-family: 'Gill Sans', 'Gill Sans MT', Calibri, 'Trebuchet MS', sans-serif;
+    color: darkslategray;
+}
+
+.HPLogo__InApp {
+    width: 35vw;
+    margin-left: 10vw;
+}
+
+.search__button {
+    margin-right: 25vw;
+}
+
+.user__Container__Dashboard {
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.user__Container__Dashboard > p {
+    text-align: center;
+}
+
+.logout__Grouping {
+    margin: 3vw 15vw 0 0;
+}
+
+.logout__Text {
+    font-size: 3vw;
+    font-family: 'Gill Sans', 'Gill Sans MT', Calibri, 'Trebuchet MS', sans-serif;
+}
+
+.user__Image__Dashboard {
+    width: 30vw;
+    margin-top: 5vw;
+    
+}
+
+.dashboard__Linkbox {
+    margin-top: 15vw;
+    display: flex;
+    flex-direction: column;
+}   
+
+.link__Dashboard {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    color: black
+}
+
+.dashboard__Row1 {
+    display: flex;
+    justify-content: space-evenly;
+    margin-bottom: 5vw;
+}
+
+.gradient__Button{
+    padding:2vw;
+    background-color: #c3f7d2;
+    box-shadow: 0 4px 6px -1px rgba(0, 0, 0, .1), 0 2px 4px -1px rgba(0, 0, 0, .06);
+    border-radius: 5%;
+}
+.image1__Dashboard {
+    width: 35vw;
+    
+}
+
+.dashboard__Row2 {
+    display: flex;
+    justify-content: space-evenly;
+}

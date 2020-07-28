@@ -66,12 +66,13 @@ const Login = (props) => {
                     }
                })
     }
-
+console.log(props)
                 //Authenticate the User entry//
         const authenticateUser = (foundUser) => {
             if (loginForm.userName === foundUser.userName && loginForm.password === foundUser.password) {
                 delete foundUser.password
                 sessionStorage.setItem("credentials", JSON.stringify(foundUser))
+                props.setUser()
                 props.history.push("/dashboard")
             }
             else if (loginForm.userName !== foundUser.userName) {

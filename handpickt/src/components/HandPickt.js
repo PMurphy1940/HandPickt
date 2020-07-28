@@ -2,14 +2,17 @@ import React from 'react';
 import "./HandPickt.css";
 import ApplicationViews from './ApplicationViews';
 
+
 const HandPickt = () => {
 
 
     return (
-        <> 
-        <ApplicationViews />
-
-        </>
+        <div className="the__Big_Container">
+            <div>
+                <ApplicationViews />
+            </div> 
+            
+        </div>
     )
 }
 

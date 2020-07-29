@@ -10,6 +10,7 @@ import Notes from "./Notes/Notes"
 import Archive from "./Archive/Archive"
 import Search from "./Search/Search"
 import LogOut from "./LogOut/LogOut"
+import AddAnother from "./AddPlant/AddAnother"
 
 const ApplicationViews = (props) => {
     const [activeUser, setActiveUser] = useState({userName: "", email: "", image: "", id: 0})
@@ -69,7 +70,7 @@ const ApplicationViews = (props) => {
             exact
             path="/addanother"
             render={props => {
-                return <AddPlant {...props} activeUser={activeUser} setUser={setUser}/>
+                return <AddAnother {...props} activeUser={activeUser} setUser={setUser}/>
             }} /> 
 
             <Route

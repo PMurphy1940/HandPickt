@@ -1,6 +1,6 @@
 import React from 'react'
 import { Link } from 'react-router-dom'
-import "./LogOut.css"
+import "./Logout.css"
 
 const Logout = () => {
 

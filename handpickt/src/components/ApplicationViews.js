@@ -9,7 +9,7 @@ import AddNote from "./AddNote/AddNote"
 import Notes from "./Notes/Notes"
 import Archive from "./Archive/Archive"
 import Search from "./Search/Search"
-import LogOut from "./LogOut/LogOut"
+import LogOut from "./LogOut/Logout"
 import AddAnother from "./AddPlant/AddAnother"
 
 const ApplicationViews = (props) => {

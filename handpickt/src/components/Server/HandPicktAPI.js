@@ -15,10 +15,15 @@ export default {
         }).then(data => data.json())
     },
     
-    getAll(route) {
-        return fetch(`${routeURL}/${route}` )
+    getAll(pathway) {
+        return fetch(`${routeURL}/${pathway}` )
         .then((response) => response.json())
     },
 
+    delete(pathway, id) {
+        return fetch(`${routeURL}/${pathway}/${id}`, {
+            method: "DELETE"
+        }).then(data => data.json())
+    },
 
 }

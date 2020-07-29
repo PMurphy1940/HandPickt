@@ -20,7 +20,7 @@ const Dashboard = (props) => {
         <div className="dashboard__Container">
             <button type="button" className="logout__Button" onClick={handleLogout}>Logout</button>
             <div className="dashboard__Header">
-                <picture >               
+                <picture className="HPLogo__box">               
                     <img className="HPLogo__InApp" src={require(`../images/HandPickt_3.png`)} alt="HandPickt Logo" />
                 </picture>
                 <Link to="/search" className="search__Object" >

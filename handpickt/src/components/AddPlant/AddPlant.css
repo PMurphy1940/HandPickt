@@ -1,0 +1,103 @@
+.addplant__Container {
+    background-color: #c0f2ce;
+}
+
+.headline__container {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+}
+
+.plant__Headline__Image {
+    width: 25vw;
+    margin-right: 10vw;
+}
+.category__Headline {
+    font-family: 'Gill Sans', 'Gill Sans MT', Calibri, 'Trebuchet MS', sans-serif;
+    color: darkslategray;
+    margin: 5vw 0 3vw 5vw;
+}
+
+.plant__Category__Scroll {
+    display: block;
+    display: flex;
+    overflow-y: hidden;
+    border-top: 2px solid slategray;
+    border-bottom: 2px solid slategray;
+}
+
+.plant__Card {
+    margin: 2vw;
+    box-shadow: 0px 1px 6px 2px rgba(128,170,140,1);
+    border: 2px solid slategray;
+    border-radius: 5px;
+}
+
+.plant__Card__Header {
+    min-height: 10vh;
+    max-height: 10vh;
+}
+
+.plant__Card__Individual {
+    min-height: 50%;
+    max-height: 100%;
+    /* margin: 2vw;
+    box-shadow: 0px 1px 6px 2px rgba(128,170,140,1);
+    border: 2px solid slategray;
+    border-radius: 5px; */
+}
+.plant__Category__Image {
+    height: 15vh;
+    width: 52vw;
+    object-fit: cover;
+}
+
+.plant__Specific__Image {
+    height: 15vh;
+    width: 80vw;
+    object-fit: cover;
+}
+
+.plant__Specific__Text {
+    height: 16vh;
+    overflow: scroll;
+}
+
+.save__Card {
+    margin: 2vw;
+    box-shadow: 0px 1px 6px 2px rgba(128,170,140,1);
+    border: 2px solid slategray;
+    border-radius: 5px;
+}
+
+.save__Card_Container {
+    margin: 0 1vw 0 1vw;
+    box-shadow: 0px 1px 6px 2px rgba(128,170,140,1);
+    border: 2px solid slategray;
+    border-radius: 5px;
+}
+
+.add__Button__Container {
+    display: flex;
+    justify-content: space-evenly;
+    align-items: baseline;
+}
+
+.user__Container__AddAnother {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    
+}
+
+.Another_Gif {
+    width: 75%;
+    border-radius: 5%;
+    box-shadow: 0px 1px 6px 2px rgba(128,170,140,1);
+    margin-bottom: 10%;
+}
+
+.addanother__Button {
+    min-width: 65%;
+    margin: 10%;
+}

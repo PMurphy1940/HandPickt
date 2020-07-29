@@ -1,6 +1,6 @@
 .sunshine__Pic {
-    height: 30vw;
-    border-radius: 50%;
+    height: 75vw;
+    /* border-radius: 50%; */
 }
 
 .logout_Outline {
@@ -13,6 +13,6 @@
 
 .returnTo__Login {
     color: black;
-    margin-top: 30vw;
-    font-size: 2.5vw;
+    /* margin-top: 10vw; */
+    font-size: 3vw;
 }

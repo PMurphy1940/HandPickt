@@ -6,11 +6,12 @@ const PlantCategoryCard = (props) => {
 
     return (
       <div className="plant__Card">
-        <Card style={{ width: '16rem' }} className="plant__Card">
-            
+        <Card style={{ width: '16rem' }} className="plant__Card__Individual">
+            <div className="plant__Card__Header">
             <Card.Header as="h5">{props.name}</Card.Header>
-                <Card.Body>
-                <Card.Title>Special title treatment</Card.Title>
+            </div>
+                <Card.Body>               
+                    <img className="plant__Category__Image" src={require(`../images/beans.png`)} alt="HandPickt Logo" />               
                 <Card.Text>
                 With supporting text below as a natural lead-in to additional content.
                 </Card.Text>

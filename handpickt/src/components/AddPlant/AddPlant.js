@@ -8,6 +8,7 @@ import BottomNavbar from "../Footer/FooterNav"
 import { Navbar } from 'react-bootstrap';
 import Image from 'react-bootstrap/Image'
 import helper from "../Helpers/Helper"
+import ModalEntries from "../Modal/Modal"
 import "./AddPlant.css"
 const AddPlant = (props) => {
     const [plantList, setPlantList] = useState([])
@@ -17,7 +18,23 @@ const AddPlant = (props) => {
     const [selectMessage, setSelectMessage] = useState('')
     const [savePlantState, setSavePlantState] = useState(false)
     const [savePlant, setSavePlant] = useState("")
-   
+    const [plantForm, setPlantForm] = useState({ userId: 0, plantId: 0, plantingDate: 0, userComments: "", earlyMaturity: 0, acrhiveDate: 0})
+    const [openModal, setOpenModal] = useState(false)
+    
+    const goBack = () => {
+        setSavePlantState(false)
+        setShowCategories(true)      
+    }
+
+    const toggle = () => {
+        setOpenModal(!openModal)
+    }
+
+    const selectPlant = (selectedPlant) => {
+        setSavePlant(selectedPlant)
+        setSavePlantState(true)
+        }
+
     const handleLogout = () => {
         sessionStorage.removeItem("credentials")
         props[0].setUser()
@@ -110,24 +127,33 @@ const AddPlant = (props) => {
         setShowCategories(false)
     }
 
-    const goBack = () => {
-        setSavePlantState(false)
-        setShowCategories(true)      
+    //Handle the user input from the entry fields//
+    const handleChange = (e) => {
+        const change = { ...plantForm};
+        change[e.target.id] = e.target.value;
+        setPlantForm(change);
+        console.log(change)
     }
-    const selectPlant = (selectedPlant) => {
-        setSavePlant(selectedPlant)
-        setSavePlantState(true)
-        }
 
+    const makeComment = () => {
+            setOpenModal(true)
+    }
+    const postToGarden = () => {
+
+    }
+        //Provide the views on this page, depending on the user choices - Category/Plant/Save//
     const addPlantView = () => {
             if (savePlantState === false) {
                 return (
                     <>
-                        { showCategories ? 
-                            <h3 className="category__Headline">Select a Category</h3>
-                            :
-                            <h3 className="category__Headline">{selectMessage}</h3>
-                        }
+                        <div className="headline__container">
+                            { showCategories ? 
+                                <h3 className="category__Headline">Select a Category</h3>
+                                :
+                                <h3 className="category__Headline">{selectMessage}</h3>
+                            }
+                            <img className="plant__Headline__Image" src={require(`../images/seedling.png`)} alt="Seedling" />
+                        </div>
                         <div className="user__Container__AddPlant">
                             <div className="plant__Category__Scroll" id="categoryList">
                             { showCategories ?
@@ -158,6 +184,9 @@ const AddPlant = (props) => {
                             key={savePlant.id} 
                             plant={savePlant}
                             goBack={goBack}
+                            handleChange={handleChange}
+                            makeComment={makeComment}
+                            postToGarden={postToGarden}
                             />
                     </>
                 )
@@ -180,7 +209,12 @@ const AddPlant = (props) => {
             </div>
 
             {addPlantView()}
-                        
+            <ModalEntries 
+                    toggle={toggle} 
+                    openModal={openModal} 
+                    handleChange={handleChange}
+                    plantForm={plantForm}
+                    />            
             <Navbar fixed="bottom" className="bottom__Nav">
                 <div >
                     <BottomNavbar {...props}/>

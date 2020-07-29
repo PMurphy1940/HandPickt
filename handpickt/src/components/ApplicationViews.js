@@ -67,6 +67,13 @@ const ApplicationViews = (props) => {
 
             <Route
             exact
+            path="/addanother"
+            render={props => {
+                return <AddPlant {...props} activeUser={activeUser} setUser={setUser}/>
+            }} /> 
+
+            <Route
+            exact
             path="/addnote"
             render={props => {
                 return <AddNote {...props} activeUser={activeUser} setUser={setUser}/>

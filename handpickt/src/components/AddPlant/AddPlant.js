@@ -18,7 +18,7 @@ const AddPlant = (props) => {
     const [selectMessage, setSelectMessage] = useState('')
     const [savePlantState, setSavePlantState] = useState(false)
     const [savePlant, setSavePlant] = useState("")
-    const [plantForm, setPlantForm] = useState({ userId: 0, plantId: 0, plantingDate: 0, userComments: "", earlyMaturity: 0, acrhiveDate: 0})
+    const [plantForm, setPlantForm] = useState({ userId: 0, plantId: 0, plantingDate: 0, userComments: "", earlyMaturity: null, acrhiveDate: null})
     const [openModal, setOpenModal] = useState(false)
     
     const goBack = () => {
@@ -138,7 +138,25 @@ const AddPlant = (props) => {
     const makeComment = () => {
             setOpenModal(true)
     }
+
+    const makePlantObject = () => {
+        let user = JSON.parse(props[0].activeUser.id)
+        let date = new Date()
+        let plantObj = {
+            userId: user,
+            plantId:  savePlant.id,
+            plantingDate: date,
+            usercomments: plantForm.userComments,
+            earlyMaturity: "",
+            acrhiveDate: ""
+        }
+        return plantObj
+    }
     const postToGarden = () => {
+        let postPlant = makePlantObject();
+        
+        API.addNew( postPlant, "userPlants" )
+       .then(() => props[0].history.push("/addanother"))
 
     }
         //Provide the views on this page, depending on the user choices - Category/Plant/Save//
@@ -209,6 +227,7 @@ const AddPlant = (props) => {
             </div>
 
             {addPlantView()}
+
             <ModalEntries 
                     toggle={toggle} 
                     openModal={openModal} 

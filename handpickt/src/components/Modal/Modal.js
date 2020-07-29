@@ -12,10 +12,12 @@ return (
         <ModalHeader >Save comments with plant</ModalHeader>
         <ModalBody>
             <fieldset className="commentsField">
-                <input
+                <textarea
                     className="individual__Comments__Field1" 
                     type="textarea" 
                     id="userComments" 
+                    rows="4" 
+                    cols="44"
                     value={props.plantForm.userComments}
                     placeholder="Comments"
                     onChange={props.handleChange}

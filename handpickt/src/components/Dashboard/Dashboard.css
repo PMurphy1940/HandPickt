@@ -6,6 +6,8 @@
     position: absolute;
     right: 0;
     margin: 2vw;
+    font-size: 100%;
+    font-family: 'Gill Sans', 'Gill Sans MT', Calibri, 'Trebuchet MS', sans-serif;
 }
 
 .dashboard__Header{
@@ -22,10 +24,12 @@
 .search__Object > p {
     font-family: 'Gill Sans', 'Gill Sans MT', Calibri, 'Trebuchet MS', sans-serif;
     color: darkslategray;
+    font-size: 100%;
+    
 }
 
 .HPLogo__InApp {
-    width: 35vw;
+    width: 50%;
     margin-left: 10vw;
 }
 
@@ -49,12 +53,12 @@
 }
 
 .logout__Text {
-    font-size: 3vw;
+    font-size: 1vw;
     font-family: 'Gill Sans', 'Gill Sans MT', Calibri, 'Trebuchet MS', sans-serif;
 }
 
 .user__Image__Dashboard {
-    width: 30vw;
+    width: 25%;
     /* margin-top: 2vw; */
     
 }
@@ -75,7 +79,6 @@
 .dashboard__Row1 {
     display: flex;
     justify-content: space-evenly;
-    margin-bottom: 2vw;
 }
 
 .gradient__Button{

@@ -2,6 +2,7 @@ import React, { useState, useEffect } from 'react'
 import { Link } from 'react-router-dom'
 import WithAuthentication from "../Auth/WithAuthentication"
 import PlantCategoryCard from "./PlantCategoryCard"
+import SavePlant from "./SavePlant"
 import API from "../Server/HandPicktAPI"
 import BottomNavbar from "../Footer/FooterNav"
 import { Navbar } from 'react-bootstrap';
@@ -13,6 +14,9 @@ const AddPlant = (props) => {
     const [categories, setCategories] = useState([])
     const [showCategories, setShowCategories] = useState(true)
     const [selectedPlantArray, setSelectedPlantArray] = useState([])
+    const [selectMessage, setSelectMessage] = useState('')
+    const [savePlantState, setSavePlantState] = useState(false)
+    const [savePlant, setSavePlant] = useState("")
    
     const handleLogout = () => {
         sessionStorage.removeItem("credentials")
@@ -47,11 +51,6 @@ const AddPlant = (props) => {
         setCategories(categoryArrayMaker)
     }, [plantList])
 
-    // useEffect(() => {
-    //     setShowCategories(true)
-    // }, [selectedPlantArray])
-
-
     //Produce an array of the available categories//
     const categoryArrayMaker = () => {
             const categoryArrayWithDuplicates = plantList.map(plant => {
@@ -68,9 +67,38 @@ const AddPlant = (props) => {
             return categoryArray
           
     }
+    //Ensure correct grammar on 'Select a plant' message//
+    const makeSelectMessage = (category) => {
+        let singularPlant = category
+        //first checks for vowels//
+        if (helper.firstLetterCase(category.charAt(0)) === "A" || helper.firstLetterCase(category.charAt(0)) === "E" || helper.firstLetterCase(category.charAt(0)) === "I" || helper.firstLetterCase(category.charAt(0)) === "O" || helper.firstLetterCase(category.charAt(0)) === "U") {
+            
+            //then checks for plurality//
+            if(category.endsWith("es")) {
+                let index = category.lastIndexOf("es")
+                singularPlant = category.slice(0, index)
+            }
+            else if (category.endsWith("s")) {
+                let index = category.lastIndexOf("s")
+                singularPlant = category.slice(0, index)
+            }           
+            return `Select an ${singularPlant} to plant`
+        }
+
+        else {if(category.endsWith("es")) {
+                    let index = category.lastIndexOf("es")
+                    singularPlant = category.slice(0, index)
+        }
+        else if (category.endsWith("s")) {
+                    let index = category.lastIndexOf("s")
+                    singularPlant = category.slice(0, index)
+        }
+            return `Select a ${singularPlant} to plant`
+     
+    }
+    }
     //Make the array of available plants within a category the the user has selected//
     const selectCategory = (selectedCategory) => {
-        console.log(selectedCategory)
         let plantArray = []
         plantList.map(plant => {
             if (helper.firstLetterCase(plant.category) == selectedCategory)  {
@@ -78,16 +106,64 @@ const AddPlant = (props) => {
             }
         })
         setSelectedPlantArray(plantArray);
+        setSelectMessage(makeSelectMessage(selectedCategory))
         setShowCategories(false)
-
-
     }
-console.log(selectedPlantArray)
+
+    const goBack = () => {
+        setSavePlantState(false)
+        setShowCategories(true)      
+    }
     const selectPlant = (selectedPlant) => {
-        console.log(selectedPlant)
-        
+        setSavePlant(selectedPlant)
+        setSavePlantState(true)
+        }
+
+    const addPlantView = () => {
+            if (savePlantState === false) {
+                return (
+                    <>
+                        { showCategories ? 
+                            <h3 className="category__Headline">Select a Category</h3>
+                            :
+                            <h3 className="category__Headline">{selectMessage}</h3>
+                        }
+                        <div className="user__Container__AddPlant">
+                            <div className="plant__Category__Scroll" id="categoryList">
+                            { showCategories ?
+                                categories.map(category => <PlantCategoryCard 
+                                                                        key={category} 
+                                                                        name={category} 
+                                                                        selectType={selectCategory} 
+                                                                        back={false} />) 
+                                : 
+                                selectedPlantArray.map(plant => <PlantCategoryCard 
+                                                                        key={plant.id} 
+                                                                        name={plant.common_name} 
+                                                                        selectType={selectPlant} 
+                                                                        back={true} goBack={goBack}
+                                                                        plant={plant}
+                                                                        />)
+                                }
+                            </div>                
+                        </div>
+                    </>
+                    )
+                }
+            else if (savePlantState === true) {
+                return (
+                    <>
+                        <h3 className="category__Headline">Plant in Your Garden</h3>
+                        <SavePlant 
+                            key={savePlant.id} 
+                            plant={savePlant}
+                            goBack={goBack}
+                            />
+                    </>
+                )
+            }
     }
-console.log("Categories", showCategories)
+
     return(
         <div className="addplant__Container">
             <div className="dashboard__Header">
@@ -102,21 +178,9 @@ console.log("Categories", showCategories)
                     <p className="logout__Text">Log Out</p></button>
                 </div>
             </div>
-            { showCategories ? 
-                <h3 className="category__Headline">Select A Category</h3>
-                :
-                <h3 className="category__Headline">Select A Plant</h3>
-            }
-            <div className="user__Container__AddPlant">
-                  <div className="plant__Category__Scroll">
-                  { showCategories ?
-                      categories.map(category => <PlantCategoryCard key={category} name={category} selectType={selectCategory}/>) 
-                      : 
-                      selectedPlantArray.map(plant => <PlantCategoryCard key={plant.id} name={plant.common_name} selectType={selectPlant}/>)
-                    }
-                  </div>                
-            </div>
-        
+
+            {addPlantView()}
+                        
             <Navbar fixed="bottom" className="bottom__Nav">
                 <div >
                     <BottomNavbar {...props}/>

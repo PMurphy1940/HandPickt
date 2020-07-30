@@ -13,8 +13,10 @@ import "./MyGarden.css"
 const MyGarden = (props) => {
     const [userPlants, setUserPlants] = useState([])
     const [inspectViewOn, setInspectViewOn] = useState(false)
-    const [plantToInspect, setPlantToInspect] = useState(0)
+    const [plantToInspect, setPlantToInspect] = useState()
     const [saveScrollPosition, setSaveScrollPosition] = useState(0)
+    const [editPlantedFieldActive, setEditPlantedFieldActive] = useState(false)
+    const [isLoading, setIsLoading] = useState(true)
 
 
     useEffect(() => {
@@ -39,21 +41,44 @@ const MyGarden = (props) => {
         sessionStorage.removeItem("credentials")
         props[0].setUser()
         props[0].history.push("/logout");
-    }
-
-    const details = (id) => {
-        API.getOne(id, "userPlants", "&_expand=plant")
-        .then((singlePlant) => {
-        setPlantToInspect(singlePlant)
-        holdPosition()
-        setInspectViewOn(true)
-    
-        })
-    }
+    } 
 
     const discard = () => {
         setInspectViewOn(false)   
     }
+
+    const toggleEditPlantedFieldActive = () => {
+        setEditPlantedFieldActive(!editPlantedFieldActive)
+    }
+    
+    const details = (id) => {
+        API.getOne(id, "userPlants", "&_expand=plant")
+        .then((singlePlant) => {
+            addDaysRemainingToSinglePlantObject(singlePlant)   
+        })
+    }
+
+    const addDaysRemainingToSinglePlantObject = (singlePlant) => {
+        
+            {
+            let remainToHarvest = daysRemainingToMaturity(singlePlant[0])
+            //Calculate percent complete for the progress bar//
+            let percentCompleteToHarvest = (1 - remainToHarvest/singlePlant[0].plant.days_to_maturity)*100
+                //Modifiy the plant objects for easier handling//
+                setPlantToInspect({
+                 ...singlePlant[0],
+                    daysRemaining: remainToHarvest,
+                    percentComplete: percentCompleteToHarvest              
+                }) 
+              setIsLoading(false)
+            }
+            
+            //Save the current scroll position and open the Details view//               
+            holdPosition()
+            setInspectViewOn(true)           
+    }
+
+
     const handleDelete = (id) => {
         API.delete( "userPlants", id)
           .then(() => API.getAll("userPlants")
@@ -93,7 +118,7 @@ const MyGarden = (props) => {
             })
         setUserPlants(sortedplantsdata)
     }
-    // console.log(userPlants)
+
     //Get the user plants from the database along with the expanded plant data//
     const getUserPlants = () => {
         const route = `userPlants?userId=${props[0].activeUser.id}&_expand=plant`
@@ -124,6 +149,17 @@ const MyGarden = (props) => {
         else {
         return daysRemaining
         }
+    }
+
+    const handlePlantedField = (event) => {
+        // let target = event.target
+        // let {name, value} = target
+        // console.log(name, value)
+        const stateToChange ={...plantToInspect};
+        stateToChange[event.target.id] = event.target.value;
+
+        setPlantToInspect(stateToChange)
+        console.log(plantToInspect)
     }
 
     const gardenPageView = () => {
@@ -159,12 +195,15 @@ const MyGarden = (props) => {
                         <div className="garden__Plants__Scroll" id="categoryList">
                           
                              <PlantDetails 
-                                key={plantToInspect.id} 
-                                    
+                                key={plantToInspect.id}
+                                isLoading={isLoading} 
+                                handlePlantedField={handlePlantedField}    
                                 back={true} 
                                 handleDelete={handleDelete}
                                 plantToInspect={plantToInspect}
                                 discard={discard}
+                                editPlantedFieldActive={editPlantedFieldActive}
+                                toggleEditPlantedFieldActive={toggleEditPlantedFieldActive}
                                 />
                         
                         </div>                

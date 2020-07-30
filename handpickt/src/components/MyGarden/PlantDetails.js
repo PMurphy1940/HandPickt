@@ -9,23 +9,25 @@ import {
 
 const PlantDetails = (props) => {
 
+console.log(props)
     useEffect(() => {
         window.scrollTo(0, 0)
       }, [])
 
     return (
         <>
+        { (!props.isLoading) &&
         <div className="save__Card_Container">
             <Card style={{ width: '24rem' }} className="save__Card">
         <div className="garden__Card__Header">
             <Card.Header as="h5">
             <div className="card__Header__Garden">
-                {props.plantToInspect[0].plant.common_name} 
+                {props.plantToInspect.plant.common_name} 
                 <div className="progress__Container"> 
-                {(props.plantToInspect[0].percentComplete < 100) ?            
+                {(props.plantToInspect.percentComplete < 100) ?            
                     <CircularProgressbar
                     className="ProgressBar"
-                    value={props.plantToInpect[0].percentComplete}
+                    value={props.plantToInspect.percentComplete}
                     strokeWidth={50}
                     styles={buildStyles({
                     strokeLinecap: "butt"
@@ -33,7 +35,7 @@ const PlantDetails = (props) => {
                     })}
                     /> : <CircularProgressbar
                     className="ProgressBar"
-                    value={props.plantToInspect[0].percentComplete}
+                    value={props.plantToInspect.percentComplete}
                     strokeWidth={50}
                     styles={buildStyles({
                     strokeLinecap: "butt",
@@ -48,34 +50,48 @@ const PlantDetails = (props) => {
         </div>
                 <Card.Body>
                 <img className="plant__details__Image" src={require(`../images/beans.png`)} alt="HandPickt Logo" />               
-                Planted on {helper.dateConverter(props.plantToInspect[0].plantingDate)}
-                
+                { (props.editPlantedFieldActive) ?
+                    <>
+                    Planted on <input
+                    onChange={props.handlePlantedField}    
+                    type="text"
+                    name="plantingDate"
+                    value={props.plantToInspect.plantingDate}
+                    id="plantingDate"
+                    />
+                    </> 
+                    : 
+                    <>
+                    Planted on {helper.dateConverter(props.plantToInspect.plantingDate)}
+                    <button className="far fa-edit" onClick={props.toggleEditPlantedFieldActive}></button>
+                    </>}
                 <Card.Title>
-                { (props.plantToInspect[0].daysRemaining > 0) ?
+                { (props.plantToInspect.daysRemaining > 0) ?
                    <>
-                    {props.plantToInspect[0].daysRemaining} days to harvest </>: <>Ready to harvest</>
+                    {props.plantToInspect.daysRemaining} days to harvest </>: <>Ready to harvest</>
                     
                     }</Card.Title>
                 <div className="garden__Specific__Text">
                     <h2>Comments</h2>
-                  {props.plantToInspect[0].userComments}
+                  {props.plantToInspect.userComments}
                     
                 </div>
                 <div>
                     <h2>Description</h2>
-                    {props.plantToInspect[0].plant.description}
+                    {props.plantToInspect.plant.description}
                 </div>
                 <div>
                     <h2>Planting tips</h2>
-                    {props.plantToInspect[0].plant.sowing_method}
+                    {props.plantToInspect.plant.sowing_method}
                 </div>
                 <div className="add__Button__Container">
                   <Button variant="primary" onClick={ () => props.discard()}>Back</Button>
-                  <Button variant="primary" onClick={ () => props.handleDelete(props.plantToInspect[0].id)}>Remove</Button>
+                  <Button variant="primary" onClick={ () => props.handleDelete(props.plantToInspect.id)}>Remove</Button>
                 </div>
             </Card.Body>
         </Card>
       </div>
+      }
         </>
     )
 }

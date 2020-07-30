@@ -9,7 +9,7 @@ import {
 
 const PlantDetails = (props) => {
 
-console.log(props)
+
     useEffect(() => {
         window.scrollTo(0, 0)
       }, [])
@@ -59,11 +59,14 @@ console.log(props)
                     value={props.plantToInspect.plantingDate}
                     id="plantingDate"
                     />
+                    <button className="far fa-check-circle" onClick={props.toggleEditPlantedFieldActive}></button>
                     </> 
                     : 
                     <>
-                    Planted on {helper.dateConverter(props.plantToInspect.plantingDate)}
-                    <button className="far fa-edit" onClick={props.toggleEditPlantedFieldActive}></button>
+                    Planted on
+                    <button onClick={props.toggleEditPlantedFieldActive}>
+                     {helper.dateConverter(props.plantToInspect.plantingDate)}
+                    </button><i className="far fa-edit"></i>
                     </>}
                 <Card.Title>
                 { (props.plantToInspect.daysRemaining > 0) ?
@@ -72,9 +75,29 @@ console.log(props)
                     
                     }</Card.Title>
                 <div className="garden__Specific__Text">
+                
+                 {  (props.editCommentsFieldActive) ? 
+                 <> 
+                    <h2>Comments</h2>  
+                    <input
+                        onChange={props.handlePlantedField}    
+                        type="text"
+                        name="userComments"
+                        value={props.plantToInspect.userComments}
+                        id="userComments"
+                        />
+                        <button className="far fa-check-circle" onClick={props.toggleEditCommentsFieldActive}></button>
+                        </> 
+                 :
+                <> 
+                
                     <h2>Comments</h2>
+                    <button  onClick={props.toggleEditCommentsFieldActive}>
                   {props.plantToInspect.userComments}
-                    
+                    </button><i className="far fa-edit"></i>
+                </>
+                }
+                
                 </div>
                 <div>
                     <h2>Description</h2>

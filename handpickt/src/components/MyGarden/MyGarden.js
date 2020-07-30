@@ -5,7 +5,7 @@ import GardenPlantCard from "./GardenPlantCard"
 import PlantDetails from    "./PlantDetails"
 import BottomNavbar from "../Footer/FooterNav"
 import API from "../Server/HandPicktAPI"
-import { Navbar } from 'react-bootstrap';
+import { Navbar, Button } from 'react-bootstrap';
 import Image from 'react-bootstrap/Image'
 import "./MyGarden.css"
 
@@ -16,13 +16,14 @@ const MyGarden = (props) => {
     const [plantToInspect, setPlantToInspect] = useState()
     const [saveScrollPosition, setSaveScrollPosition] = useState(0)
     const [editPlantedFieldActive, setEditPlantedFieldActive] = useState(false)
+    const [editCommentsFieldActive, setEditCommentsFieldActive] = useState(false)
+    const [enableSaveButton, setEnableSaveButton] = useState(false)
     const [isLoading, setIsLoading] = useState(true)
 
 
     useEffect(() => {
         if (!inspectViewOn) {
         let storedScroll = parseInt(saveScrollPosition)
-        console.log(storedScroll)
         window.scrollTo(0, storedScroll) }
 
         else {
@@ -44,11 +45,15 @@ const MyGarden = (props) => {
     } 
 
     const discard = () => {
+        setEnableSaveButton(false)
         setInspectViewOn(false)   
     }
 
     const toggleEditPlantedFieldActive = () => {
         setEditPlantedFieldActive(!editPlantedFieldActive)
+    }
+    const toggleEditCommentsFieldActive = () => {
+        setEditCommentsFieldActive(!editCommentsFieldActive)
     }
     
     const details = (id) => {
@@ -157,9 +162,29 @@ const MyGarden = (props) => {
         // console.log(name, value)
         const stateToChange ={...plantToInspect};
         stateToChange[event.target.id] = event.target.value;
-
+        
         setPlantToInspect(stateToChange)
-        console.log(plantToInspect)
+        setEnableSaveButton(true)
+    }
+
+    const makePlantObject = () => {
+ 
+        let plantObj = {
+            userId: plantToInspect.userId,
+            plantId:  plantToInspect.plantId,
+            plantingDate: plantToInspect.plantingDate,
+            userComments: plantToInspect.userComments,
+            earlyMaturity: plantToInspect.earlyMaturity,
+            acrhiveDate: plantToInspect.acrhiveDate
+        }
+        return plantObj
+    }
+
+    const handleSaveEdit = (id) => {
+        setEnableSaveButton(false)
+        let editPlant = makePlantObject()
+        API.updateOne(editPlant, id, "userPlants")
+        .then(() => getUserPlants() )
     }
 
     const gardenPageView = () => {
@@ -203,7 +228,9 @@ const MyGarden = (props) => {
                                 plantToInspect={plantToInspect}
                                 discard={discard}
                                 editPlantedFieldActive={editPlantedFieldActive}
+                                editCommentsFieldActive={editCommentsFieldActive}
                                 toggleEditPlantedFieldActive={toggleEditPlantedFieldActive}
+                                toggleEditCommentsFieldActive={toggleEditCommentsFieldActive}
                                 />
                         
                         </div>                
@@ -233,7 +260,7 @@ const MyGarden = (props) => {
                 {gardenPageView()}
 
             </div>
-        
+            <Button hidden={!enableSaveButton} variant="danger" className="save__Edit__Button" onClick={ () => handleSaveEdit(plantToInspect.id)}>Save Changes</Button>      
             <Navbar fixed="bottom" className="bottom__Nav">
                 <div >
                     <BottomNavbar {...props}/>

@@ -51,3 +51,10 @@
     width: 80vw;
     object-fit: cover;
 }
+
+.save__Edit__Button {
+    position: fixed;
+    top: 82%;
+    left: 33%;
+
+}

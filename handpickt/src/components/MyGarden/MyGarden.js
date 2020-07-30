@@ -14,11 +14,24 @@ const MyGarden = (props) => {
     const [userPlants, setUserPlants] = useState([])
     const [inspectViewOn, setInspectViewOn] = useState(false)
     const [plantToInspect, setPlantToInspect] = useState(0)
+    const [saveScrollPosition, setSaveScrollPosition] = useState(0)
+
 
     useEffect(() => {
-        window.scrollTo(0, 0)
+        if (!inspectViewOn) {
+        let storedScroll = parseInt(saveScrollPosition)
+        console.log(storedScroll)
+        window.scrollTo(0, storedScroll) }
+
+        else {
+            window.scrollTo(0,0)
+        }
         }, [inspectViewOn])
 
+        const holdPosition = () => {
+            setSaveScrollPosition(window.pageYOffset)
+        }
+    
 
     let msInADay = (1000*60*60*24)
 
@@ -32,6 +45,7 @@ const MyGarden = (props) => {
         API.getOne(id, "userPlants", "&_expand=plant")
         .then((singlePlant) => {
         setPlantToInspect(singlePlant)
+        holdPosition()
         setInspectViewOn(true)
     
         })

@@ -25,6 +25,14 @@ export default {
         .then((response) => response.json())
     },
 
+    updateOne(newOject, id, pathway) {
+        return fetch(`${routeURL}/${pathway}/${id}`, {
+            method: "PUT",
+            headers: {"Content-Type": "application/json"},
+            body: JSON.stringify(newOject)
+        }).then(data => data.json())
+    },
+
     delete(pathway, id, ) {
         return fetch(`${routeURL}/${pathway}/${id}`, {
             method: "DELETE"

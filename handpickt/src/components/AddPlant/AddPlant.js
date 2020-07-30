@@ -20,6 +20,27 @@ const AddPlant = (props) => {
     const [savePlant, setSavePlant] = useState("")
     const [plantForm, setPlantForm] = useState({ userId: 0, plantId: 0, plantingDate: 0, userComments: "", earlyMaturity: null, acrhiveDate: null})
     const [openModal, setOpenModal] = useState(false)
+    const [saveScrollPosition, setSaveScrollPosition] = useState(0)
+
+    //Holds scroll position in state, so when the user returns to the category view, it is where they left off//
+    useEffect(() => {
+        //returns the user to the saved scroll position in the Categories display//
+        const scollDiv = document.querySelector(".plant__Category__Scroll")
+        if (showCategories) {
+        let storedScroll = parseInt(saveScrollPosition)
+        
+        scollDiv.scrollTo(storedScroll, 0) }
+        //Scroll position of the plants subcategory set to 0//
+        else {
+            scollDiv.scrollTo(0,0)
+        }
+        }, [showCategories])
+        //Capture the Categories scroll position when the user selects a category//
+        const holdPosition = () => {
+            const scollDiv = document.querySelector(".plant__Category__Scroll")
+            const currentScroll = scollDiv.scrollLeft
+            setSaveScrollPosition(currentScroll)
+        }
     
     const goBack = () => {
         setSavePlantState(false)
@@ -124,6 +145,7 @@ const AddPlant = (props) => {
         })
         setSelectedPlantArray(plantArray);
         setSelectMessage(makeSelectMessage(selectedCategory))
+        holdPosition()
         setShowCategories(false)
     }
 

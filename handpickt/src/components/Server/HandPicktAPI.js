@@ -20,7 +20,12 @@ export default {
         .then((response) => response.json())
     },
 
-    delete(pathway, id) {
+    getOne(id, pathway, addquery) {
+        return fetch(`${routeURL}/${pathway}?id=${id}${addquery}` )
+        .then((response) => response.json())
+    },
+
+    delete(pathway, id, ) {
         return fetch(`${routeURL}/${pathway}/${id}`, {
             method: "DELETE"
         }).then(data => data.json())

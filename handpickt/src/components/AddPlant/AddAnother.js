@@ -32,7 +32,7 @@ const MyGarden = (props) => {
                     <h2>Success!</h2>
                     <img className="Another_Gif" src={require(`../images/Sprouts.gif`)} alt="Sprouting plants" />
                     <Button variant="primary" className="addanother__Button" onClick={ () => props[0].history.push("/addplant")}>I would Like to Add Another Plant</Button>
-                    <Button variant="primary" className="addanother__Button" onClick={ () => props[0].history.push("/mygarden")}>I'm finished</Button>
+                    <Button variant="primary" className="addanother__Button" onClick={ () => props[0].history.push("/dashboard")}>I'm finished</Button>
             </div>
         
             <Navbar fixed="bottom" className="bottom__Nav">

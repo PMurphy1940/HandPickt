@@ -4,6 +4,7 @@ import Login from "./Login/Login"
 import Registration from "./Registration/Registration"
 import Dashboard from "./Dashboard/Dashboard"
 import MyGarden from "./MyGarden/MyGarden"
+import PlantDetails from "./MyGarden/PlantDetails"
 import AddPlant from "./AddPlant/AddPlant"
 import AddNote from "./AddNote/AddNote"
 import Notes from "./Notes/Notes"
@@ -11,6 +12,7 @@ import Archive from "./Archive/Archive"
 import Search from "./Search/Search"
 import LogOut from "./LogOut/Logout"
 import AddAnother from "./AddPlant/AddAnother"
+
 
 const ApplicationViews = (props) => {
     const [activeUser, setActiveUser] = useState({userName: "", email: "", image: "", id: 0})
@@ -50,6 +52,13 @@ const ApplicationViews = (props) => {
             path="/mygarden"
             render={props => {
                 return <MyGarden {...props} activeUser={activeUser} setUser={setUser}/>
+            }} /> 
+
+            <Route
+            exact
+            path="/plantdetails"
+            render={props => {
+                return <PlantDetails {...props} activeUser={activeUser} setUser={setUser}/>
             }} />
 
             <Route

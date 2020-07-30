@@ -9,3 +9,45 @@
     justify-content: center;
     margin: 5vw 15vw 0 0;
 }
+
+.garden__Plants__Scroll {
+    margin-bottom: 30%;
+    border-top: 2px solid slategray;
+    border-bottom: 2px solid slategray;
+}
+.garden__Specific__Text {
+    height: 16vh;
+    overflow: scroll;
+}
+
+.garden__Card__Header {
+    min-height: 5vh;
+    max-height: 5vh;
+}
+
+.card__Header__Garden {
+    display: flex;
+    justify-content: space-between;
+}
+
+.ProgressBar {
+    height: 5vh;  
+
+}
+
+.progress__Container {
+    margin: 0 0 0 80%;
+    position: absolute;
+    z-index: 1;
+}
+
+.knife {
+    margin-top: 2.5%;
+    z-index: 2;
+}
+
+.plant__details__Image {
+    height: 30vh;
+    width: 80vw;
+    object-fit: cover;
+}

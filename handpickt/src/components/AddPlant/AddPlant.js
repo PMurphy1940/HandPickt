@@ -146,7 +146,7 @@ const AddPlant = (props) => {
             userId: user,
             plantId:  savePlant.id,
             plantingDate: date,
-            usercomments: plantForm.userComments,
+            userComments: plantForm.userComments,
             earlyMaturity: "",
             acrhiveDate: ""
         }

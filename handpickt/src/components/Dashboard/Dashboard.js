@@ -7,7 +7,7 @@ import Image from 'react-bootstrap/Image'
 import "./Dashboard.css"
 
 const Dashboard = (props) => {
-
+console.log("Dashboard", props)
     const handleLogout = () => {
         sessionStorage.removeItem("credentials")
         props[0].setUser()

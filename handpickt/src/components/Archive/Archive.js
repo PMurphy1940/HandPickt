@@ -1,4 +1,4 @@
-import React from 'react'
+import React, { useState, useEffect } from 'react'
 import WithAuthentication from "../Auth/WithAuthentication"
 import BottomNavbar from "../Footer/FooterNav"
 import { Navbar } from 'react-bootstrap';
@@ -6,6 +6,10 @@ import Image from 'react-bootstrap/Image'
 import "./Archive.css"
 const Archive = (props) => {
 
+    useEffect (() => {
+      
+    // eslint-disable-next-line react-hooks/exhaustive-deps
+    }, [props[0].userPlants])
     const handleLogout = () => {
         sessionStorage.removeItem("credentials")
         props[0].setUser()

@@ -2,17 +2,10 @@ import React, { useState, useEffect } from 'react'
 import { Route } from 'react-router-dom'
 import Login from "./Login/Login"
 import Registration from "./Registration/Registration"
-import Dashboard from "./Dashboard/Dashboard"
-import MyGarden from "./MyGarden/MyGarden"
-import PlantDetails from "./MyGarden/PlantDetails"
-import AddPlant from "./AddPlant/AddPlant"
-import AddNote from "./AddNote/AddNote"
-import Notes from "./Notes/Notes"
-import Archive from "./Archive/Archive"
-import Search from "./Search/Search"
 import LogOut from "./LogOut/Logout"
 import AddAnother from "./AddPlant/AddAnother"
-
+import AddPlant from "./AddPlant/AddPlant"
+import PageViews from './PageViews/PageViews'
 
 const ApplicationViews = (props) => {
     const [activeUser, setActiveUser] = useState({userName: "", email: "", image: "", id: 0})
@@ -42,34 +35,6 @@ const ApplicationViews = (props) => {
 
             <Route
             exact
-            path="/dashboard"
-            render={props => {
-                return <Dashboard {...props} activeUser={activeUser} setUser={setUser}/>
-            }} /> 
-            
-            <Route
-            exact
-            path="/mygarden"
-            render={props => {
-                return <MyGarden {...props} activeUser={activeUser} setUser={setUser}/>
-            }} /> 
-
-            <Route
-            exact
-            path="/plantdetails"
-            render={props => {
-                return <PlantDetails {...props} activeUser={activeUser} setUser={setUser}/>
-            }} />
-
-            <Route
-            exact
-            path="/notes"
-            render={props => {
-                return <Notes {...props} activeUser={activeUser} setUser={setUser}/>
-            }} /> 
-
-            <Route
-            exact
             path="/addplant"
             render={props => {
                 return <AddPlant {...props} activeUser={activeUser} setUser={setUser}/>
@@ -82,27 +47,10 @@ const ApplicationViews = (props) => {
                 return <AddAnother {...props} activeUser={activeUser} setUser={setUser}/>
             }} /> 
 
-            <Route
-            exact
-            path="/addnote"
-            render={props => {
-                return <AddNote {...props} activeUser={activeUser} setUser={setUser}/>
-            }} /> 
-
-            <Route
-            exact
-            path="/archive"
-            render={props => {
-                return <Archive {...props} activeUser={activeUser} setUser={setUser}/>
-            }} />
-
-            <Route
-            exact
-            path="/search"
-            render={props => {
-                return <Search {...props} activeUser={activeUser} setUser={setUser}/>
-            }} /> 
-
+            {(activeUser.id !== 0) &&
+            <PageViews {...props} activeUser={activeUser} setUser={setUser}/>
+            }
+            
             <Route
             exact
             path="/logout"

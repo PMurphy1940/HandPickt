@@ -23,10 +23,15 @@ const MyGarden = (props) => {
     const [modalType, setModalType] = useState('')
     const [harvestChangeMonitor, setHarvestChangeMonitor] = useState()
 
+// console.log("GardenProps", props)
 
+    // const activeUserId = props[0].activeUser.id
 
-    const activeUserId = props[0].activeUser.id
-
+  
+    useEffect (() => {
+            addDaysRemainingToObject()  
+        // eslint-disable-next-line react-hooks/exhaustive-deps
+        }, [props[0].userPlants])
     useEffect(() => {
         if (!inspectViewOn) {
         let storedScroll = parseInt(saveScrollPosition)
@@ -164,7 +169,6 @@ const MyGarden = (props) => {
 
     const handleDelete = (plant) => {
         setPlantToInspect(plant)
-        console.log(plant)
         setModalType("archiveOrDelete")
         toggleModal()
       };
@@ -178,9 +182,11 @@ const MyGarden = (props) => {
           .then(() => API.getAll("userPlants")
           .then(setUserPlants));
     }
-    const addDaysRemainingToObject = (plantData) => {
-        let enhancedPlants = []
 
+
+    const addDaysRemainingToObject = () => {
+        let enhancedPlants = []
+        let plantData = props[0].userPlants
         plantData.forEach(plant => {
 
             let remainToHarvest = daysRemainingToMaturity(plant)            
@@ -214,18 +220,16 @@ const MyGarden = (props) => {
 
     //Get the user plants from the database along with the expanded plant data//
     const getUserPlants = () => {
-        const route = `userPlants?userId=${props[0].activeUser.id}&_expand=plant`
-        API.getAll(route)
-        .then((plantData) => {
+        // const route = `userPlants?userId=${props[0].activeUser.id}&_expand=plant`
+        // API.getAll(route)
+        // .then((plantData) => {
             // setUserPlants(plantData)
-            addDaysRemainingToObject(plantData)            
-        })      
+            console.log("DaysRemaining", props[0])
+            addDaysRemainingToObject(props[0].userPlants)            
+             
     }
 
-    useEffect (() => {
-        getUserPlants()
-        // eslint-disable-next-line react-hooks/exhaustive-deps
-    }, [activeUserId])
+   
 
 
     //Calculate the days remaining until maturity(harvest)//

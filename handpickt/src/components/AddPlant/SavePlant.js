@@ -18,7 +18,7 @@ const SavePlant = (props) => {
                 {props.plant.description}
                 </Card.Text>
                 <div className="add__Button__Container">
-                  <Button variant="primary" onClick={ () => props.postToGarden()}>Plant</Button>
+                  <Button variant="primary" onClick={ () => props.postToGarden()}>Plant it!</Button>
                   <Button variant="primary" onClick={ () => props.makeComment()}>Add Comment</Button>
                   <Button variant="primary" onClick={ () => props.goBack()}>Go Back</Button>
                 </div>

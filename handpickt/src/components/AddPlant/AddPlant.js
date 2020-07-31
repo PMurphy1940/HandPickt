@@ -189,7 +189,7 @@ const AddPlant = (props) => {
                     <>
                         <div className="headline__container">
                             { showCategories ? 
-                                <h3 className="category__Headline">Select a Category</h3>
+                                <h3 className="category__Headline">Select a Plant Category</h3>
                                 :
                                 <h3 className="category__Headline">{selectMessage}</h3>
                             }

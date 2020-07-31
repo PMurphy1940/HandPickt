@@ -63,7 +63,7 @@ const GardenPlantCard = (props) => {
                 
                 <div className="add__Button__Container">
                   <Button variant="primary" onClick={ () => props.details(props.plant.id)}>Inspect</Button>
-                  <Button variant="primary" onClick={ () => props.handleDelete(props.plant.id)}>Remove</Button>
+                  <Button variant="primary" onClick={ () => props.handleDelete(props.plant)}>Remove</Button>
                 </div>
             </Card.Body>
         </Card>

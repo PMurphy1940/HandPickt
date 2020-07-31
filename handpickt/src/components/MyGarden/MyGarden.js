@@ -20,7 +20,9 @@ const MyGarden = (props) => {
     const [enableSaveButton, setEnableSaveButton] = useState(false)
     const [isLoading, setIsLoading] = useState(true)
     const [openModal, setOpenModal] = useState(false)
+    const [modalType, setModalType] = useState('')
     const [harvestChangeMonitor, setHarvestChangeMonitor] = useState()
+
 
 
     const activeUserId = props[0].activeUser.id
@@ -41,7 +43,6 @@ const MyGarden = (props) => {
     //Toggle function for modal window//
     const toggleModal = () => {
             setOpenModal(!openModal)
-            console.log("OPEN")
         }
         
     let msInADay = (1000*60*60*24)
@@ -56,6 +57,7 @@ const MyGarden = (props) => {
     //Button functionality//
 
     const earlyHarvest = () => {
+        setModalType("earlyHarvest")
         toggleModal()
     }
     const discard = () => {
@@ -87,6 +89,7 @@ const MyGarden = (props) => {
         
             {
             let remainToHarvest = daysRemainingToMaturity(singlePlant)
+            remainToHarvest = checkForEarlyHarvest(singlePlant, remainToHarvest)
             //Calculate percent complete for the progress bar//
             let percentCompleteToHarvest = (1 - remainToHarvest/singlePlant.plant.days_to_maturity)*100
                 //Modifiy the plant objects for easier handling//
@@ -107,6 +110,7 @@ const MyGarden = (props) => {
         if (plantToInspect !== undefined) {
         addDaysRemainingToSinglePlantObject(plantToInspect)
         }
+        // eslint-disable-next-line react-hooks/exhaustive-deps
     }, [harvestChangeMonitor])
 
 
@@ -123,9 +127,6 @@ const MyGarden = (props) => {
     const makePlantObject = () => {
         //open modal at this point means an early harvest has been indicated by the user//
         let earlyHarvest = (openModal) ? new Date() : plantToInspect.earlyMaturity
-        
-        // (openModal) ? 
-
 
         let plantObj = {
             userId: plantToInspect.userId,
@@ -138,7 +139,7 @@ const MyGarden = (props) => {
         setOpenModal(false)
         return plantObj
     }
-
+    //Send the Edit to the API//
     const handleSaveEdit = (id) => {
         setEnableSaveButton(false)
         let editPlant = makePlantObject()
@@ -151,22 +152,40 @@ const MyGarden = (props) => {
     }
 ///***  End of Details section  ***///
 
+    const checkForEarlyHarvest = (plant, remainToHarvest) => {
+        if (plant.earlyMaturity !== "") {
+            return 0
+        }
+        else {
+            return remainToHarvest
+        }
+    }
     
 
-    const handleDelete = (id) => {
-        API.delete( "userPlants", id)
-          .then(() => API.getAll("userPlants")
-          .then(setUserPlants));
+    const handleDelete = (plant) => {
+        setPlantToInspect(plant)
+        console.log(plant)
+        setModalType("archiveOrDelete")
+        toggleModal()
       };
 
+    const toArchive = (plant) => {
+
+
+    } 
+    const completeDelete = (id) => {
+        API.delete( "userPlants", plantToInspect.id)
+          .then(() => API.getAll("userPlants")
+          .then(setUserPlants));
+    }
     const addDaysRemainingToObject = (plantData) => {
-        // let animatorArray = []
         let enhancedPlants = []
 
         plantData.forEach(plant => {
 
-            let remainToHarvest = daysRemainingToMaturity(plant)
-
+            let remainToHarvest = daysRemainingToMaturity(plant)            
+            remainToHarvest = checkForEarlyHarvest(plant, remainToHarvest)
+            
             //Calculate percent complete for the progress bar//
             let percentCompleteToHarvest = (1 - remainToHarvest/plant.plant.days_to_maturity)*100
                 //Modifiy the plant objects for easier handling//
@@ -304,7 +323,11 @@ const MyGarden = (props) => {
             <ModalEntries 
                     toggleModal={toggleModal} 
                     openModal={openModal}
-                    harvestNow={harvestNow} 
+                    harvestNow={harvestNow}
+                    plantToInspect={plantToInspect}
+                    modalType={modalType}
+                    toArchive={toArchive} 
+                    completeDelete={completeDelete}
                     {...props}
                     /> 
 

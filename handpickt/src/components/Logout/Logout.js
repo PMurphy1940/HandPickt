@@ -13,7 +13,7 @@ const Logout = () => {
                 </picture>
             </div>
             <div className="logout_Outline">
-                <p>Thank You for choosing HandPickT</p>
+                <p className="Thanks">Thank You for choosing HandPickT</p>
                 <picture >               
                     <img className="sunshine__Pic" src={require(`../images/vegetableheart.png`)} alt="Sunshine with heart hands" />
                 </picture>

@@ -4,10 +4,10 @@ import "./Modal.css"
 
 
 const ModalEntries = (props) => {
-// console.log(props)
 
+console.log(props)
 const modalView = () => {
-    if (props[0].match.path == "/addplant") {
+    if (props[0].match.path.toString() === "/addplant") {
         return (
             <>
             <div >
@@ -34,13 +34,14 @@ const modalView = () => {
             </div>
             </>
             )}
-    else if (props[0].match.path == "/mygarden") {
+    else if (props.modalType === "earlyHarvest") {
         return (
             <>
             <div >
                 <Modal isOpen={props.openModal}>
                     <ModalHeader >Do you wish to set the plant to early harvest? </ModalHeader>
                     <ModalBody>
+                        This action is not reversable
                     </ModalBody>
                     <ModalFooter>
                     <Button color="primary" onClick={props.harvestNow}>OK</Button>{' '}
@@ -50,8 +51,26 @@ const modalView = () => {
             </div>
             </>
             )
+        }
+    else if (props.modalType === "archiveOrDelete") {
+        return (
+            <>
+            <div >
+                <Modal isOpen={props.openModal}>
+                    <ModalHeader >You may Archive the plant or Delete outright</ModalHeader>
+                    <ModalBody>
+                        If you choose to Archive, you may save a comment with the plant on the next page.
+                    </ModalBody>
+                    <ModalFooter>
+                    <Button color="primary" onClick={() => props.toggleModal()}>Cancel</Button>{' '}
+                    <Button color="primary" onClick={() => props.toArchive()}>Archive</Button>{' '}
+                    <Button color="primary" onClick={() => props.completeDelete()}>Delete</Button>{' '}
+                    </ModalFooter>
+                </Modal>
+            </div>
+            </>
+            )
     }
-
 }
 
 return (

@@ -1,5 +1,4 @@
 import React from 'react'
-import { Link } from 'react-router-dom'
 import WithAuthentication from "../Auth/WithAuthentication"
 import BottomNavbar from "../Footer/FooterNav"
 import { Navbar } from 'react-bootstrap';

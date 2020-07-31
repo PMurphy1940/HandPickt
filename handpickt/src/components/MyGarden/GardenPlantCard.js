@@ -29,7 +29,8 @@ const GardenPlantCard = (props) => {
                     strokeLinecap: "butt"
                     
                     })}
-                    /> : <CircularProgressbar
+                    /> : 
+                    <CircularProgressbar
                     className="ProgressBar"
                     value={props.plant.percentComplete}
                     strokeWidth={50}
@@ -40,7 +41,8 @@ const GardenPlantCard = (props) => {
                     />
                 }
                 </div>
-                <i className="fas fa-utensils knife"></i>  
+                <button disabled={(!props.plant.percentComplete < 100)} className="fas fa-utensils knife" onClick={props.earlyHarvest}></button>
+               
             </div>
             </Card.Header>
         </div>

@@ -1,8 +1,8 @@
 import React, { useState, useEffect } from 'react'
-import { Link } from 'react-router-dom'
 import WithAuthentication from "../Auth/WithAuthentication"
 import GardenPlantCard from "./GardenPlantCard"
-import PlantDetails from    "./PlantDetails"
+import PlantDetails from "./PlantDetails"
+import ModalEntries from "../Modal/Modal"
 import BottomNavbar from "../Footer/FooterNav"
 import API from "../Server/HandPicktAPI"
 import { Navbar, Button } from 'react-bootstrap';
@@ -19,7 +19,11 @@ const MyGarden = (props) => {
     const [editCommentsFieldActive, setEditCommentsFieldActive] = useState(false)
     const [enableSaveButton, setEnableSaveButton] = useState(false)
     const [isLoading, setIsLoading] = useState(true)
+    const [openModal, setOpenModal] = useState(false)
+    const [harvestChangeMonitor, setHarvestChangeMonitor] = useState()
 
+
+    const activeUserId = props[0].activeUser.id
 
     useEffect(() => {
         if (!inspectViewOn) {
@@ -29,13 +33,17 @@ const MyGarden = (props) => {
         else {
             window.scrollTo(0,0)
         }
-        }, [inspectViewOn])
+        }, [inspectViewOn, saveScrollPosition])
 
         const holdPosition = () => {
             setSaveScrollPosition(window.pageYOffset)
         }
-    
-
+    //Toggle function for modal window//
+    const toggleModal = () => {
+            setOpenModal(!openModal)
+            console.log("OPEN")
+        }
+        
     let msInADay = (1000*60*60*24)
 
     const handleLogout = () => {
@@ -43,7 +51,13 @@ const MyGarden = (props) => {
         props[0].setUser()
         props[0].history.push("/logout");
     } 
+//*** This section is for handling the plant Details view and it various functions ***//
 
+    //Button functionality//
+
+    const earlyHarvest = () => {
+        toggleModal()
+    }
     const discard = () => {
         setEnableSaveButton(false)
         setInspectViewOn(false)   
@@ -52,26 +66,32 @@ const MyGarden = (props) => {
     const toggleEditPlantedFieldActive = () => {
         setEditPlantedFieldActive(!editPlantedFieldActive)
     }
+    
     const toggleEditCommentsFieldActive = () => {
         setEditCommentsFieldActive(!editCommentsFieldActive)
     }
     
+    //GET the details plant freshly from the API//
+
     const details = (id) => {
         API.getOne(id, "userPlants", "&_expand=plant")
         .then((singlePlant) => {
+            singlePlant = singlePlant[0]
+            holdPosition()
             addDaysRemainingToSinglePlantObject(singlePlant)   
         })
     }
 
+    //Modify the details plant to ADD 'percent complete' and 'days remaining' to the plant object//
     const addDaysRemainingToSinglePlantObject = (singlePlant) => {
         
             {
-            let remainToHarvest = daysRemainingToMaturity(singlePlant[0])
+            let remainToHarvest = daysRemainingToMaturity(singlePlant)
             //Calculate percent complete for the progress bar//
-            let percentCompleteToHarvest = (1 - remainToHarvest/singlePlant[0].plant.days_to_maturity)*100
+            let percentCompleteToHarvest = (1 - remainToHarvest/singlePlant.plant.days_to_maturity)*100
                 //Modifiy the plant objects for easier handling//
                 setPlantToInspect({
-                 ...singlePlant[0],
+                 ...singlePlant,
                     daysRemaining: remainToHarvest,
                     percentComplete: percentCompleteToHarvest              
                 }) 
@@ -79,10 +99,59 @@ const MyGarden = (props) => {
             }
             
             //Save the current scroll position and open the Details view//               
-            holdPosition()
+           
             setInspectViewOn(true)           
     }
+    //Reset the days to harvest counter if planted date changes (prior to being saved)//
+    useEffect(() => {
+        if (plantToInspect !== undefined) {
+        addDaysRemainingToSinglePlantObject(plantToInspect)
+        }
+    }, [harvestChangeMonitor])
 
+
+    const handlePlantedField = (event) => {
+ 
+        const stateToChange ={...plantToInspect};
+        stateToChange[event.target.id] = event.target.value;
+        
+        setPlantToInspect(stateToChange)
+        setHarvestChangeMonitor(plantToInspect.plantingDate)
+        setEnableSaveButton(true)
+    }
+
+    const makePlantObject = () => {
+        //open modal at this point means an early harvest has been indicated by the user//
+        let earlyHarvest = (openModal) ? new Date() : plantToInspect.earlyMaturity
+        
+        // (openModal) ? 
+
+
+        let plantObj = {
+            userId: plantToInspect.userId,
+            plantId:  plantToInspect.plantId,
+            plantingDate: plantToInspect.plantingDate,
+            userComments: plantToInspect.userComments,
+            earlyMaturity: earlyHarvest,
+            acrhiveDate: plantToInspect.acrhiveDate
+        }
+        setOpenModal(false)
+        return plantObj
+    }
+
+    const handleSaveEdit = (id) => {
+        setEnableSaveButton(false)
+        let editPlant = makePlantObject()
+        API.updateOne(editPlant, id, "userPlants")
+        .then(() => getUserPlants() )
+    }
+
+    const harvestNow = () => {
+        handleSaveEdit(plantToInspect.id)
+    }
+///***  End of Details section  ***///
+
+    
 
     const handleDelete = (id) => {
         API.delete( "userPlants", id)
@@ -91,7 +160,7 @@ const MyGarden = (props) => {
       };
 
     const addDaysRemainingToObject = (plantData) => {
-        let animatorArray = []
+        // let animatorArray = []
         let enhancedPlants = []
 
         plantData.forEach(plant => {
@@ -130,14 +199,14 @@ const MyGarden = (props) => {
         API.getAll(route)
         .then((plantData) => {
             // setUserPlants(plantData)
-            addDaysRemainingToObject(plantData)
-            
+            addDaysRemainingToObject(plantData)            
         })      
     }
 
     useEffect (() => {
         getUserPlants()
-    }, [props[0].activeUser.id])
+        // eslint-disable-next-line react-hooks/exhaustive-deps
+    }, [activeUserId])
 
 
     //Calculate the days remaining until maturity(harvest)//
@@ -155,37 +224,7 @@ const MyGarden = (props) => {
         return daysRemaining
         }
     }
-
-    const handlePlantedField = (event) => {
-        // let target = event.target
-        // let {name, value} = target
-        // console.log(name, value)
-        const stateToChange ={...plantToInspect};
-        stateToChange[event.target.id] = event.target.value;
-        
-        setPlantToInspect(stateToChange)
-        setEnableSaveButton(true)
-    }
-
-    const makePlantObject = () => {
- 
-        let plantObj = {
-            userId: plantToInspect.userId,
-            plantId:  plantToInspect.plantId,
-            plantingDate: plantToInspect.plantingDate,
-            userComments: plantToInspect.userComments,
-            earlyMaturity: plantToInspect.earlyMaturity,
-            acrhiveDate: plantToInspect.acrhiveDate
-        }
-        return plantObj
-    }
-
-    const handleSaveEdit = (id) => {
-        setEnableSaveButton(false)
-        let editPlant = makePlantObject()
-        API.updateOne(editPlant, id, "userPlants")
-        .then(() => getUserPlants() )
-    }
+    
 
     const gardenPageView = () => {
 
@@ -206,6 +245,7 @@ const MyGarden = (props) => {
                                                                 handleDelete={handleDelete}
                                                                 plant={plant}
                                                                 details={details}
+                                                                earlyHarvest={earlyHarvest}
                                                                 />)
                         }
                     </div>                
@@ -231,6 +271,7 @@ const MyGarden = (props) => {
                                 editCommentsFieldActive={editCommentsFieldActive}
                                 toggleEditPlantedFieldActive={toggleEditPlantedFieldActive}
                                 toggleEditCommentsFieldActive={toggleEditCommentsFieldActive}
+                                earlyHarvest={earlyHarvest}
                                 />
                         
                         </div>                
@@ -260,6 +301,13 @@ const MyGarden = (props) => {
                 {gardenPageView()}
 
             </div>
+            <ModalEntries 
+                    toggleModal={toggleModal} 
+                    openModal={openModal}
+                    harvestNow={harvestNow} 
+                    {...props}
+                    /> 
+
             <Button hidden={!enableSaveButton} variant="danger" className="save__Edit__Button" onClick={ () => handleSaveEdit(plantToInspect.id)}>Save Changes</Button>      
             <Navbar fixed="bottom" className="bottom__Nav">
                 <div >

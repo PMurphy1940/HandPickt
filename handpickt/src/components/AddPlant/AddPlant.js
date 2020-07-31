@@ -1,5 +1,4 @@
 import React, { useState, useEffect } from 'react'
-import { Link } from 'react-router-dom'
 import WithAuthentication from "../Auth/WithAuthentication"
 import PlantCategoryCard from "./PlantCategoryCard"
 import SavePlant from "./SavePlant"
@@ -34,7 +33,7 @@ const AddPlant = (props) => {
         else {
             scollDiv.scrollTo(0,0)
         }
-        }, [showCategories])
+        }, [showCategories, saveScrollPosition])
         //Capture the Categories scroll position when the user selects a category//
         const holdPosition = () => {
             const scollDiv = document.querySelector(".plant__Category__Scroll")
@@ -87,6 +86,7 @@ const AddPlant = (props) => {
 
     useEffect(() => {
         setCategories(categoryArrayMaker)
+        // eslint-disable-next-line react-hooks/exhaustive-deps
     }, [plantList])
 
     //Produce an array of the available categories//
@@ -139,9 +139,10 @@ const AddPlant = (props) => {
     const selectCategory = (selectedCategory) => {
         let plantArray = []
         plantList.map(plant => {
-            if (helper.firstLetterCase(plant.category) == selectedCategory)  {
+            if (helper.firstLetterCase(plant.category) === selectedCategory)  {
                 plantArray.push(plant)
             }
+            return null
         })
         setSelectedPlantArray(plantArray);
         setSelectMessage(makeSelectMessage(selectedCategory))
@@ -255,6 +256,7 @@ const AddPlant = (props) => {
                     openModal={openModal} 
                     handleChange={handleChange}
                     plantForm={plantForm}
+                    {...props}
                     />            
             <Navbar fixed="bottom" className="bottom__Nav">
                 <div >

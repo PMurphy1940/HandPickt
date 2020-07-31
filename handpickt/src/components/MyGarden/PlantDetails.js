@@ -9,6 +9,8 @@ import {
 
 const PlantDetails = (props) => {
 
+    //Set the 'early harvest' button to disabled if the plant has reached its harvest date//
+    const disableEarly = (props.plantToInspect.percentComplete < 100)
 
     useEffect(() => {
         window.scrollTo(0, 0)
@@ -44,7 +46,7 @@ const PlantDetails = (props) => {
                     />
                 }
                 </div>
-                <i className="fas fa-utensils knife"></i>  
+                <button disabled={!disableEarly} className="fas fa-utensils knife" onClick={props.earlyHarvest}></button>  
             </div>
             </Card.Header>
         </div>
@@ -74,28 +76,33 @@ const PlantDetails = (props) => {
                     {props.plantToInspect.daysRemaining} days to harvest </>: <>Ready to harvest</>
                     
                     }</Card.Title>
-                <div className="garden__Specific__Text">
+                <div className="detail__Specific__Text">
                 
                  {  (props.editCommentsFieldActive) ? 
                  <> 
-                    <h2>Comments</h2>  
-                    <input
+                    <h2>Comments</h2> 
+                    <div>             
+                    <textarea
                         onChange={props.handlePlantedField}    
-                        type="text"
+                        type="textarea" 
+                        rows="4" 
+                        cols="30"
                         name="userComments"
                         value={props.plantToInspect.userComments}
                         id="userComments"
                         />
-                        <button className="far fa-check-circle" onClick={props.toggleEditCommentsFieldActive}></button>
-                        </> 
+                    </div> 
+                    <button className="far fa-check-circle" onClick={props.toggleEditCommentsFieldActive}></button>
+                </> 
                  :
-                <> 
                 
-                    <h2>Comments</h2>
-                    <button  onClick={props.toggleEditCommentsFieldActive}>
-                  {props.plantToInspect.userComments}
-                    </button><i className="far fa-edit"></i>
-                </>
+                    <div className="detail__Comments">
+                        <h2>Comments</h2>
+                        <button className="detail__Comments__Button" onClick={props.toggleEditCommentsFieldActive}>
+                            {props.plantToInspect.userComments}
+                        </button><i className="far fa-edit"></i>
+                    </div>
+               
                 }
                 
                 </div>

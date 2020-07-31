@@ -43,8 +43,10 @@
 
 .knife {
     margin-top: 2.5%;
+    margin-right: -2%;
     z-index: 2;
 }
+
 
 .plant__details__Image {
     height: 30vh;
@@ -57,4 +59,8 @@
     top: 82%;
     left: 33%;
 
+}
+
+.detail__Comments__Button {
+    text-align: left;
 }

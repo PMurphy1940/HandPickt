@@ -24,10 +24,11 @@ const PageViews = (props) => {
         const route = `userPlants?userId=${props.activeUser.id}&_expand=plant`
         API.getAll(route)
         .then((plantData) => {
+
             setUserPlants(plantData)            
         })      
     }
-
+    
     useEffect (() => {
         getUserPlants()
         // eslint-disable-next-line react-hooks/exhaustive-deps

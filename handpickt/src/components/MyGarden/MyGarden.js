@@ -25,15 +25,12 @@ const MyGarden = (props) => {
     const [inHarvest, setInHarvest] = useState(false)
     const [archiveNow, setArchiveNow] = useState(false)
 
-// console.log("GardenProps", props)
-
-    // const activeUserId = props[0].activeUser.id
-
   
     useEffect (() => {
             addDaysRemainingToObject()  
         // eslint-disable-next-line react-hooks/exhaustive-deps
         }, [props[0].userPlants])
+        
     useEffect(() => {
         if (!inspectViewOn) {
         let storedScroll = parseInt(saveScrollPosition)
@@ -189,12 +186,18 @@ const MyGarden = (props) => {
           .then(() => API.getAll("userPlants")
           .then(setUserPlants));
     }
-
+   
 
     const addDaysRemainingToObject = () => {
         let enhancedPlants = []
         let plantData = props[0].userPlants
-        plantData.forEach(plant => {
+        //Remove any Archived plants from the plant array
+        let noArchivePlantData = plantData.filter(plant => {
+            if ( plant.archiveDate === "" ) {
+                return plant
+            }
+        })
+        noArchivePlantData.forEach(plant => {
 
             let remainToHarvest = daysRemainingToMaturity(plant)            
             remainToHarvest = checkForEarlyHarvest(plant, remainToHarvest)
@@ -222,22 +225,15 @@ const MyGarden = (props) => {
                 }
                 return 0           
             })
+            
+   
         setUserPlants(sortedplantsdata)
     }
 
-    //Get the user plants from the database along with the expanded plant data//
-    const getUserPlants = () => {
-        // const route = `userPlants?userId=${props[0].activeUser.id}&_expand=plant`
-        // API.getAll(route)
-        // .then((plantData) => {
-            // setUserPlants(plantData)
-            console.log("DaysRemaining", props[0])
-            addDaysRemainingToObject(props[0].userPlants)            
-             
+    //Get the user plants from state along with the expanded plant data//
+    const getUserPlants = () => {    
+            addDaysRemainingToObject(props[0].userPlants)                    
     }
-
-   
-
 
     //Calculate the days remaining until maturity(harvest)//
     const daysRemainingToMaturity = (plant) => {

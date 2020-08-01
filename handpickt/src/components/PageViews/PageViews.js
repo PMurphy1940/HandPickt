@@ -12,6 +12,8 @@ import Search from "../Search/Search"
 
 const PageViews = (props) => {
     const [userPlants, setUserPlants] = useState([])
+    const [userNotes, setUserNotes] = useState([])
+    const [noteAlert, setNoteAlert] = useState(false)
 
     
     const activeUser = props.activeUser
@@ -31,10 +33,43 @@ const PageViews = (props) => {
     
     useEffect (() => {
         getUserPlants()
+        getUserNotes()
         // eslint-disable-next-line react-hooks/exhaustive-deps
     }, [activeUserId])
 
-    // console.log("plants", userPlants)
+    console.log("notes", userNotes)
+
+    const getUserNotes = () => {
+        const route = `notes?userId=${props.activeUser.id}`
+        API.getAll(route)
+        .then((noteData) => {
+            setUserNotes(noteData)            
+        })      
+    }
+
+    useEffect(() => {
+        checkForNoteAlert(userNotes)
+    }, [userNotes])
+
+    const checkForNoteAlert = (notes) => {
+        let date = new Date()
+        let dayOfWeek = date.getDay()
+
+        notes.forEach(note => {
+            checkRecurrence(note, dayOfWeek)
+        })      
+    }
+
+    console.log("note alert", noteAlert)
+    const checkRecurrence = (singleNote, day) => {
+        if (singleNote.recurrence !== "") {
+            singleNote.recurrence.forEach(recurrenceElement => {
+                if (recurrenceElement.day === day) {
+                    setNoteAlert(true)
+                }
+            })
+        }
+    }
     
     return (
         <>
@@ -42,7 +77,7 @@ const PageViews = (props) => {
             exact
             path="/dashboard"
             render={props => {
-                return <Dashboard {...props} activeUser={activeUser} setUser={setUser} />
+                return <Dashboard {...props} activeUser={activeUser} setUser={setUser} noteAlert={noteAlert} />
             }} /> 
             
             <Route

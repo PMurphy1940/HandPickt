@@ -46,6 +46,9 @@ const Dashboard = (props) => {
                         <Image src={require(`../images/cuttingboard.png`)} rounded className="image1__Dashboard" />
                             </div>
                         <p>Notes</p>
+                        { props[0].noteAlert && 
+                            <Image src={require(`../images/addnote.png`)} rounded className="noteAlert__Dashboard" />
+                        }
                     </Link>
                 </div>
                 <div className="dashboard__Row2">

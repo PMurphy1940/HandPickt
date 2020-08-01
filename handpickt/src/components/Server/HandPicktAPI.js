@@ -15,10 +15,28 @@ export default {
         }).then(data => data.json())
     },
     
-    getAll(route) {
-        return fetch(`${routeURL}/${route}` )
+    getAll(pathway) {
+        return fetch(`${routeURL}/${pathway}` )
         .then((response) => response.json())
     },
 
+    getOne(id, pathway, addquery) {
+        return fetch(`${routeURL}/${pathway}?id=${id}${addquery}` )
+        .then((response) => response.json())
+    },
+
+    updateOne(newOject, id, pathway) {
+        return fetch(`${routeURL}/${pathway}/${id}`, {
+            method: "PUT",
+            headers: {"Content-Type": "application/json"},
+            body: JSON.stringify(newOject)
+        }).then(data => data.json())
+    },
+
+    delete(pathway, id, ) {
+        return fetch(`${routeURL}/${pathway}/${id}`, {
+            method: "DELETE"
+        }).then(data => data.json())
+    },
 
 }

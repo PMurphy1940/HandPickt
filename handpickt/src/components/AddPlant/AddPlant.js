@@ -1,5 +1,4 @@
 import React, { useState, useEffect } from 'react'
-import { Link } from 'react-router-dom'
 import WithAuthentication from "../Auth/WithAuthentication"
 import PlantCategoryCard from "./PlantCategoryCard"
 import SavePlant from "./SavePlant"
@@ -20,6 +19,27 @@ const AddPlant = (props) => {
     const [savePlant, setSavePlant] = useState("")
     const [plantForm, setPlantForm] = useState({ userId: 0, plantId: 0, plantingDate: 0, userComments: "", earlyMaturity: null, acrhiveDate: null})
     const [openModal, setOpenModal] = useState(false)
+    const [saveScrollPosition, setSaveScrollPosition] = useState(0)
+
+    //Holds scroll position in state, so when the user returns to the category view, it is where they left off//
+    useEffect(() => {
+        //returns the user to the saved scroll position in the Categories display//
+        const scollDiv = document.querySelector(".plant__Category__Scroll")
+        if (showCategories) {
+        let storedScroll = parseInt(saveScrollPosition)
+        
+        scollDiv.scrollTo(storedScroll, 0) }
+        //Scroll position of the plants subcategory set to 0//
+        else {
+            scollDiv.scrollTo(0,0)
+        }
+        }, [showCategories, saveScrollPosition])
+        //Capture the Categories scroll position when the user selects a category//
+        const holdPosition = () => {
+            const scollDiv = document.querySelector(".plant__Category__Scroll")
+            const currentScroll = scollDiv.scrollLeft
+            setSaveScrollPosition(currentScroll)
+        }
     
     const goBack = () => {
         setSavePlantState(false)
@@ -66,6 +86,7 @@ const AddPlant = (props) => {
 
     useEffect(() => {
         setCategories(categoryArrayMaker)
+        // eslint-disable-next-line react-hooks/exhaustive-deps
     }, [plantList])
 
     //Produce an array of the available categories//
@@ -118,12 +139,14 @@ const AddPlant = (props) => {
     const selectCategory = (selectedCategory) => {
         let plantArray = []
         plantList.map(plant => {
-            if (helper.firstLetterCase(plant.category) == selectedCategory)  {
+            if (helper.firstLetterCase(plant.category) === selectedCategory)  {
                 plantArray.push(plant)
             }
+            return null
         })
         setSelectedPlantArray(plantArray);
         setSelectMessage(makeSelectMessage(selectedCategory))
+        holdPosition()
         setShowCategories(false)
     }
 
@@ -146,9 +169,9 @@ const AddPlant = (props) => {
             userId: user,
             plantId:  savePlant.id,
             plantingDate: date,
-            usercomments: plantForm.userComments,
+            userComments: plantForm.userComments,
             earlyMaturity: "",
-            acrhiveDate: ""
+            archiveDate: ""
         }
         return plantObj
     }
@@ -166,7 +189,7 @@ const AddPlant = (props) => {
                     <>
                         <div className="headline__container">
                             { showCategories ? 
-                                <h3 className="category__Headline">Select a Category</h3>
+                                <h3 className="category__Headline">Select a Plant Category</h3>
                                 :
                                 <h3 className="category__Headline">{selectMessage}</h3>
                             }
@@ -233,6 +256,7 @@ const AddPlant = (props) => {
                     openModal={openModal} 
                     handleChange={handleChange}
                     plantForm={plantForm}
+                    {...props}
                     />            
             <Navbar fixed="bottom" className="bottom__Nav">
                 <div >

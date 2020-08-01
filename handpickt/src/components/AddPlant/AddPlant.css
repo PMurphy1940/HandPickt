@@ -19,7 +19,7 @@
 }
 
 .plant__Category__Scroll {
-    display: block;
+    /* display: block; */
     display: flex;
     overflow-y: hidden;
     border-top: 2px solid slategray;
@@ -41,11 +41,8 @@
 .plant__Card__Individual {
     min-height: 50%;
     max-height: 100%;
-    /* margin: 2vw;
-    box-shadow: 0px 1px 6px 2px rgba(128,170,140,1);
-    border: 2px solid slategray;
-    border-radius: 5px; */
 }
+
 .plant__Category__Image {
     height: 15vh;
     width: 52vw;

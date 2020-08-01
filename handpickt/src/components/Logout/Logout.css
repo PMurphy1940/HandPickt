@@ -1,10 +1,8 @@
 .sunshine__Pic {
     height: 75vw;
-    /* border-radius: 50%; */
 }
 
 .logout_Outline {
-    margin-top: 5vw;
     display: flex;
     flex-direction: column;
     align-items: center;
@@ -13,6 +11,9 @@
 
 .returnTo__Login {
     color: black;
-    /* margin-top: 10vw; */
-    font-size: 3vw;
+    font-size: 4vw;
+}
+
+.Thanks {
+    font-size: 5vw;
 }

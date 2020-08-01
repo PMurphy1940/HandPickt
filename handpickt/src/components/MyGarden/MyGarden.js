@@ -22,6 +22,8 @@ const MyGarden = (props) => {
     const [openModal, setOpenModal] = useState(false)
     const [modalType, setModalType] = useState('')
     const [harvestChangeMonitor, setHarvestChangeMonitor] = useState()
+    const [inHarvest, setInHarvest] = useState(false)
+    const [archiveNow, setArchiveNow] = useState(false)
 
 // console.log("GardenProps", props)
 
@@ -62,6 +64,7 @@ const MyGarden = (props) => {
     //Button functionality//
 
     const earlyHarvest = () => {
+        setInHarvest(true)
         setModalType("earlyHarvest")
         toggleModal()
     }
@@ -131,7 +134,8 @@ const MyGarden = (props) => {
 
     const makePlantObject = () => {
         //open modal at this point means an early harvest has been indicated by the user//
-        let earlyHarvest = (openModal) ? new Date() : plantToInspect.earlyMaturity
+        let earlyHarvest = (inHarvest) ? new Date() : plantToInspect.earlyMaturity
+        let saveArchive = (archiveNow) ? new Date() : plantToInspect.archiveDate
 
         let plantObj = {
             userId: plantToInspect.userId,
@@ -139,7 +143,7 @@ const MyGarden = (props) => {
             plantingDate: plantToInspect.plantingDate,
             userComments: plantToInspect.userComments,
             earlyMaturity: earlyHarvest,
-            acrhiveDate: plantToInspect.acrhiveDate
+            archiveDate: saveArchive
         }
         setOpenModal(false)
         return plantObj
@@ -153,6 +157,12 @@ const MyGarden = (props) => {
     }
 
     const harvestNow = () => {
+        
+        handleSaveEdit(plantToInspect.id)
+    }
+
+    const toArchive = (plant) => {
+        
         handleSaveEdit(plantToInspect.id)
     }
 ///***  End of Details section  ***///
@@ -168,15 +178,12 @@ const MyGarden = (props) => {
     
 
     const handleDelete = (plant) => {
+        setArchiveNow(true);
         setPlantToInspect(plant)
         setModalType("archiveOrDelete")
         toggleModal()
       };
 
-    const toArchive = (plant) => {
-
-
-    } 
     const completeDelete = (id) => {
         API.delete( "userPlants", plantToInspect.id)
           .then(() => API.getAll("userPlants")

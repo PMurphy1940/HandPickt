@@ -5,7 +5,6 @@ import "./Modal.css"
 
 const ModalEntries = (props) => {
 
-console.log(props)
 const modalView = () => {
     if (props[0].match.path.toString() === "/addplant") {
         return (

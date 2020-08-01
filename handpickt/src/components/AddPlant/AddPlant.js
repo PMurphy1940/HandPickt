@@ -171,7 +171,7 @@ const AddPlant = (props) => {
             plantingDate: date,
             userComments: plantForm.userComments,
             earlyMaturity: "",
-            acrhiveDate: ""
+            archiveDate: ""
         }
         return plantObj
     }

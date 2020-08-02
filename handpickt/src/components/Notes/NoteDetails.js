@@ -7,7 +7,7 @@ const NoteDetails = (props) => {
     const [thisNoteToday, setThisNoteToday] = useState(false)
 
 
-    let note = props.note[0]
+    let note = props.note
 
     let today = `todayDetails${note.imageNumber}`
 
@@ -42,6 +42,7 @@ const NoteDetails = (props) => {
 
       return (
         <>
+        
          <div className="notes__Holder__Details" id="categoryList">
             <div className="note__Card_Container__Details" id={pic}>
         {(props.editNoteFieldActive) ? 
@@ -51,6 +52,7 @@ const NoteDetails = (props) => {
                 </button>
             </div> 
             :
+            
             <div className="note__Specifics__Edit">
             <div>
             <textarea
@@ -59,7 +61,7 @@ const NoteDetails = (props) => {
                         rows="3" 
                         cols="13"
                         name="note"
-                        value={note.note}
+                        value={props.note.note}
                         id="note"
                         className="note__In__Edit"
                         />

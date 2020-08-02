@@ -54,7 +54,7 @@ const Notes = (props) => {
     const details = (id) => {
         API.getOne(id, "notes", "")
         .then((singleNote) => {
-
+            singleNote=singleNote[0]
             // holdPosition()
             
             setNoteToInspect(singleNote) 
@@ -64,8 +64,9 @@ const Notes = (props) => {
 
     const handleNoteField = (event) => {
         const stateToChange ={...noteToInspect};
+       
         stateToChange[event.target.id] = event.target.value;
-        
+         console.log(stateToChange)
         setNoteToInspect(stateToChange)
         setEnableSaveButton(true)
     }
@@ -74,12 +75,12 @@ const Notes = (props) => {
 
         let noteObj = {
             userId: noteToInspect.userId,
-            imageNumber:  noteToInspect.plantId,
+            imageNumber:  noteToInspect.imageNumber,
             note: noteToInspect.note,
             date: noteToInspect.date,
+            recurring: noteToInspect.recurring,
             recurrence: noteToInspect.recurrence,
         }
-        setOpenModal(false)
         return noteObj
     }
 
@@ -88,7 +89,7 @@ const Notes = (props) => {
     const handleSaveEdit = (id) => {
         setEnableSaveButton(false)
         let editNote = makeNoteObject()
-        API.updateOne(editNote, id, "userNotes")
+        API.updateOne(editNote, id, "notes")
         .then(() => props[0].getUserNotes() )
     }
 
@@ -126,6 +127,7 @@ const Notes = (props) => {
                         <h3 className="category__Headline">Notes</h3>
                         
                     </div>
+                    
                     <div className="user__Container__Notes">
                         <div className="notes__Scroll" >
                         {  
@@ -142,9 +144,7 @@ const Notes = (props) => {
                             }
                         </div>
 
-                        <Button variant="primary" className="note__Back" onClick={ () => discard()}>Back</Button>
-                        <Button variant="primary" className="note__Delete" onClick={handleDelete}>Remove</Button>             
-                        <Button hidden={!enableSaveButton} variant="danger" className="save__Edit__Button" onClick={ () => handleSaveEdit(noteToInspect.id)}>Save Changes</Button>      
+                        
                     </div> 
                 </> 
                 )
@@ -168,12 +168,19 @@ const Notes = (props) => {
             <div className="user__Container__NoteTop">
                       {noteView()}        
             </div>
-        
+            {(inspectViewOn) && 
+                <div>
+                    <Button variant="primary" className="note__Back" onClick={ () => discard()}>Back</Button>
+                    <Button variant="primary" className="note__Delete" onClick={handleDelete}>Remove</Button>             
+                    <Button hidden={!enableSaveButton} variant="danger" className="save__Edit__Button" onClick={ () => handleSaveEdit(noteToInspect.id)}>Save Changes</Button> 
+                </div>
+                }     
             <Navbar fixed="bottom" className="bottom__Nav">
                 <div >
                     <BottomNavbar {...props}/>
                 </div>
             </Navbar>
+            
         </div>
     )
 }

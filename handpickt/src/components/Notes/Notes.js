@@ -4,15 +4,14 @@ import BottomNavbar from "../Footer/FooterNav"
 import UserNoteCard from "./UserNoteCard"
 import NoteDetails from "./NoteDetails"
 import API from "../Server/HandPicktAPI"
-import { Navbar } from 'react-bootstrap';
-import Image from 'react-bootstrap/Image'
+import { Navbar, Button } from 'react-bootstrap';
 import "./Notes.css"
 const Notes = (props) => {
     const [userNotes, setUserNotes] = useState([])
     const [inspectViewOn, setInspectViewOn] = useState(false)
     const [noteToInspect, setNoteToInspect] = useState()
     const [saveScrollPosition, setSaveScrollPosition] = useState(0)
-    const [editNoteFieldActive, setEditNoteFieldActive] = useState(false)
+    const [editNoteFieldActive, setEditNoteFieldActive] = useState(true)
     const [editCommentsFieldActive, setEditCommentsFieldActive] = useState(false)
     const [enableSaveButton, setEnableSaveButton] = useState(false)
     const [isLoading, setIsLoading] = useState(true)
@@ -37,26 +36,33 @@ const Notes = (props) => {
 
     const toggleEditNoteFieldActive = () => {
         setEditNoteFieldActive(!editNoteFieldActive)
+        console.log(editNoteFieldActive)
     }
     
     const toggleEditCommentsFieldActive = () => {
         setEditCommentsFieldActive(!editCommentsFieldActive)
     }
 
-    const handleDelete = (note) => {
-        setNoteToInspect(note)
-        setModalType("Delete")
-        toggleModal()
+    const handleDelete = () => {
+        console.log(noteToInspect)
+        API.delete( "notes", noteToInspect[0].id)
+        .then(() => props[0].getUserNotes())
+        // .then(props[0].setUserNotes));
       };
 
-    const completeDelete = (id) => {
-        API.delete( "notes", noteToInspect.id)
-          .then(() => API.getAll("userNotes")
-          .then(props[0].setUserNotes));
+
+    const details = (id) => {
+        API.getOne(id, "notes", "")
+        .then((singleNote) => {
+
+            // holdPosition()
+            
+            setNoteToInspect(singleNote) 
+            setInspectViewOn(true)  
+        })
     }
 
     const handleNoteField = (event) => {
- 
         const stateToChange ={...noteToInspect};
         stateToChange[event.target.id] = event.target.value;
         
@@ -64,9 +70,33 @@ const Notes = (props) => {
         setEnableSaveButton(true)
     }
 
+    const makeNoteObject = () => {
+
+        let noteObj = {
+            userId: noteToInspect.userId,
+            imageNumber:  noteToInspect.plantId,
+            note: noteToInspect.note,
+            date: noteToInspect.date,
+            recurrence: noteToInspect.recurrence,
+        }
+        setOpenModal(false)
+        return noteObj
+    }
+
+    console.log(props)
+    //Send the Edit to the API//
+    const handleSaveEdit = (id) => {
+        setEnableSaveButton(false)
+        let editNote = makeNoteObject()
+        API.updateOne(editNote, id, "userNotes")
+        .then(() => props[0].getUserNotes() )
+    }
+
     const noteView = () => {
 
+        if (!inspectViewOn) {
          return (
+
              <>
                  <div className="headline__container">
                      <h3 className="category__Headline">Notes</h3>
@@ -80,12 +110,45 @@ const Notes = (props) => {
                                                     back={true} 
                                                     handleDelete={handleDelete}
                                                     note={note}
+                                                    details={details}
+                                                    toggleEditNoteFieldActive={toggleEditNoteFieldActive}
                                                     />)
                          }
                      </div>                
                  </div> 
              </> 
-             ) 
+             )}
+        else if (inspectViewOn) {
+            return (
+
+                <>
+                    <div className="headline__container">
+                        <h3 className="category__Headline">Notes</h3>
+                        
+                    </div>
+                    <div className="user__Container__Notes">
+                        <div className="notes__Scroll" >
+                        {  
+                             <NoteDetails
+                                    key={noteToInspect.id}                                       
+                                    back={true} 
+                                    handleDelete={handleDelete}
+                                    note={noteToInspect}
+                                    details={details}
+                                    editNoteFieldActive={editNoteFieldActive}
+                                    handleNoteField={handleNoteField}
+                                    toggleEditNoteFieldActive={toggleEditNoteFieldActive}
+                                    />
+                            }
+                        </div>
+
+                        <Button variant="primary" className="note__Back" onClick={ () => discard()}>Back</Button>
+                        <Button variant="primary" className="note__Delete" onClick={handleDelete}>Remove</Button>             
+                        <Button hidden={!enableSaveButton} variant="danger" className="save__Edit__Button" onClick={ () => handleSaveEdit(noteToInspect.id)}>Save Changes</Button>      
+                    </div> 
+                </> 
+                )
+        }
      }
 
     return(

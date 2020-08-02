@@ -40,10 +40,15 @@ const UserNoteCard = (props) => {
         if (props.note.id%2 !== 0) {
             return (
                 <>
-            <div className="note__Card_Container__Odd" id={pic}>
+                 
+                <div className="note__Card_Container__Odd" id={pic}>
+
                 <div className="note__Specifics">
-                <p className="note__Content">{props.note.note}</p>
-                </div>       
+                    <button onClick={ () => props.details(props.note.id)}>
+                    <p className="note__Content">{props.note.note}</p>
+                    </button>
+                </div>
+                      
                 <div className="add__Button__Container">
                 { (thisNoteToday) && <img className={today} src={require(`../images/today.png`)} alt="A note for today" />}
                 { (thisNoteToday) && <p>Today!</p>}
@@ -59,9 +64,11 @@ const UserNoteCard = (props) => {
             
             <div className="note__Card_Container__Even" id={pic}>
                 
-                <div className="note__Specifics">
-                <p className="note__Content">{props.note.note}</p>
-                </div>       
+            <div className="note__Specifics">
+                    <button onClick={ () => props.details(props.note.id)}>
+                    <p className="note__Content">{props.note.note}</p>
+                    </button>
+                </div>     
                 <div className="add__Button__Container">
                 
                 { (thisNoteToday) && <img className={today} src={require(`../images/today.png`)} alt="A note for today" />}
@@ -73,9 +80,6 @@ const UserNoteCard = (props) => {
         }   
     }
 
-
-console.log(props)
-console.log("Card props", props)
     return (
         <>
          <div className="notes__Holder" id="categoryList">

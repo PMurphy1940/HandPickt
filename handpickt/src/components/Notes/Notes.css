@@ -6,7 +6,7 @@
 
 	70% {
 		transform: scale(1);
-		box-shadow: 0 0 0 5px rgba(0, 0, 0, 0);
+		box-shadow: 0 0 0 6px rgba(0, 0, 0, 0);
 	}
 
 	100% {
@@ -37,7 +37,7 @@
 }
 #pic3 {
     background-image: url(../images/addnote3.png);
-    width: 85%;   
+    width: 95%;   
 }
 #pic4 {
     background-image: url(../images/addnote4.png);
@@ -49,7 +49,6 @@
 
 #pic5 {
     background-image: url(../images/addnote5.png);
-    margin-left: 7%;
 }
 
 #pic6 {
@@ -77,14 +76,72 @@
 
     background-repeat: no-repeat;
     background-position-x: center;
-    min-height: 10vh;
+    min-height: 30vh;
     margin-left: 5%;
     margin-bottom: 5%;
     width: 90%;
 }
 
+.note__Card_Container__Details{
+
+    background-repeat: no-repeat;
+    background-position-x: center;
+    min-height: 30vh;
+    max-height: 90%;
+    margin-bottom: 5%;
+    width: 90%;
+
+    
+}
+
+
+
+.notes__Details {
+    margin-top: 10%;
+    margin-bottom: 30%;
+        display: flex;
+    flex-direction: row;
+    flex-wrap: wrap;
+}
+
 .note__Content {
     margin: 20% 15% 0 15%;
+    font-family: 'Permanent Marker', cursive;
+}
+.note__In__Edit {
+    
+    margin: 20% 15% 0 15%;
+    font-family: 'Permanent Marker', cursive;
+}
+
+.note__Specifics__Edit{ 
+    min-width: 55vw;
+}
+
+#note__Edit__Done{
+    position: absolute;
+    right: 10%;
+}
+
+.note__Delete {
+    position: fixed;
+    top: 80%;
+    right: 10%;
+}
+
+.note__Back {
+    position: fixed;
+    top: 80%;
+    left: 10%;
+}
+
+.note__Save {
+    position: fixed;
+    top: 80%;
+    left: 40%;
+}
+.note__Details__Content {
+    margin: 15% 30% 0 30%;
     font-family: 'Permanent Marker', cursive;
 }
 
@@ -101,6 +158,16 @@
     max-width: 50%;
     display: flex;
     flex-direction: row;
+}
+
+.notes__Holder__Details {
+    margin-top: 20%;
+    margin-left: 25%;
+    max-width: 50%;
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
+    transform: scale(2);
 }
 
 .today1 {
@@ -159,6 +226,69 @@
 }
 .today7 {
     margin-top: 7%;
+    width: 20vw;
+    height: 10vw;
+    box-shadow: 0 0 0 0 rgba(0, 0, 0, 1);
+    border-radius: 50%;
+	transform: scale(1);
+	animation: pulse2 2s infinite;
+}
+.todayDetails1 {
+    margin-top: 2%;
+    width: 20vw;
+    height: 10vw;
+    box-shadow: 0 0 0 0 rgba(0, 0, 0, 1);
+    border-radius: 50%;
+	transform: scale(1);
+	animation: pulse2 2s infinite;
+}
+.todayDetails2 {
+    margin-top: 1%;
+    width: 20vw;
+    height: 10vw;
+    box-shadow: 0 0 0 0 rgba(0, 0, 0, 1);
+    border-radius: 50%;
+	transform: scale(1);
+	animation: pulse2 2s infinite;
+}
+.todayDetails3 {
+    margin-top: 7%;
+    width: 20vw;
+    height: 10vw;
+    box-shadow: 0 0 0 0 rgba(0, 0, 0, 1);
+    border-radius: 50%;
+	transform: scale(1);
+	animation: pulse2 2s infinite;
+}
+.todayDetails4 {
+    margin-top: 1%;
+    width: 20vw;
+    height: 10vw;
+    box-shadow: 0 0 0 0 rgba(0, 0, 0, 1);
+    border-radius: 50%;
+	transform: scale(1);
+	animation: pulse2 2s infinite;
+}
+.todayDetails5 {
+    margin-top: 2%;
+    width: 20vw;
+    height: 10vw;
+    box-shadow: 0 0 0 0 rgba(0, 0, 0, 1);
+    border-radius: 50%;
+	transform: scale(1);
+	animation: pulse2 2s infinite;
+}
+.todayDetails6 {
+    margin-top: 1%;
+    width: 20vw;
+    height: 10vw;
+    box-shadow: 0 0 0 0 rgba(0, 0, 0, 1);
+    border-radius: 50%;
+	transform: scale(1);
+	animation: pulse2 2s infinite;
+}
+.todayDetails7 {
+    margin-top: 2%;
     width: 20vw;
     height: 10vw;
     box-shadow: 0 0 0 0 rgba(0, 0, 0, 1);

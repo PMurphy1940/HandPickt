@@ -94,7 +94,7 @@ const PageViews = (props) => {
             exact
             path="/notes"
             render={props => {
-                return <Notes {...props} activeUser={activeUser} setUser={setUser} userNotes={userNotes} />
+                return <Notes {...props} activeUser={activeUser} setUser={setUser} userNotes={userNotes} getUserNotes={getUserNotes} />
             }} /> 
 
             <Route

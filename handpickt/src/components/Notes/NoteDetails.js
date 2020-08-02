@@ -1,103 +1,82 @@
-import React, { useEffect }from 'react'
+import React, { useState, useEffect }from 'react'
 import { Card, Button } from 'react-bootstrap'
 import helper from "../Helpers/Helper"
 
 
 const NoteDetails = (props) => {
+    const [thisNoteToday, setThisNoteToday] = useState(false)
 
-    //Set the 'early harvest' button to disabled if the plant has reached its harvest date//
-    const disableEarly = (props.plantToInspect.percentComplete < 100)
 
+    let note = props.note[0]
+
+    let today = `todayDetails${note.imageNumber}`
+
+    let pic= `pic${note.imageNumber}`
+
+    useEffect(() => {
+        checkForNoteAlert(note)
+        // eslint-disable-next-line react-hooks/exhaustive-deps
+    }, [note])
+
+    const checkForNoteAlert = (note) => {
+        let date = new Date()
+        let dayOfWeek = date.getDay()
+
+        
+            checkRecurrence(note, dayOfWeek)
+             
+    }
+
+    const checkRecurrence = (singleNote, day) => {
+        if (singleNote.recurrence !== "") {
+            singleNote.recurrence.forEach(recurrenceElement => {
+                if (recurrenceElement.day === day) {
+                    setThisNoteToday(true)
+                }
+            })
+        }
+    }
     useEffect(() => {
         window.scrollTo(0, 0)
       }, [])
 
-    return (
+      return (
         <>
-        { (!props.isLoading) &&
-        <div className="save__Card_Container">
-            <Card style={{ width: '24rem' }} className="save__Card">
-        <div className="garden__Card__Header">
-            <Card.Header as="h5">
-            <div className="card__Header__Garden">
-   
-                
-            </div>
-            </Card.Header>
-        </div>
-                <Card.Body>
-                <img className="plant__details__Image" src={require(`../images/beans.png`)} alt="HandPickt Logo" />               
-                { (props.editPlantedFieldActive) ?
-                    <>
-                    Planted on <input
-                    onChange={props.handlePlantedField}    
-                    type="text"
-                    name="plantingDate"
-                    value={props.plantToInspect.plantingDate}
-                    id="plantingDate"
-                    />
-                    <button className="far fa-check-circle" onClick={props.toggleEditPlantedFieldActive}></button>
-                    </> 
-                    : 
-                    <>
-                    Planted on
-                    <button onClick={props.toggleEditPlantedFieldActive}>
-                     {helper.dateConverter(props.plantToInspect.plantingDate)}
-                    </button><i className="far fa-edit"></i>
-                    </>}
-                <Card.Title>
-                { (props.plantToInspect.daysRemaining > 0) ?
-                   <>
-                    {props.plantToInspect.daysRemaining} days to harvest </>: <>Ready to harvest</>
-                    
-                    }</Card.Title>
-                <div className="detail__Specific__Text">
-                
-                 {  (props.editCommentsFieldActive) ? 
-                 <> 
-                    <h2>Comments</h2> 
-                    <div>             
-                    <textarea
-                        onChange={props.handlePlantedField}    
+         <div className="notes__Holder__Details" id="categoryList">
+            <div className="note__Card_Container__Details" id={pic}>
+        {(props.editNoteFieldActive) ? 
+            <div className="note__Specifics">
+                <button onClick={props.toggleEditNoteFieldActive}>
+                <p className="note__Content">{note.note}</p>
+                </button>
+            </div> 
+            :
+            <div className="note__Specifics__Edit">
+            <div>
+            <textarea
+                        onChange={props.handleNoteField}    
                         type="textarea" 
-                        rows="4" 
-                        cols="30"
-                        name="userComments"
-                        value={props.plantToInspect.userComments}
-                        id="userComments"
+                        rows="3" 
+                        cols="13"
+                        name="note"
+                        value={note.note}
+                        id="note"
+                        className="note__In__Edit"
                         />
-                    </div> 
-                    <button className="far fa-check-circle" onClick={props.toggleEditCommentsFieldActive}></button>
-                </> 
-                 :
+            </div>
+            <button className="far fa-check-circle" onClick={props.toggleEditNoteFieldActive} id="note__Edit__Done"></button>
+            </div> 
+            }
                 
-                    <div className="detail__Comments">
-                        <h2>Comments</h2>
-                        <button className="detail__Comments__Button" onClick={props.toggleEditCommentsFieldActive}>
-                            {props.plantToInspect.userComments}
-                        </button><i className="far fa-edit"></i>
-                    </div>
-               
-                }
+            <div className="add__Button__Container">
+            { (thisNoteToday) && <img className={today} src={require(`../images/today.png`)} alt="A note for today" />}
+            { (thisNoteToday) && <p>Today!</p>}
+            </div>
                 
-                </div>
-                <div>
-                    <h2>Description</h2>
-                    {props.plantToInspect.plant.description}
-                </div>
-                <div>
-                    <h2>Planting tips</h2>
-                    {props.plantToInspect.plant.sowing_method}
-                </div>
-                <div className="add__Button__Container">
-                  <Button variant="primary" onClick={ () => props.discard()}>Back</Button>
-                  <Button variant="primary" onClick={ () => props.handleDelete(props.plantToInspect)}>Remove</Button>
-                </div>
-            </Card.Body>
-        </Card>
-      </div>
-      }
-        </>
+        </div>
+    </div>
+   
+    </>
     )
 }
 

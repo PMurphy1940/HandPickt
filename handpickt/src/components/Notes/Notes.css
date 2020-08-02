@@ -1,0 +1,88 @@
+.user__Container__Notes {
+    background-image: url(../images/cork.jpg);
+    background-size: cover;
+    border-style: ridge;
+}
+
+#pic1 {
+    background-image: url(../images/addnote1.png);
+    transform: rotate(5deg);
+    margin-top: 20%;
+}
+
+#pic2 {
+    background-image: url(../images/addnote2.png);
+}
+
+#pic2 > div {
+    transform: rotate(6deg);
+    
+}
+#pic3 {
+    background-image: url(../images/addnote3.png);
+    width: 85%;   
+}
+#pic4 {
+    background-image: url(../images/addnote4.png);
+}
+
+#pic4 > div {
+    transform: rotate(3deg);
+}
+
+#pic5 {
+    background-image: url(../images/addnote5.png);
+    margin-left: 7%;
+}
+
+#pic6 {
+    background-image: url(../images/addnote6.png);
+}
+
+#pic6 > div {
+    transform: rotate(-6deg);
+}
+
+#pic7 {
+    background-image: url(../images/addnote7.png);
+}
+
+.note__Card_Container__Odd{
+    background-repeat: no-repeat;
+    background-position-x: center;
+    min-height: 30vh;
+    margin-bottom: 5%;
+}
+
+.note__Card_Container__Even{
+
+    background-repeat: no-repeat;
+    background-position-x: center;
+    min-height: 30vh;
+    margin-left: 5%;
+    margin-bottom: 5%;
+}
+
+.note__Content {
+    margin: 20% 15% 0 15%;
+    font-family: 'Permanent Marker', cursive;
+   font-size: 100%;   
+}
+
+.notes__Scroll {
+    margin-top: 10%;
+    margin-bottom: 30%;
+    display: flex;
+    flex-direction: row;
+    flex-wrap: wrap;   
+}
+
+.notes__Holder {
+    max-width: 50%;
+    display: flex;
+    flex-direction: row;
+}
+
+.user__Container__NoteTop {
+    margin-top: -5%;
+}

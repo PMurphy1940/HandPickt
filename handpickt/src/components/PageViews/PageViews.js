@@ -14,12 +14,10 @@ const PageViews = (props) => {
     const [userPlants, setUserPlants] = useState([])
     const [userNotes, setUserNotes] = useState([])
     const [noteAlert, setNoteAlert] = useState(false)
-
-    
+   
     const activeUser = props.activeUser
     const setUser = props.setUser
     const activeUserId = props.activeUser.id
-
 
     //Get the user plants from the database along with the expanded plant data//
     const getUserPlants = () => {
@@ -37,8 +35,6 @@ const PageViews = (props) => {
         // eslint-disable-next-line react-hooks/exhaustive-deps
     }, [activeUserId])
 
-    console.log("notes", userNotes)
-
     const getUserNotes = () => {
         const route = `notes?userId=${props.activeUser.id}`
         API.getAll(route)
@@ -49,6 +45,7 @@ const PageViews = (props) => {
 
     useEffect(() => {
         checkForNoteAlert(userNotes)
+        // eslint-disable-next-line react-hooks/exhaustive-deps
     }, [userNotes])
 
     const checkForNoteAlert = (notes) => {
@@ -60,7 +57,6 @@ const PageViews = (props) => {
         })      
     }
 
-    console.log("note alert", noteAlert)
     const checkRecurrence = (singleNote, day) => {
         if (singleNote.recurrence !== "") {
             singleNote.recurrence.forEach(recurrenceElement => {
@@ -98,7 +94,7 @@ const PageViews = (props) => {
             exact
             path="/notes"
             render={props => {
-                return <Notes {...props} activeUser={activeUser} setUser={setUser}/>
+                return <Notes {...props} activeUser={activeUser} setUser={setUser} userNotes={userNotes} />
             }} /> 
 
             <Route

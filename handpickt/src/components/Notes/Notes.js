@@ -90,7 +90,7 @@ const Notes = (props) => {
 
     return(
         <div className="dashboard__Container">
-            <div className="dashboard__Header">
+            {/* <div className="dashboard__Header">
                 <picture >               
                     <img className="HPLogo__InApp" src={require(`../images/HandPickt_3.png`)} alt="HandPickt Logo" />
                 </picture>
@@ -101,7 +101,7 @@ const Notes = (props) => {
                         }
                     <p className="logout__Text">Log Out</p></button>
                 </div>
-            </div>
+            </div> */}
             <div className="user__Container__NoteTop">
                       {noteView()}        
             </div>

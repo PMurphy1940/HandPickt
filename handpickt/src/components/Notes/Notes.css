@@ -1,3 +1,20 @@
+@keyframes pulse2 {
+	0% {
+		transform: scale(0.95);
+		box-shadow: 0 0 0 0 rgba(0, 0, 0, 0.7);
+	}
+
+	70% {
+		transform: scale(1);
+		box-shadow: 0 0 0 5px rgba(0, 0, 0, 0);
+	}
+
+	100% {
+		transform: scale(0.95);
+		box-shadow: 0 0 0 0 rgba(0, 0, 0, 0);
+    }
+}
+
 .user__Container__Notes {
     background-image: url(../images/cork.jpg);
     background-size: cover;
@@ -51,22 +68,24 @@
     background-repeat: no-repeat;
     background-position-x: center;
     min-height: 30vh;
+    max-height: 90%;
     margin-bottom: 5%;
+    width: 90%;
 }
 
 .note__Card_Container__Even{
 
     background-repeat: no-repeat;
     background-position-x: center;
-    min-height: 30vh;
+    min-height: 10vh;
     margin-left: 5%;
     margin-bottom: 5%;
+    width: 90%;
 }
 
 .note__Content {
     margin: 20% 15% 0 15%;
     font-family: 'Permanent Marker', cursive;
-   font-size: 100%;   
 }
 
 .notes__Scroll {
@@ -74,7 +93,8 @@
     margin-bottom: 30%;
     display: flex;
     flex-direction: row;
-    flex-wrap: wrap;   
+    flex-wrap: wrap;
+   
 }
 
 .notes__Holder {
@@ -83,6 +103,72 @@
     flex-direction: row;
 }
 
-.user__Container__NoteTop {
-    margin-top: -5%;
+.today1 {
+    margin-top: 2%;
+    width: 20vw;
+    height: 10vw;
+    box-shadow: 0 0 0 0 rgba(0, 0, 0, 1);
+    border-radius: 50%;
+	transform: scale(1);
+	animation: pulse2 2s infinite;
+}
+.today2 {
+    margin-top: 1%;
+    width: 20vw;
+    height: 10vw;
+    box-shadow: 0 0 0 0 rgba(0, 0, 0, 1);
+    border-radius: 50%;
+	transform: scale(1);
+	animation: pulse2 2s infinite;
+}
+.today3 {
+    margin-top: 7%;
+    width: 20vw;
+    height: 10vw;
+    box-shadow: 0 0 0 0 rgba(0, 0, 0, 1);
+    border-radius: 50%;
+	transform: scale(1);
+	animation: pulse2 2s infinite;
+}
+.today4 {
+    margin-top: 1%;
+    width: 20vw;
+    height: 10vw;
+    box-shadow: 0 0 0 0 rgba(0, 0, 0, 1);
+    border-radius: 50%;
+	transform: scale(1);
+	animation: pulse2 2s infinite;
+}
+.today5 {
+    margin-top: 7%;
+    width: 20vw;
+    height: 10vw;
+    box-shadow: 0 0 0 0 rgba(0, 0, 0, 1);
+    border-radius: 50%;
+	transform: scale(1);
+	animation: pulse2 2s infinite;
+}
+.today6 {
+    margin-top: 1%;
+    width: 20vw;
+    height: 10vw;
+    box-shadow: 0 0 0 0 rgba(0, 0, 0, 1);
+    border-radius: 50%;
+	transform: scale(1);
+	animation: pulse2 2s infinite;
+}
+.today7 {
+    margin-top: 7%;
+    width: 20vw;
+    height: 10vw;
+    box-shadow: 0 0 0 0 rgba(0, 0, 0, 1);
+    border-radius: 50%;
+	transform: scale(1);
+	animation: pulse2 2s infinite;
+}
+
+.add__Button__Container > p {
+    font-family: 'Permanent Marker', cursive;
+    position: absolute;
+    margin-top: 5%;
 }

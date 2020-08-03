@@ -1,4 +1,4 @@
-import React, { useState, useEffect } from 'react'
+import React, { useState } from 'react'
 import WithAuthentication from "../Auth/WithAuthentication"
 import BottomNavbar from "../Footer/FooterNav"
 import UserNoteCard from "./UserNoteCard"
@@ -11,17 +11,11 @@ const Notes = (props) => {
     const [inspectViewOn, setInspectViewOn] = useState(false)
     const [noteToInspect, setNoteToInspect] = useState()
     const [editNoteFieldActive, setEditNoteFieldActive] = useState(true)
-    const [editCommentsFieldActive, setEditCommentsFieldActive] = useState(false)
     const [enableSaveButton, setEnableSaveButton] = useState(false)
     const [openModal, setOpenModal] = useState(false)
     const [recurring, setRecurring] = useState(false)
     const [weekArray, setWeekArray] = useState("")
 
-    const handleLogout = () => {
-        sessionStorage.removeItem("credentials")
-        props[0].setUser()
-        props[0].history.push("/logout");
-    }
     
     //Toggle function for modal window//
     const toggleModal = () => {

@@ -38,7 +38,6 @@ const ModalNotes = (props) => {
 
     //Set the days to their proper state during an 'edit' call//
 
-    console.log("editModal", props)
     const setDaysForEdit = () => {
         if (props.inspectViewOn) {
             (props.note.day0) && toggleSunday();
@@ -53,7 +52,7 @@ const ModalNotes = (props) => {
 
     useEffect(() => {
         setDaysForEdit()
-    }, [])
+    })
 
     let weekArray = []
     //produce an array of the selected days to return to the Add Note page//

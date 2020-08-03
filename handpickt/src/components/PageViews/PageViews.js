@@ -3,7 +3,7 @@ import { Route } from 'react-router-dom'
 import Dashboard from "../Dashboard/Dashboard"
 import MyGarden from "../MyGarden/MyGarden"
 import PlantDetails from "../MyGarden/PlantDetails"
-import AddNote from "../AddNote/AddNote"
+import AddNote from "../Notes/AddNote"
 import Notes from "../Notes/Notes"
 import Archive from "../Archive/Archive"
 import API from "../Server/HandPicktAPI"
@@ -101,7 +101,7 @@ const PageViews = (props) => {
             exact
             path="/addnote"
             render={props => {
-                return <AddNote {...props} activeUser={activeUser} setUser={setUser}/>
+                return <AddNote {...props} activeUser={activeUser} setUser={setUser} getUserNotes={getUserNotes}/>
             }} /> 
 
             <Route

@@ -3,6 +3,7 @@ import { Link } from 'react-router-dom'
 import WithAuthentication from "../Auth/WithAuthentication"
 import "./FooterNav.css"
 const BottomNavbar = (props) => {
+    
     //generate the center position NavBar link image and route according to the current path//
     const centerFunction = () => {
         if (props[0][0].location.pathname === "/dashboard" || 

@@ -1,7 +1,5 @@
 import React, { useState, useEffect } from 'react'
 
-import helper from "../Helpers/Helper"
-
 const UserNoteCard = (props) => {
     const [thisNoteToday, setThisNoteToday] = useState(false)
 

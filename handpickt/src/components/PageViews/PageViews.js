@@ -51,19 +51,20 @@ const PageViews = (props) => {
     const checkForNoteAlert = (notes) => {
         let date = new Date()
         let dayOfWeek = date.getDay()
-
+        dayOfWeek = "day" + dayOfWeek
+        
         notes.forEach(note => {
             checkRecurrence(note, dayOfWeek)
         })      
     }
 
-    const checkRecurrence = (singleNote, day) => {
-        if (singleNote.recurrence !== "") {
-            singleNote.recurrence.forEach(recurrenceElement => {
-                if (recurrenceElement.day === day) {
+     const checkRecurrence = (singleNote, day) => {
+
+        if (singleNote.recurring === true) {
+                if (singleNote[day] === true) {
                     setNoteAlert(true)
                 }
-            })
+            
         }
     }
     

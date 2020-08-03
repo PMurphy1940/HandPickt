@@ -53,7 +53,6 @@ const AddNote = (props) => {
     const returnWeekArrayFromModal = (weekArrayFromModal) => {       
         toggleModal();
         setWeekArray(weekArrayFromModal);
-        console.log("Note return", weekArray)
     }
 
     const makeNoteObject = () => {
@@ -64,7 +63,13 @@ const AddNote = (props) => {
             note: note.note,
             date: today,
             recurring: recurring,
-            recurrence: weekArray,
+            day0: weekArray[0].day0,
+            day1: weekArray[1].day1,
+            day2: weekArray[2].day2,
+            day3: weekArray[3].day3,
+            day4: weekArray[4].day4,
+            day5: weekArray[5].day5,
+            day6: weekArray[6].day6,
         }
         return noteObj
     }

@@ -20,19 +20,19 @@ const NoteDetails = (props) => {
     const checkForNoteAlert = (note) => {
         let date = new Date()
         let dayOfWeek = date.getDay()
-
+        dayOfWeek = "day" + dayOfWeek
         
             checkRecurrence(note, dayOfWeek)
              
     }
 
     const checkRecurrence = (singleNote, day) => {
-        if (singleNote.recurrence !== "") {
-            singleNote.recurrence.forEach(recurrenceElement => {
-                if (recurrenceElement.day === day) {
+
+        if (singleNote.recurring === true) {
+                if (singleNote[day] === true) {
                     setThisNoteToday(true)
                 }
-            })
+            
         }
     }
     useEffect(() => {
@@ -47,7 +47,7 @@ const NoteDetails = (props) => {
         {(props.editNoteFieldActive) ? 
             <div className="note__Specifics">
                 <button onClick={props.toggleEditNoteFieldActive}>
-                <p className="note__Content">{note.note}</p>
+                <p className="note__Content__Details__View">{note.note}</p>
                 </button>
             </div> 
             :

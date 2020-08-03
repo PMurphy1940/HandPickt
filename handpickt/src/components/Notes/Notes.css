@@ -79,7 +79,12 @@
     font-size: 6vw;
     
 }
+/*End of New Note section*/
+
+
 /* For the Display Notes view */
+
+
 .user__Container__Notes {
     background-image: url(../images/cork.jpg);
     background-size: cover;
@@ -165,24 +170,36 @@
     
 }
 
-
-
 .notes__Details {
     margin-top: 10%;
     margin-bottom: 30%;
-        display: flex;
+    display: flex;
     flex-direction: row;
     flex-wrap: wrap;
 }
 
 .note__Content {
-    margin: 20% 15% 0 15%;
+    margin: 20% 0 0 0;
+    padding: 25% 5% 5% 5%;
+    min-width: 38vw;
     font-family: 'Permanent Marker', cursive;
 }
+
+.note__Content__Details__View {
+    margin: 20% 0 0 0;
+    padding: 5%;
+    min-width: 38vw;
+    font-family: 'Permanent Marker', cursive;
+}
+
 .note__In__Edit {
     
     margin: 20% 15% 0 15%;
     font-family: 'Permanent Marker', cursive;
+}
+
+.note__Edit__Button__Space {
+    min-width: 40vw;
 }
 
 .note__Specifics__Edit{ 

@@ -12,21 +12,7 @@ const ModalNotes = (props) => {
     const [friday, setFriday] = useState(false)
     const [saturday, setSaturday] = useState(false)
 
-    // const [days, setDays] = useState({
-    //                                     friday: false
-    // })
-    // const handleDays = (dayOfWeek) => {
-    //     const stateToChange ={...days}; 
-    //     let change = (stateToChange.dayOfWeek)
-    //     change=(!change )          
-    //     stateToChange[dayOfWeek] = change;
-    //      console.log(change)
-    //     setDays(stateToChange)
-    //     console.log("Days", days)
-    // }
-    // <button className={ (!days.friday) ? "checkbox" : "checkboxAfter"} onClick={() => handleDays("friday")}>
-    //                 Friday
-    //             </button>
+   
 
     const toggleSunday = () => {        
         setSunday(!sunday)
@@ -50,30 +36,25 @@ const ModalNotes = (props) => {
         setSaturday(!saturday)
     }
 
+    let weekArray = []
+    //produce an array of the selected days to return to the Add Note page//
     const makeWeekArray = () => {
-        let weekArray = []
 
-        if (sunday === true) {
-            weekArray.push({"day": 0})
-        }
-        if (monday === true) {
-            weekArray.push({"day": 1})
-        }
-        if (tuesday === true) {
-            weekArray.push({"day": 2})
-        }
-        if (wednesday === true) {
-            weekArray.push({"day": 3})
-        }
-        if (thursday === true) {
-            weekArray.push({"day": 4})
-        }
-        if (friday === true) {
-            weekArray.push({"day": 5})
-        }
-        if (saturday === true) {
-            weekArray.push({"day": 6})
-        }
+         (sunday) ? 
+            weekArray.push({"day0": true}):weekArray.push({"day0": false});
+         (monday) ? 
+            weekArray.push({"day1": true}):weekArray.push({"day1": false});
+         (tuesday) ? 
+            weekArray.push({"day2": true}):weekArray.push({"day2": false});
+         (wednesday) ? 
+            weekArray.push({"day3": true}):weekArray.push({"day3": false});
+         (thursday) ? 
+            weekArray.push({"day4": true}):weekArray.push({"day4": false});
+         (friday) ? 
+            weekArray.push({"day5": true}):weekArray.push({"day5": false});
+         (saturday) ? 
+            weekArray.push({"day6": true}):weekArray.push({"day6": false});
+        
         props.returnWeekArrayFromModal(weekArray)
     }
 

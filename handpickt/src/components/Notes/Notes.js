@@ -45,7 +45,7 @@ const Notes = (props) => {
 
     const handleDelete = () => {
         console.log(noteToInspect)
-        API.delete( "notes", noteToInspect[0].id)
+        API.delete( "notes", noteToInspect.id)
         .then(() => props[0].getUserNotes())
         // .then(props[0].setUserNotes));
       };
@@ -63,10 +63,8 @@ const Notes = (props) => {
     }
 
     const handleNoteField = (event) => {
-        const stateToChange ={...noteToInspect};
-       
+        const stateToChange ={...noteToInspect};      
         stateToChange[event.target.id] = event.target.value;
-         console.log(stateToChange)
         setNoteToInspect(stateToChange)
         setEnableSaveButton(true)
     }
@@ -84,7 +82,6 @@ const Notes = (props) => {
         return noteObj
     }
 
-    console.log(props)
     //Send the Edit to the API//
     const handleSaveEdit = (id) => {
         setEnableSaveButton(false)

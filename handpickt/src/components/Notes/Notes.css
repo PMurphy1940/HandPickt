@@ -1,0 +1,398 @@
+@keyframes pulse2 {
+	0% {
+		transform: scale(0.95);
+		box-shadow: 0 0 0 0 rgba(0, 0, 0, 0.7);
+	}
+
+	70% {
+		transform: scale(1);
+		box-shadow: 0 0 0 6px rgba(0, 0, 0, 0);
+	}
+
+	100% {
+		transform: scale(0.95);
+		box-shadow: 0 0 0 0 rgba(0, 0, 0, 0);
+    }
+}
+/* For the New Note view */
+
+.recurring__Button {
+    display: flex;
+    font-family: 'Gill Sans', 'Gill Sans MT', Calibri, 'Trebuchet MS', sans-serif;
+    font-size: 5vw;
+    height: 6vw;
+}
+
+.select__Recurring__Button {
+    position: absolute;
+    top: 10%;
+    right: 2%;
+}
+
+.add__Note__Buttons {
+
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+   
+}
+
+#NoteCheck {
+    margin: 1vw;
+}
+
+.recycle {
+    width: 25vw;
+    position: absolute;
+    left: 33%;
+}
+
+.note__For__Recycle {
+    width: 14vw;
+    position: absolute;
+    left: 44%;
+}
+
+.days {
+    display: flex;
+    flex-direction: column;
+    background-color: blanchedalmond;
+}
+
+.checkbox {
+    border-radius: 5px;
+    background-color: cadetblue;
+    padding: 3%;
+    margin: 2%;
+    color: ghostwhite;
+    font-family: 'Gill Sans', 'Gill Sans MT', Calibri, 'Trebuchet MS', sans-serif;
+    font-size: 6vw;
+    
+}
+.checkboxAfter {
+    border-radius: 5px;
+    background-color: goldenrod;
+    padding: 3%;
+    margin: 2%;
+    color: ghostwhite;
+    font-family: 'Gill Sans', 'Gill Sans MT', Calibri, 'Trebuchet MS', sans-serif;
+    font-size: 6vw;
+    
+}
+/*End of New Note section*/
+
+
+/* For the Display Notes view */
+
+
+.user__Container__Notes {
+    background-image: url(../images/cork.jpg);
+    background-size: cover;
+    border-style: ridge;
+}
+.new__Note__Container {
+    background-image: url(../images/cork.jpg);
+    background-size: cover;
+    min-height: 80vh;
+    border-style: ridge;
+}
+
+#pic1 {
+    background-image: url(../images/addnote1.png);
+    transform: rotate(5deg);
+    margin-top: 10%;
+}
+
+#pic2 {
+    background-image: url(../images/addnote2.png);
+}
+
+#pic2 > div {
+    transform: rotate(6deg);
+    
+}
+#pic3 {
+    background-image: url(../images/addnote3.png);
+    width: 95%;   
+}
+#pic4 {
+    background-image: url(../images/addnote4.png);
+}
+
+#pic4 > div {
+    transform: rotate(3deg);
+}
+
+#pic5 {
+    background-image: url(../images/addnote5.png);
+}
+
+#pic6 {
+    background-image: url(../images/addnote6.png);
+}
+
+#pic6 > div {
+    transform: rotate(-6deg);
+}
+
+#pic7 {
+    background-image: url(../images/addnote7.png);
+}
+
+.note__Card_Container__Odd{
+    background-repeat: no-repeat;
+    background-position-x: center;
+    min-height: 30vh;
+    max-height: 90%;
+    margin-bottom: 5%;
+    width: 90%;
+}
+
+.note__Card_Container__Even{
+
+    background-repeat: no-repeat;
+    background-position-x: center;
+    min-height: 30vh;
+    margin-left: 5%;
+    margin-bottom: 5%;
+    width: 90%;
+}
+
+.note__Card_Container__Details{
+
+    background-repeat: no-repeat;
+    background-position-x: center;
+    min-height: 30vh;
+    max-height: 90%;
+    margin-bottom: 5%;
+    width: 90%;
+
+    
+}
+
+.notes__Details {
+    margin-top: 10%;
+    margin-bottom: 30%;
+    display: flex;
+    flex-direction: row;
+    flex-wrap: wrap;
+}
+
+.note__Content {
+    margin: 20% 0 0 0;
+    padding: 25% 5% 5% 5%;
+    min-width: 38vw;
+    font-family: 'Permanent Marker', cursive;
+}
+
+.select__Recurring__Button__In__Details {
+    position: absolute;
+    top: 10%;
+    right: 2%;
+}
+
+.note__Content__Details__View {
+    margin: 20% 0 0 0;
+    padding: 5%;
+    min-width: 38vw;
+    font-family: 'Permanent Marker', cursive;
+}
+
+.note__In__Edit {
+    
+    margin: 20% 15% 0 15%;
+    font-family: 'Permanent Marker', cursive;
+}
+
+.note__Edit__Button__Space {
+    min-width: 40vw;
+}
+
+.note__Specifics__Edit{ 
+    min-width: 55vw;
+}
+
+#note__Edit__Done{
+    position: absolute;
+    right: 10%;
+}
+
+.note__Delete {
+    position: fixed;
+    top: 80%;
+    right: 10%;
+}
+
+.note__Back {
+    position: fixed;
+    top: 80%;
+    left: 10%;
+}
+
+.note__Save {
+    position: fixed;
+    top: 80%;
+    left: 40%;
+}
+.note__Details__Content {
+    margin: 15% 30% 0 30%;
+    font-family: 'Permanent Marker', cursive;
+}
+
+.notes__Scroll {
+    margin-top: 10%;
+    margin-bottom: 30%;
+    display: flex;
+    flex-direction: row;
+    flex-wrap: wrap;
+   
+}
+
+.notes__Holder {
+    max-width: 50%;
+    display: flex;
+    flex-direction: row;
+}
+
+.notes__Holder__Details {
+    margin-top: 20%;
+    margin-left: 25%;
+    max-width: 50%;
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
+    transform: scale(1.7);
+}
+
+.today1 {
+    margin-top: 2%;
+    width: 20vw;
+    height: 10vw;
+    box-shadow: 0 0 0 0 rgba(0, 0, 0, 1);
+    border-radius: 50%;
+	transform: scale(1);
+	animation: pulse2 2s infinite;
+}
+.today2 {
+    margin-top: 1%;
+    width: 20vw;
+    height: 10vw;
+    box-shadow: 0 0 0 0 rgba(0, 0, 0, 1);
+    border-radius: 50%;
+	transform: scale(1);
+	animation: pulse2 2s infinite;
+}
+.today3 {
+    margin-top: 7%;
+    width: 20vw;
+    height: 10vw;
+    box-shadow: 0 0 0 0 rgba(0, 0, 0, 1);
+    border-radius: 50%;
+	transform: scale(1);
+	animation: pulse2 2s infinite;
+}
+.today4 {
+    margin-top: 1%;
+    width: 20vw;
+    height: 10vw;
+    box-shadow: 0 0 0 0 rgba(0, 0, 0, 1);
+    border-radius: 50%;
+	transform: scale(1);
+	animation: pulse2 2s infinite;
+}
+.today5 {
+    margin-top: 7%;
+    width: 20vw;
+    height: 10vw;
+    box-shadow: 0 0 0 0 rgba(0, 0, 0, 1);
+    border-radius: 50%;
+	transform: scale(1);
+	animation: pulse2 2s infinite;
+}
+.today6 {
+    margin-top: 1%;
+    width: 20vw;
+    height: 10vw;
+    box-shadow: 0 0 0 0 rgba(0, 0, 0, 1);
+    border-radius: 50%;
+	transform: scale(1);
+	animation: pulse2 2s infinite;
+}
+.today7 {
+    margin-top: 7%;
+    width: 20vw;
+    height: 10vw;
+    box-shadow: 0 0 0 0 rgba(0, 0, 0, 1);
+    border-radius: 50%;
+	transform: scale(1);
+	animation: pulse2 2s infinite;
+}
+.todayDetails1 {
+    margin-top: 2%;
+    width: 20vw;
+    height: 10vw;
+    box-shadow: 0 0 0 0 rgba(0, 0, 0, 1);
+    border-radius: 50%;
+	transform: scale(1);
+	animation: pulse2 2s infinite;
+}
+.todayDetails2 {
+    margin-top: 1%;
+    width: 20vw;
+    height: 10vw;
+    box-shadow: 0 0 0 0 rgba(0, 0, 0, 1);
+    border-radius: 50%;
+	transform: scale(1);
+	animation: pulse2 2s infinite;
+}
+.todayDetails3 {
+    margin-top: 7%;
+    width: 20vw;
+    height: 10vw;
+    box-shadow: 0 0 0 0 rgba(0, 0, 0, 1);
+    border-radius: 50%;
+	transform: scale(1);
+	animation: pulse2 2s infinite;
+}
+.todayDetails4 {
+    margin-top: 1%;
+    width: 20vw;
+    height: 10vw;
+    box-shadow: 0 0 0 0 rgba(0, 0, 0, 1);
+    border-radius: 50%;
+	transform: scale(1);
+	animation: pulse2 2s infinite;
+}
+.todayDetails5 {
+    margin-top: 2%;
+    width: 20vw;
+    height: 10vw;
+    box-shadow: 0 0 0 0 rgba(0, 0, 0, 1);
+    border-radius: 50%;
+	transform: scale(1);
+	animation: pulse2 2s infinite;
+}
+.todayDetails6 {
+    margin-top: 1%;
+    width: 20vw;
+    height: 10vw;
+    box-shadow: 0 0 0 0 rgba(0, 0, 0, 1);
+    border-radius: 50%;
+	transform: scale(1);
+	animation: pulse2 2s infinite;
+}
+.todayDetails7 {
+    margin-top: 2%;
+    width: 20vw;
+    height: 10vw;
+    box-shadow: 0 0 0 0 rgba(0, 0, 0, 1);
+    border-radius: 50%;
+	transform: scale(1);
+	animation: pulse2 2s infinite;
+}
+
+.add__Button__Container > p {
+    font-family: 'Permanent Marker', cursive;
+    position: absolute;
+    margin-top: 5%;
+}

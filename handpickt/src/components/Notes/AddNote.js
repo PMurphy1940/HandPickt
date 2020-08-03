@@ -14,7 +14,13 @@ const AddNote = (props) => {
                                         note: "",
                                         date: "",
                                         recurring: false,
-                                        recurrence: ""
+                                        day0: false,
+                                        day1: false,
+                                        day2: false,
+                                        day3: false,
+                                        day4: false,
+                                        day5: false,
+                                        day6: false,
                                     })
     const [enableSaveButton, setEnableSaveButton] = useState(false)
     const [recurring, setRecurring] = useState(false)
@@ -98,7 +104,7 @@ console.log(props)
                         <p>Not Recurring</p>
                         <i  className="far fa-check-circle" id="NoteCheck"></i>
                     </button>
-                </div>        
+            </div>        
         </div>
         <div className="new__Note__Container">
             <div className="notes__Scroll" id="categoryList"></div>               

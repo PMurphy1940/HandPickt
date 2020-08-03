@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import React, { useState, useEffect } from 'react';
 import { Button, Modal, ModalHeader, ModalBody, ModalFooter } from 'reactstrap';
 import "./Modal.css"
 
@@ -35,6 +35,25 @@ const ModalNotes = (props) => {
     const toggleSaturday = () => {        
         setSaturday(!saturday)
     }
+
+    //Set the days to their proper state during an 'edit' call//
+
+    console.log("editModal", props)
+    const setDaysForEdit = () => {
+        if (props.inspectViewOn) {
+            (props.note.day0) && toggleSunday();
+            (props.note.day1) && toggleMonday();
+            (props.note.day2) && toggleTuesday();
+            (props.note.day3) && toggleWednesday();
+            (props.note.day4) && toggleThursday();
+            (props.note.day5) && toggleFriday();
+            (props.note.day6) && toggleSaturday();
+        }
+    }
+
+    useEffect(() => {
+        setDaysForEdit()
+    }, [])
 
     let weekArray = []
     //produce an array of the selected days to return to the Add Note page//

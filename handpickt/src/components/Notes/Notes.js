@@ -3,20 +3,19 @@ import WithAuthentication from "../Auth/WithAuthentication"
 import BottomNavbar from "../Footer/FooterNav"
 import UserNoteCard from "./UserNoteCard"
 import NoteDetails from "./NoteDetails"
+import ModalNotes from "../Modal/AddNoteModal"
 import API from "../Server/HandPicktAPI"
 import { Navbar, Button } from 'react-bootstrap';
 import "./Notes.css"
 const Notes = (props) => {
-    const [userNotes, setUserNotes] = useState([])
     const [inspectViewOn, setInspectViewOn] = useState(false)
     const [noteToInspect, setNoteToInspect] = useState()
-    const [saveScrollPosition, setSaveScrollPosition] = useState(0)
     const [editNoteFieldActive, setEditNoteFieldActive] = useState(true)
     const [editCommentsFieldActive, setEditCommentsFieldActive] = useState(false)
     const [enableSaveButton, setEnableSaveButton] = useState(false)
-    const [isLoading, setIsLoading] = useState(true)
     const [openModal, setOpenModal] = useState(false)
-    const [modalType, setModalType] = useState('')
+    const [recurring, setRecurring] = useState(false)
+    const [weekArray, setWeekArray] = useState("")
 
     const handleLogout = () => {
         sessionStorage.removeItem("credentials")
@@ -35,13 +34,11 @@ const Notes = (props) => {
     }
 
     const toggleEditNoteFieldActive = () => {
+        
         setEditNoteFieldActive(!editNoteFieldActive)
-        console.log(editNoteFieldActive)
+
     }
-    
-    const toggleEditCommentsFieldActive = () => {
-        setEditCommentsFieldActive(!editCommentsFieldActive)
-    }
+  
 
     const handleDelete = () => {
         console.log(noteToInspect)
@@ -50,14 +47,28 @@ const Notes = (props) => {
         // .then(props[0].setUserNotes));
       };
 
+    const toggleRecurring = () => {
+        setRecurring(!recurring)
+    }
+
+    const setRecurringStateForEdit = () => {
+
+        setRecurring(noteToInspect.recurring)
+    }
+
+    const assignPostIt = () => {
+        let randomNumber = Math.floor(Math.random() * 7) + 1       
+        setNoteToInspect({...noteToInspect,
+               imageNumber: randomNumber})
+        }
+
 
     const details = (id) => {
         API.getOne(id, "notes", "")
         .then((singleNote) => {
             singleNote=singleNote[0]
-            // holdPosition()
-            
-            setNoteToInspect(singleNote) 
+            setNoteToInspect(singleNote)
+             
             setInspectViewOn(true)  
         })
     }
@@ -68,6 +79,12 @@ const Notes = (props) => {
         setNoteToInspect(stateToChange)
         setEnableSaveButton(true)
     }
+    //get the user selected days from the details Occuring modal
+    const returnWeekArrayFromModal = (weekArrayFromModal) => {       
+            toggleModal();
+            setEnableSaveButton(true)
+            setWeekArray(weekArrayFromModal);
+        }
 
     const makeNoteObject = () => {
 
@@ -77,7 +94,13 @@ const Notes = (props) => {
             note: noteToInspect.note,
             date: noteToInspect.date,
             recurring: noteToInspect.recurring,
-            recurrence: noteToInspect.recurrence,
+            day0: weekArray[0].day0,
+            day1: weekArray[1].day1,
+            day2: weekArray[2].day2,
+            day3: weekArray[3].day3,
+            day4: weekArray[4].day4,
+            day5: weekArray[5].day5,
+            day6: weekArray[6].day6,
         }
         return noteObj
     }
@@ -122,25 +145,48 @@ const Notes = (props) => {
                 <>
                     <div className="headline__container">
                         <h3 className="category__Headline">Notes</h3>
-                        
+                        <img className="note__For__Recycle" src={require(`../images/addnote${noteToInspect.imageNumber}.png`)} alt="recycle postIt note" /> 
+                        <button onClick={assignPostIt} className="recycle">
+                        <img className="HPLogo__InApp" src={require(`../images/recycle.png`)} alt="recycle postIt note" /> 
+                        </button>
+                        <div className="add__Note__Buttons">
+                                <button hidden={!recurring} onClick={toggleRecurring} className="recurring__Button">
+                                    <p>Recurring</p>
+                                    <i className="far fa-check-circle" id="NoteCheck"></i>
+                                </button>
+                                <button hidden={recurring} onClick={toggleRecurring} className="recurring__Button">
+                                    <p>Not Recurring</p>
+                                    <i  className="far fa-check-circle" id="NoteCheck"></i>
+                                </button>
+                        </div>      
                     </div>
-                    
+                    <Button hidden={!recurring} variant="info" className="select__Recurring__Button" onClick={toggleModal}>Set Recurring Days</Button> 
                     <div className="user__Container__Notes">
                         <div className="notes__Scroll" >
                         {  
                              <NoteDetails
                                     key={noteToInspect.id}                                       
                                     back={true} 
+                                    setRecurringStateForEdit={setRecurringStateForEdit}
                                     handleDelete={handleDelete}
                                     note={noteToInspect}
                                     details={details}
+                                    recurring={recurring}
                                     editNoteFieldActive={editNoteFieldActive}
                                     handleNoteField={handleNoteField}
                                     toggleEditNoteFieldActive={toggleEditNoteFieldActive}
+                                    toggleModal={toggleModal}
                                     />
                             }
                         </div>
-
+                        <ModalNotes 
+                            toggleModal={toggleModal}
+                            inspectViewOn={inspectViewOn} 
+                            openModal={openModal} 
+                            note={noteToInspect}               
+                            returnWeekArrayFromModal={returnWeekArrayFromModal}
+                            {...props}
+                            /> 
                         
                     </div> 
                 </> 
@@ -150,18 +196,6 @@ const Notes = (props) => {
 
     return(
         <div className="dashboard__Container">
-            {/* <div className="dashboard__Header">
-                <picture >               
-                    <img className="HPLogo__InApp" src={require(`../images/HandPickt_3.png`)} alt="HandPickt Logo" />
-                </picture>
-                <div className="logout__Grouping">
-                    <button type="button" className="logout__Button__With__Image" onClick={handleLogout}>
-                        { (props[0].activeUser.image !== "") &&
-                            <Image src={require(`../images/${props[0].activeUser.image}`)} roundedCircle className="user__Image__Garden" />
-                        }
-                    <p className="logout__Text">Log Out</p></button>
-                </div>
-            </div> */}
             <div className="user__Container__NoteTop">
                       {noteView()}        
             </div>

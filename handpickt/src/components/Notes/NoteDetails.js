@@ -1,10 +1,12 @@
 import React, { useState, useEffect }from 'react'
-
+import { Navbar, Button } from 'react-bootstrap';
 
 
 const NoteDetails = (props) => {
     const [thisNoteToday, setThisNoteToday] = useState(false)
-
+    const [openModal, setOpenModal] = useState(false)
+    const [weekArray, setWeekArray] = useState("")
+    
 
     let note = props.note
 
@@ -14,6 +16,7 @@ const NoteDetails = (props) => {
 
     useEffect(() => {
         checkForNoteAlert(note)
+        props.setRecurringStateForEdit()
         // eslint-disable-next-line react-hooks/exhaustive-deps
     }, [note])
 
@@ -73,7 +76,7 @@ const NoteDetails = (props) => {
             { (thisNoteToday) && <img className={today} src={require(`../images/today.png`)} alt="A note for today" />}
             { (thisNoteToday) && <p>Today!</p>}
             </div>
-                
+            
         </div>
     </div>
    

@@ -185,6 +185,12 @@
     font-family: 'Permanent Marker', cursive;
 }
 
+.select__Recurring__Button__In__Details {
+    position: absolute;
+    top: 10%;
+    right: 2%;
+}
+
 .note__Content__Details__View {
     margin: 20% 0 0 0;
     padding: 5%;

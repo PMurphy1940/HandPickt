@@ -7,9 +7,9 @@ import {
   } from "react-circular-progressbar";
   import "react-circular-progressbar/dist/styles.css";
 
-const SearchResultPlantCard = (props) => {
+const SearchResultComment = (props) => {
 
-console.log("Display props",props)
+console.log("Comments props",props)
 
     return (
         <>
@@ -18,7 +18,7 @@ console.log("Display props",props)
         <div className="garden__Card__Header">
             <Card.Header as="h5">
             <div className="card__Header__Garden">
-                {props.plant.plant.common_name} 
+                {props.name} 
                 <div className="progress__Container"> 
                 {(props.plant.percentComplete < 100) ?            
                     <CircularProgressbar
@@ -70,7 +70,6 @@ console.log("Display props",props)
       </div>
         </>
     )
-
 }
 
-export default SearchResultPlantCard
+export default SearchResultComment

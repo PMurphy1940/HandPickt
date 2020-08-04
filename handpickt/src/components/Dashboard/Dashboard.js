@@ -23,15 +23,18 @@ const Dashboard = (props) => {
                 <picture className="HPLogo__box">               
                     <img className="HPLogo__InApp" src={require(`../images/HandPickt_3.png`)} alt="HandPickt Logo" />
                 </picture>
-                <Link to="/search" className="search__Object" >
-                <p>Search myHandPickt</p>&#x1F50D;
-                </Link>
+                <div className="search__Grouping">
+                    <Link to="/search" className="search__Object" >
+                    <p>Search my HandPickt</p>
+                    <p>&#x1F50D;</p>
+                    </Link>
+                </div>
             </div>
             <div className="user__Container__Dashboard">
                 { (props[0].activeUser.image !== "") &&
                         <Image src={require(`../images/${props[0].activeUser.image}`)} roundedCircle className="user__Image__Dashboard" />
                         }
-                <p>Welcome<br></br><strong>{props[0].activeUser.userName}</strong></p>                   
+                <h5>Welcome<br></br><strong>{props[0].activeUser.userName}</strong></h5>                   
             </div>
             <div className="dashboard__Linkbox">
                 <div className="dashboard__Row1">
@@ -39,13 +42,13 @@ const Dashboard = (props) => {
                         <div className="gradient__Button">
                             <Image src={require(`../images/blueMeanie.png`)} rounded className="image1__Dashboard" />
                         </div>
-                        <p>My Garden</p>
+                        <h6>My Garden</h6>
                     </Link>
                     <Link to="/notes" className="link__Dashboard" >
                     <div className="gradient__Button">
                         <Image src={require(`../images/cuttingboard.png`)} rounded className="image1__Dashboard" />
                             </div>
-                        <p>Notes</p>
+                        <h6>Notes</h6>
                         { props[0].noteAlert && 
                             <Image src={require(`../images/addnote4.png`)} rounded id="noteAlert" />
                         }
@@ -56,13 +59,13 @@ const Dashboard = (props) => {
                         <div className="gradient__Button">
                             <Image src={require(`../images/Tomato1.png`)} rounded className="image1__Dashboard" />
                         </div>
-                        <p>Add a Plant</p>
+                        <h6>Add a Plant</h6>
                     </Link>
                     <Link to="/archive" className="link__Dashboard" >
                         <div className="gradient__Button">
                             <Image src={require(`../images/Peppers.png`)} rounded className="image1__Dashboard" />
                         </div>
-                        <p>Archives</p>
+                        <h6>Archives</h6>
                     </Link>
                 </div>
             </div>

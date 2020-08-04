@@ -38,7 +38,12 @@ export default {
     },
 
     searchPlantsDB(pathway, id, query) {
-        return fetch(`${routeURL}/${pathway}?id=${id}&q=${query}`)
+        return fetch(`${routeURL}/${pathway}?${id}&q=${query}`)
+        .then((response)=> response.json())
+    },
+
+    searchUserPlants(pathway, id, query) {
+        return fetch(`${routeURL}/${pathway}?${id}&q=${query}`)
         .then((response)=> response.json())
     },
 

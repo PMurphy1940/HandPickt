@@ -59,3 +59,7 @@
     min-width: 38vw;
     font-family: 'Permanent Marker', cursive;
 }
+
+.user__Container__Search__Result {
+    margin-bottom: 30%;
+}

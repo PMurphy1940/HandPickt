@@ -19,8 +19,7 @@ const SearchResultNoteCard = (props) => {
         let dayOfWeek = date.getDay()
         dayOfWeek = "day" + dayOfWeek
         
-            checkRecurrence(note, dayOfWeek)
-             
+            checkRecurrence(note, dayOfWeek)         
     }
 
     const checkRecurrence = (singleNote, day) => {

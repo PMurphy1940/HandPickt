@@ -4,6 +4,8 @@ import BottomNavbar from "../Footer/FooterNav"
 import API from "../Server/HandPicktAPI"
 import SearchResultPlantCard from "./SearchDisplayPlants"
 import SearchResultNoteCard from "./SearchDisplayNotes"
+import SearchResultComment from "./SearchDisplayComment"
+import SearchResultDatabase from "./SearchDisplayDatabase"
 import { Navbar, Button } from 'react-bootstrap';
 import Image from 'react-bootstrap/Image'
 import "./Search.css"
@@ -12,8 +14,10 @@ const Search = (props) => {
     const [searchQuery, setSearchQuery] = useState("")
     const [resultDB, setResultDB] = useState()
     const [resultUserPlant, setResultUserPlant] = useState()
+    const [resultUserComment, setResultUserComment] = useState()
     const [resultNote, setResultNote] = useState()
     const [resultArchive, setResultArchive] = useState()
+    const [holdSearchQuery, setHoldSearchQuery] = useState("")
     const [searchDB, setSearchDB] = useState(true)
     const [searchUserPlants, setSearchUserPlants] = useState(false)
     const [searchNotes, setSearchNotes] = useState(false)
@@ -24,6 +28,8 @@ const Search = (props) => {
         props[0].setUser()
         props[0].history.push("/logout");
     }
+
+    let msInADay = (1000*60*60*24)
 
     const details = () => {
 
@@ -60,34 +66,69 @@ const Search = (props) => {
         let stateToChange = {...searchQuery}
         stateToChange = event.target.value
         setSearchQuery(stateToChange)
-        // if (searchQuery.length > 2) {
-        //     searchDatabase()
-
     }
     const submitSearch = () => {
         setResultDB()
         setResultUserPlant()
         setResultNote()
         setResultArchive()
+        setHoldSearchQuery(searchQuery)
         searchDatabase()
     }
-
+    //This section has the route to search the user comments for the keyword, and then search the users plants and combine the data//
     const buildUserPlantSearch = () => {
         let userPlantSearch = []
+        let userCommmentSearch = []
         let inGarden = props[0].userPlants;
 
+        //First search the flat User Plants database for the keyword//
+        let id=props[0].activeUser.id
+        id = `userId=` + id
+        API.searchPlantsDB("userPlants", id, searchQuery)
+        .then((searchResult) => {
+
+            //If there is a return, build an embed version to contian all data needed//
+            if (searchResult !== undefined) {                                            
+            searchResult.forEach(result => {
+                API.getOne(result.id, "userPlants", "&_expand=plant")
+                .then((secondResult) => {
+                    userCommmentSearch.push(secondResult[0])
+                })
+                setResultUserComment(userCommmentSearch)
+            })}
+        })
+        //Then search all the plants in the database that are tied to the user//
         inGarden.forEach(plant => {
             let id = plant.plant.id
+            id = `id=` + id
+
             API.searchPlantsDB("plants", id, searchQuery)
                     .then((searchResult) => {
-                        if (searchResult[0] !== undefined) {                            
-                            userPlantSearch.push(searchResult[0])               
+                        if (searchResult[0] !== undefined) { 
+                            console.log("1st search", searchResult)                  
+                            //now take those results and pass them back to the API in order to properly attach the user card.                                          
+                            searchResult.forEach(result => {
+                                let id = result.id
+                                    id = `plantId=` + id
+                                console.log("id", id)
+                                API.searchUserPlants("userPlants", id, "&_expand=plant")
+                                .then((thirdResult) => {
+                                    console.log("2nd search", thirdResult) 
+                                    userPlantSearch.push(thirdResult[0])
+                                })
                             setResultUserPlant(userPlantSearch)
-                    }}
+                    })
+                }}
                     )
             })
-       }
- 
+       
+    }
+console.log("From the comments", resultUserComment)
+// let noArchivePlantData = searchResult.filter(plant => {
+//     if ( plant.archiveDate === "" ) {
+//         return plant
+//     }
+// }) 
 
     const searchDatabase = () => {
         if ( searchDB === true ){
@@ -163,20 +204,35 @@ const Search = (props) => {
                <Button variant="info" className="search__Grouping__Element" onClick={submitSearch}>Search</Button>
             </fieldset>
             </div>
-            <div className="user__Container__Garden">
+            <div className="user__Container__Search__Result">
                     { (resultUserPlant !== undefined) &&                   
                     <>
-                    <span>Found in your Garden</span>
+                    <h4>"{holdSearchQuery}" Found in your Garden</h4>
                   {  resultUserPlant.map( plant =>   <SearchResultPlantCard
                                                             key={plant.id}                                       
                                                             plant={plant}
                                                         />
                   )}</>
                   }      
+                    { (resultUserComment !== undefined) &&                   
+                    <>
+                    <h4>"{holdSearchQuery}" Found in your Comments</h4>
+                  {  resultUserComment.map( plant =>   <SearchResultComment
+                                                                key={plant.id} 
+                                                                name={plant.plant.common_name}  
+                                                                back={true} 
+                                                                
+                                                                plant={plant}
+                                                                details={details}
+                                                                
+                                                            
+                                                        />
+                  )}</>
+                  }      
                     { (resultDB !== undefined) &&                   
                     <>
-                    <span>Found in the Database</span>
-                  {  resultDB.map( plant =>   <SearchResultPlantCard
+                    <h4>"{holdSearchQuery}" Found in the Database</h4>
+                  {  resultDB.map( plant =>   <SearchResultDatabase
                                                             key={plant.id}                                       
                                                             plant={plant}
                                                         />
@@ -184,7 +240,7 @@ const Search = (props) => {
                   }      
                     { (resultNote !== undefined) &&                   
                     <>
-                    <span>Found in your Notes</span>
+                    <h4>"{holdSearchQuery}" Found in your Notes</h4>
                   {  resultNote.map( note =>   <SearchResultNoteCard
                                                             key={note.id}
                                                             details={details}                                       
@@ -194,7 +250,7 @@ const Search = (props) => {
                   }      
                     { (resultArchive !== undefined) &&                   
                     <>
-                    <span>Found in the Database</span>
+                    <h4>"{holdSearchQuery}" Found in your archives</h4>
                   {  resultArchive.map( plant =>   <SearchResultPlantCard
                                                             key={plant.id}                                       
                                                             plant={plant}

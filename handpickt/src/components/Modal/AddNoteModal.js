@@ -52,7 +52,7 @@ const ModalNotes = (props) => {
 
     useEffect(() => {
         setDaysForEdit()
-    })
+    }, [])
 
     let weekArray = []
     //produce an array of the selected days to return to the Add Note page//

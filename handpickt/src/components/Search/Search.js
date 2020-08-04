@@ -1,16 +1,19 @@
 import React, { useState, useEffect } from 'react'
 import WithAuthentication from "../Auth/WithAuthentication"
 import BottomNavbar from "../Footer/FooterNav"
+import API from "../Server/HandPicktAPI"
+import SearchResultPlantCard from "./SearchDisplayPlants"
 import { Navbar, Button } from 'react-bootstrap';
 import Image from 'react-bootstrap/Image'
 import "./Search.css"
+import _default from 'react-bootstrap/esm/Toast';
 const Search = (props) => {
     const [searchQuery, setSearchQuery] = useState("")
-    const [resultUserPlant, setResultUserPlant] = useState([])
-    const [resultNote, setResultNote] = useState([])
-    const [resultArchive, setResultArchive] = useState([])
-    const [resultDatabase, setResultDatabase] = useState([])
-    const [searchAll, setSearchAll] = useState(true)
+    const [resultDB, setResultDB] = useState()
+    const [resultUserPlant, setResultUserPlant] = useState()
+    const [resultNote, setResultNote] = useState()
+    const [resultArchive, setResultArchive] = useState()
+    const [searchDB, setSearchDB] = useState(true)
     const [searchUserPlants, setSearchUserPlants] = useState(false)
     const [searchNotes, setSearchNotes] = useState(false)
     const [searchArchives, setSearchArchives] = useState(false)
@@ -32,7 +35,7 @@ const Search = (props) => {
         setSearchNotes(!searchNotes)
     }
     const toggleSearchAll = () => {
-        setSearchAll(true)
+        setSearchDB(true)
         setSearchUserPlants(false)
         setSearchNotes(false)
         setSearchArchives(false)
@@ -40,16 +43,71 @@ const Search = (props) => {
     
     const checkForAll =  () => {
         if ( searchUserPlants === false && searchNotes === false && searchArchives === false) {
-            setSearchAll(true);
+            setSearchDB(true);
         }
-        else {setSearchAll(false)};
+        else {setSearchDB(false)};
     }
     useEffect(() => {
         checkForAll()
     })
    
-    const submitSearch = () => { }
+    const handleSearchField = (event) => {
+        let stateToChange = {...searchQuery}
+        stateToChange = event.target.value
+        setSearchQuery(stateToChange)
+        // if (searchQuery.length > 2) {
+        //     searchDatabase()
 
+    }
+    const submitSearch = () => {
+        searchDatabase()
+    }
+
+    
+
+    
+
+    // console.log(userPlantSearch)
+
+    const buildUserPlantSearch = () => {
+        let userPlantSearch = []
+        let inGarden = props[0].userPlants;
+
+        inGarden.forEach(plant => {
+            let id = plant.plant.id
+            API.searchPlantsDB("plants", id, searchQuery)
+                    .then((searchResult) => {
+                        if (searchResult[0] !== undefined) {                            
+                            userPlantSearch.push(searchResult[0])               
+                            setResultUserPlant(userPlantSearch)
+                    }}
+                    )
+            })
+
+        }
+
+   
+
+    const searchDatabase = () => {
+        if ( searchDB === true ){
+            API.search("plants", searchQuery)
+            .then((searchResult) => {
+                setResultDB(searchResult)
+            })
+        }
+         
+        if ( searchNotes === true) {
+            API.search("notes", searchQuery)
+            .then((searchResult) => {
+                setResultNote(searchResult)
+            })
+        }
+        if ( searchUserPlants === true) {
+                buildUserPlantSearch()
+            
+        }
+
+    }
 
     return(
         <div className="dashboard__Container">
@@ -72,8 +130,8 @@ const Search = (props) => {
             </div>
             <div className="searchArea">
             <div className="search__Parameters">
-                <button className={ (!searchAll) ? "searchcheckbox" : "searchcheckboxAfter"} onClick={() => toggleSearchAll()}>
-                    Everywhere
+                <button className={ (!searchDB) ? "searchcheckbox" : "searchcheckboxAfter"} onClick={() => toggleSearchAll()}>
+                    Database
                 </button>
                 <button className={ (!searchUserPlants) ? "searchcheckbox" : "searchcheckboxAfter"} onClick={() => toggleSearchUserPlants()}>
                     My Plants
@@ -93,14 +151,22 @@ const Search = (props) => {
                     name="search"
                     id="search"
                     value={searchQuery}
+                    onChange={handleSearchField}
                     />
                <label htmlFor="search"></label>
                <Button variant="info" className="search__Grouping__Element" onClick={submitSearch}>Search</Button>
             </fieldset>
             </div>
             <div className="user__Container__Garden">
-
-                                  
+                    { (resultUserPlant !== undefined) &&                   
+                    <>
+                    <span>Found in My Garden</span>
+                  {  resultUserPlant.map( plant =>   <SearchResultPlantCard
+                                                            key={plant.id}                                       
+                                                            plant={plant}
+                                                        />
+                  )}</>
+                  }      
             </div>
         
             <Navbar fixed="bottom" className="bottom__Nav">

@@ -27,3 +27,35 @@
 .search__Grouping__Element {
     margin: 0 5% 2% 10%;
 }
+
+.searchDB {
+    display: flex;
+    border-bottom: 1px solid slategray;
+}
+
+.searchDB > p {
+    font-family: 'Gill Sans', 'Gill Sans MT', Calibri, 'Trebuchet MS', sans-serif;
+    font-size: 4vw;
+    margin: 2%;
+}
+
+.search__Parameters {
+    display: flex;
+}
+
+.search__Parameters > p {
+    font-family: 'Gill Sans', 'Gill Sans MT', Calibri, 'Trebuchet MS', sans-serif;
+    font-size: 4vw;
+    margin: 2%;
+}
+
+.search__Result__Note__Button {
+    width: 60%;
+}
+
+.search_Result__Note__Content {
+    margin: 20% 10% 0 10%;
+    padding: 25% 5% 5% 5%;
+    min-width: 38vw;
+    font-family: 'Permanent Marker', cursive;
+}

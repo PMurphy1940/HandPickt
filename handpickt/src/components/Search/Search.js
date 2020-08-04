@@ -3,10 +3,11 @@ import WithAuthentication from "../Auth/WithAuthentication"
 import BottomNavbar from "../Footer/FooterNav"
 import API from "../Server/HandPicktAPI"
 import SearchResultPlantCard from "./SearchDisplayPlants"
+import SearchResultNoteCard from "./SearchDisplayNotes"
 import { Navbar, Button } from 'react-bootstrap';
 import Image from 'react-bootstrap/Image'
 import "./Search.css"
-import _default from 'react-bootstrap/esm/Toast';
+
 const Search = (props) => {
     const [searchQuery, setSearchQuery] = useState("")
     const [resultDB, setResultDB] = useState()
@@ -24,6 +25,10 @@ const Search = (props) => {
         props[0].history.push("/logout");
     }
 
+    const details = () => {
+
+    }
+ 
     //These handle the search criteria buttons on the search field///
     const toggleSearchUserPlants = () => {        
         setSearchUserPlants(!searchUserPlants)  
@@ -60,14 +65,12 @@ const Search = (props) => {
 
     }
     const submitSearch = () => {
+        setResultDB()
+        setResultUserPlant()
+        setResultNote()
+        setResultArchive()
         searchDatabase()
     }
-
-    
-
-    
-
-    // console.log(userPlantSearch)
 
     const buildUserPlantSearch = () => {
         let userPlantSearch = []
@@ -83,10 +86,8 @@ const Search = (props) => {
                     }}
                     )
             })
-
-        }
-
-   
+       }
+ 
 
     const searchDatabase = () => {
         if ( searchDB === true ){
@@ -129,10 +130,14 @@ const Search = (props) => {
                     <img className="plant__Headline__Image" src={require(`../images/microscope.png`)} alt="microscope" />
             </div>
             <div className="searchArea">
-            <div className="search__Parameters">
+            <div className="searchDB">
                 <button className={ (!searchDB) ? "searchcheckbox" : "searchcheckboxAfter"} onClick={() => toggleSearchAll()}>
                     Database
                 </button>
+                <p>search the database</p>
+            </div>
+            <div className="search__Parameters">
+                
                 <button className={ (!searchUserPlants) ? "searchcheckbox" : "searchcheckboxAfter"} onClick={() => toggleSearchUserPlants()}>
                     My Plants
                 </button>
@@ -142,6 +147,7 @@ const Search = (props) => {
                 <button className={ (!searchArchives) ? "searchcheckbox" : "searchcheckboxAfter"} onClick={() => toggleSearchArchives()}>
                     My Archives
                 </button>
+                <p>or search</p>
             </div>
             <div className="search__Grouping"></div>
             <fieldset>
@@ -160,8 +166,36 @@ const Search = (props) => {
             <div className="user__Container__Garden">
                     { (resultUserPlant !== undefined) &&                   
                     <>
-                    <span>Found in My Garden</span>
+                    <span>Found in your Garden</span>
                   {  resultUserPlant.map( plant =>   <SearchResultPlantCard
+                                                            key={plant.id}                                       
+                                                            plant={plant}
+                                                        />
+                  )}</>
+                  }      
+                    { (resultDB !== undefined) &&                   
+                    <>
+                    <span>Found in the Database</span>
+                  {  resultDB.map( plant =>   <SearchResultPlantCard
+                                                            key={plant.id}                                       
+                                                            plant={plant}
+                                                        />
+                  )}</>
+                  }      
+                    { (resultNote !== undefined) &&                   
+                    <>
+                    <span>Found in your Notes</span>
+                  {  resultNote.map( note =>   <SearchResultNoteCard
+                                                            key={note.id}
+                                                            details={details}                                       
+                                                            note={note}
+                                                        />
+                  )}</>
+                  }      
+                    { (resultArchive !== undefined) &&                   
+                    <>
+                    <span>Found in the Database</span>
+                  {  resultArchive.map( plant =>   <SearchResultPlantCard
                                                             key={plant.id}                                       
                                                             plant={plant}
                                                         />

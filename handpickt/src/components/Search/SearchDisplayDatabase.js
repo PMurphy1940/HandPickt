@@ -1,15 +1,9 @@
 import React from 'react'
 import { Card, Button } from 'react-bootstrap'
-import helper from "../Helpers/Helper"
-import {
-    CircularProgressbar,
-    buildStyles
-  } from "react-circular-progressbar";
-  import "react-circular-progressbar/dist/styles.css";
 
 const SearchResultDatabase = (props) => {
 
-console.log("Comments props",props)
+console.log("Database props",props)
 
     return (
         <>
@@ -18,7 +12,7 @@ console.log("Comments props",props)
         <div className="garden__Card__Header">
             <Card.Header as="h5">
             <div className="card__Header__Garden">
-                {props.name} 
+                {props.plant.common_name} 
                 <div className="progress__Container"> 
                 </div>
                
@@ -26,20 +20,15 @@ console.log("Comments props",props)
             </Card.Header>
         </div>
                 <Card.Body>
-                <img className="plant__Specific__Image" src={require(`../images/beans.png`)} alt="HandPickt Logo" />               
-
-                
+                <img className="plant__Specific__Image" src={require(`../images/beans.png`)} alt="HandPickt Logo" />                             
                 <Card.Title>
+                {props.plant.days_to_maturity} days to maturity
                 </Card.Title>
-                <Card.Text className="garden__Specific__Text">
-                  
-                    
-                </Card.Text>
                 
-                <div className="add__Button__Container">
-                  <Button variant="primary" onClick={ () => props.details(props.plant.id)}>Inspect</Button>
-                  <Button variant="primary" onClick={ () => props.handleDelete(props.plant)}>Remove</Button>
-                </div>
+                    <div className="Database__Search__Card__Text">
+                        {props.plant.description}
+                    </div>
+                
             </Card.Body>
         </Card>
       </div>

@@ -11,6 +11,7 @@ import Image from 'react-bootstrap/Image'
 import "./Search.css"
 
 const Search = (props) => {
+    const [check, setCheck] =useState()
     const [searchQuery, setSearchQuery] = useState("")
     const [resultDB, setResultDB] = useState()
     const [resultUserPlant, setResultUserPlant] = useState()
@@ -28,8 +29,6 @@ const Search = (props) => {
         props[0].setUser()
         props[0].history.push("/logout");
     }
-
-    let msInADay = (1000*60*60*24)
 
     const details = () => {
 
@@ -95,6 +94,7 @@ const Search = (props) => {
                     userCommmentSearch.push(secondResult[0])
                 })
                 setResultUserComment(userCommmentSearch)
+                
             })}
         })
         //Then search all the plants in the database that are tied to the user//
@@ -104,31 +104,21 @@ const Search = (props) => {
 
             API.searchPlantsDB("plants", id, searchQuery)
                     .then((searchResult) => {
-                        if (searchResult[0] !== undefined) { 
-                            console.log("1st search", searchResult)                  
+                        if (searchResult[0] !== undefined) {                  
                             //now take those results and pass them back to the API in order to properly attach the user card.                                          
                             searchResult.forEach(result => {
                                 let id = result.id
                                     id = `plantId=` + id
-                                console.log("id", id)
                                 API.searchUserPlants("userPlants", id, "&_expand=plant")
-                                .then((thirdResult) => {
-                                    console.log("2nd search", thirdResult) 
+                                .then((thirdResult) => { 
                                     userPlantSearch.push(thirdResult[0])
+                                    setResultUserPlant(userPlantSearch);
+                                    })
                                 })
-                            setResultUserPlant(userPlantSearch)
-                    })
-                }}
-                    )
-            })
-       
-    }
-console.log("From the comments", resultUserComment)
-// let noArchivePlantData = searchResult.filter(plant => {
-//     if ( plant.archiveDate === "" ) {
-//         return plant
-//     }
-// }) 
+                            }}
+                        )
+                   })
+           }
 
     const searchDatabase = () => {
         if ( searchDB === true ){
@@ -146,11 +136,8 @@ console.log("From the comments", resultUserComment)
         }
         if ( searchUserPlants === true) {
                 buildUserPlantSearch()
-            
+            } 
         }
-
-    }
-
     return(
         <div className="dashboard__Container">
             <div className="dashboard__Header">
@@ -217,17 +204,22 @@ console.log("From the comments", resultUserComment)
                     { (resultUserComment !== undefined) &&                   
                     <>
                     <h4>"{holdSearchQuery}" Found in your Comments</h4>
+                    </>
+                    }
+                    {(resultUserComment !== undefined) &&
+                    <>
                   {  resultUserComment.map( plant =>   <SearchResultComment
                                                                 key={plant.id} 
                                                                 name={plant.plant.common_name}  
                                                                 back={true} 
                                                                 
                                                                 plant={plant}
-                                                                details={details}
-                                                                
-                                                            
-                                                        />
-                  )}</>
+                                                                details={details}                                                            
+                                                                />
+                                                        )
+                                            }
+                  </>
+                 
                   }      
                     { (resultDB !== undefined) &&                   
                     <>
@@ -235,7 +227,7 @@ console.log("From the comments", resultUserComment)
                   {  resultDB.map( plant =>   <SearchResultDatabase
                                                             key={plant.id}                                       
                                                             plant={plant}
-                                                        />
+                                                            />
                   )}</>
                   }      
                     { (resultNote !== undefined) &&                   

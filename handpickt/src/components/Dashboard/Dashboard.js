@@ -11,7 +11,6 @@ const Dashboard = (props) => {
     const handleLogout = () => {
         sessionStorage.removeItem("credentials")
         props[0].setUser()
-        props[0].setNoteAlert(false)
         props[0].history.push("/logout");
 
     }

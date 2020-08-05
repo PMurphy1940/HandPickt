@@ -2,8 +2,7 @@ import React from 'react'
 import { Link } from 'react-router-dom'
 import "./Logout.css"
 
-const Logout = () => {
-
+const Logout = (props) => {
 
     return (
         <div className="login_Containter">

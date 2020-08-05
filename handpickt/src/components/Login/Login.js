@@ -15,9 +15,6 @@ const Login = (props) => {
     const toggleBadAccount = () => {
         setBadAccountName(!badAccountName)
     }
-    const toggleBadPassword = () => {
-        setBadPassword(!badPassword)
-    }
 
     //Testing buttons//
 

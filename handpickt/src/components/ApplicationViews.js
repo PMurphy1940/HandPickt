@@ -2,7 +2,6 @@ import React, { useState, useEffect } from 'react'
 import { Route } from 'react-router-dom'
 import Login from "./Login/Login"
 import Registration from "./Registration/Registration"
-import LogOut from "./LogOut/Logout"
 import AddAnother from "./AddPlant/AddAnother"
 import AddPlant from "./AddPlant/AddPlant"
 import PageViews from './PageViews/PageViews'
@@ -51,12 +50,7 @@ const ApplicationViews = (props) => {
             <PageViews {...props} activeUser={activeUser} setUser={setUser}/>
             }
             
-            <Route
-            exact
-            path="/logout"
-            render={props => {
-                return <LogOut {...props} setUser={setUser}/>
-            }} />
+           
         </>
     )
 

@@ -54,6 +54,7 @@ const MyGarden = (props) => {
     const handleLogout = () => {
         sessionStorage.removeItem("credentials")
         props[0].setUser()
+        props[0].setNoteAlert(false)
         props[0].history.push("/logout");
     } 
 //*** This section is for handling the plant Details view and it various functions ***//

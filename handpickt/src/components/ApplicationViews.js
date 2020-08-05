@@ -5,7 +5,6 @@ import Registration from "./Registration/Registration"
 import AddAnother from "./AddPlant/AddAnother"
 import AddPlant from "./AddPlant/AddPlant"
 import PageViews from './PageViews/PageViews'
-
 const ApplicationViews = (props) => {
     const [activeUser, setActiveUser] = useState({userName: "", email: "", image: "", id: 0})
 

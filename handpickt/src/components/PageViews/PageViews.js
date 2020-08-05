@@ -33,6 +33,7 @@ const PageViews = (props) => {
     useEffect (() => {
         getUserPlants()
         getUserNotes()
+        checkForNoteAlert(userNotes)
         // eslint-disable-next-line react-hooks/exhaustive-deps
     }, [activeUserId])
 

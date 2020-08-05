@@ -25,9 +25,7 @@ const Registration = (props) => {
 
     
     //warning field indicators//
-    const toggleBadAccount = () => {
-        setBadAccountName(!badAccountName)
-    }
+
     const toggleEmptyAccountName = () => {
         setEmptyAccountName(!emptyAccountName)
     }
@@ -37,18 +35,10 @@ const Registration = (props) => {
     const toggleBadEmail = () => {
         setBadEmail(!badEmail)
     }
-    const toggleExistingEmail = () => {
-        setExistingEmail(!existingEmail)
-    }
+
     const toggleBadPasswordMatch = () => {
         setBadPasswordMatch(!badPasswordMatch)
     }
-    //Testing buttons//
-    // <Button  variant="light" onClick={toggleBadAccount} >Toggle bad account</Button>{' '}
-    // <Button  variant="light" onClick={toggleBadPassword} >Toggle bad password</Button>{' '}  
-    // <Button  variant="light" onClick={toggleBadEmail} >Toggle bad email</Button>{' '}  
-    // <Button  variant="light" onClick={toggleBadPasswordMatch} >Toggle bad Match</Button>{' '}  
-    //End of testing buttons//
 
     //Make password visible or hidden again//
     const togglePasswordView = () => {

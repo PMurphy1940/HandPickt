@@ -57,7 +57,7 @@ const Login = (props) => {
                .then((response) => {
                     foundUser = response[0];
                     if (foundUser === undefined) {
-                        toggleBadAccount()
+                        setBadAccountName(true)
                     }
 
                     else {
@@ -79,7 +79,7 @@ const Login = (props) => {
                 toggleBadAccount()
             }
             else if (loginForm.password !== foundUser.password) {
-                toggleBadPassword()
+                setBadPassword(true)
             }
         }
 

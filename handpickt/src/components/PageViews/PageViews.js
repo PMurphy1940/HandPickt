@@ -75,14 +75,14 @@ const PageViews = (props) => {
             exact
             path="/dashboard"
             render={props => {
-                return <Dashboard {...props} activeUser={activeUser} setUser={setUser} noteAlert={noteAlert} />
+                return <Dashboard {...props} activeUser={activeUser} setUser={setUser} noteAlert={noteAlert} setNoteAlert={setNoteAlert} />
             }} /> 
             
             <Route
             exact
             path="/mygarden"
             render={props => {
-                return <MyGarden {...props} activeUser={activeUser} setUser={setUser} userPlants={userPlants}/>
+                return <MyGarden {...props} activeUser={activeUser} setUser={setUser} userPlants={userPlants} setNoteAlert={setNoteAlert}/>
             }} /> 
 
             <Route
@@ -96,28 +96,28 @@ const PageViews = (props) => {
             exact
             path="/notes"
             render={props => {
-                return <Notes {...props} activeUser={activeUser} setUser={setUser} userNotes={userNotes} getUserNotes={getUserNotes} />
+                return <Notes {...props} activeUser={activeUser} setUser={setUser} userNotes={userNotes} getUserNotes={getUserNotes} setNoteAlert={setNoteAlert}/>
             }} /> 
 
             <Route
             exact
             path="/addnote"
             render={props => {
-                return <AddNote {...props} activeUser={activeUser} setUser={setUser} getUserNotes={getUserNotes}/>
+                return <AddNote {...props} activeUser={activeUser} setUser={setUser} getUserNotes={getUserNotes} setNoteAlert={setNoteAlert}/>
             }} /> 
 
             <Route
             exact
             path="/archive"
             render={props => {
-                return <Archive {...props} activeUser={activeUser} setUser={setUser} userPlants={userPlants}/>
+                return <Archive {...props} activeUser={activeUser} setUser={setUser} userPlants={userPlants} setNoteAlert={setNoteAlert}/>
             }} />
 
             <Route
             exact
             path="/search"
             render={props => {
-                return <Search {...props} activeUser={activeUser} setUser={setUser} userPlants={userPlants}/>
+                return <Search {...props} activeUser={activeUser} setUser={setUser} userPlants={userPlants} setNoteAlert={setNoteAlert}/>
             }} />
 
             <Route

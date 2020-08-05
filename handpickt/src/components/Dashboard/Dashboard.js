@@ -34,8 +34,10 @@ const Dashboard = (props) => {
                 </div>
             </div>
             <div className="user__Container__Dashboard">
-                { (props[0].activeUser.image !== "") &&
+                { (props[0].activeUser.image !== "") ?
                         <Image src={require(`../images/${props[0].activeUser.image}`)} roundedCircle className="user__Image__Dashboard" />
+                        :
+                        <Image src={require("../images/defaultuser.png")} roundedCircle className="user__Image__Dashboard" />
                         }
                 <h5>Welcome<br></br><strong>{props[0].activeUser.userName}</strong></h5>                   
             </div>

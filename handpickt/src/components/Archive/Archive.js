@@ -2,7 +2,6 @@ import React, { useState, useEffect } from 'react'
 import WithAuthentication from "../Auth/WithAuthentication"
 import ArchivePlantCard from "./ArchivePlantCard"
 import ArchivePlantDetails from "./ArchivePlantDetails"
-import ModalEntries from "../Modal/Modal"
 import BottomNavbar from "../Footer/FooterNav"
 import API from "../Server/HandPicktAPI"
 import { Navbar, Button } from 'react-bootstrap';
@@ -119,8 +118,6 @@ const Archive = (props) => {
 
       };
 
-   
-
     const onlyArchivePlantData = (plantData) => {
 
         //Remove any active plants from the plant array
@@ -201,8 +198,10 @@ const Archive = (props) => {
                 </picture>
                 <div className="logout__Grouping">
                     <button type="button" className="logout__Button__With__Image" onClick={handleLogout}>
-                        { (props[0].activeUser.image !== "") &&
+                        { (props[0].activeUser.image !== "") ?
                             <Image src={require(`../images/${props[0].activeUser.image}`)} roundedCircle className="user__Image__Garden" alt="user"/>
+                            :
+                            <Image src={require("../images/defaultuser.png")} roundedCircle className="user__Image__Dashboard" />
                         }
                     <p className="logout__Text">Log Out</p></button>
                 </div>

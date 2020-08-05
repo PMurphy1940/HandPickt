@@ -24,8 +24,15 @@ const AddNote = (props) => {
     const [enableSaveButton, setEnableSaveButton] = useState(false)
     const [recurring, setRecurring] = useState(false)
     const [openModal, setOpenModal] = useState(false)
-    const [weekArray, setWeekArray] = useState("")
-    
+    const [weekArray, setWeekArray] = useState([{day0: false},
+                                               {day1: false},
+                                               {day2: false},
+                                               {day3: false},
+                                               {day4: false},
+                                               {day5: false},
+                                               {day6: false}]
+                                                )
+                                            
     
 
     const modalType= "addNote"                                  
@@ -62,6 +69,7 @@ const AddNote = (props) => {
 
     const makeNoteObject = () => {
         let today = new Date()
+        console.log(weekArray)
         let noteObj = {
             userId: props[0].activeUser.id,
             imageNumber:  note.imageNumber,

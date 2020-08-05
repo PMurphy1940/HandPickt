@@ -1,5 +1,6 @@
 import React, { useState, useEffect } from 'react'
 import { Route } from 'react-router-dom'
+import LogOut from "../LogOut/Logout"
 import Dashboard from "../Dashboard/Dashboard"
 import MyGarden from "../MyGarden/MyGarden"
 import PlantDetails from "../MyGarden/PlantDetails"
@@ -117,8 +118,14 @@ const PageViews = (props) => {
             path="/search"
             render={props => {
                 return <Search {...props} activeUser={activeUser} setUser={setUser} userPlants={userPlants}/>
-            }} /> 
+            }} />
 
+            <Route
+            exact
+            path="/logout"
+            render={props => {
+                return <LogOut {...props} setUser={setUser} setNoteAlert={setNoteAlert} />
+            }} />
         </>
     )
 }

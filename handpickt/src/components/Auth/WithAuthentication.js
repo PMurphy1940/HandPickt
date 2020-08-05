@@ -11,7 +11,7 @@ const WithAuthentication = (View) => {
             return <View {...props} />
        }
        else {
-            return <Redirect to="/logout" />
+            return <Redirect to="/login" />
         }
     }
 }

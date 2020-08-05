@@ -54,7 +54,6 @@ const MyGarden = (props) => {
     const handleLogout = () => {
         sessionStorage.removeItem("credentials")
         props[0].setUser()
-        props[0].setNoteAlert(false)
         props[0].history.push("/logout");
     } 
 //*** This section is for handling the plant Details view and it various functions ***//
@@ -314,8 +313,10 @@ const MyGarden = (props) => {
                 </picture>
                 <div className="logout__Grouping">
                     <button type="button" className="logout__Button__With__Image" onClick={handleLogout}>
-                        { (props[0].activeUser.image !== "") &&
+                        { (props[0].activeUser.image !== "") ?
                             <Image src={require(`../images/${props[0].activeUser.image}`)} roundedCircle className="user__Image__Garden" alt="user"/>
+                            :
+                            <Image src={require("../images/defaultuser.png")} roundedCircle className="user__Image__Dashboard" />
                         }
                     <p className="logout__Text">Log Out</p></button>
                 </div>

@@ -60,6 +60,7 @@ const Registration = (props) => {
     const handleChange = (e) => {
         setBadAccountName(false)
         setEmptyAccountName(false)
+        setExistingEmail(false)
         setBadEmail(false)
         setBadPassword(false)
         setBadPasswordMatch(false)
@@ -101,10 +102,10 @@ const Registration = (props) => {
                             let foundEmail = response[0];
 
                                 if (foundUser !== undefined) {
-                                    toggleBadAccount()
+                                    setBadAccountName(true)
                                         }
                                 else if (foundEmail !== undefined) {
-                                    toggleExistingEmail()
+                                    setExistingEmail(true)
                                 }
                                 else {
                                     constructNewUserObject()

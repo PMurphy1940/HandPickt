@@ -283,8 +283,7 @@ const MyGarden = (props) => {
             return (
                 <>
                     <div className="user__Container__AddPlant">
-                        <div className="garden__Plants__Scroll" id="categoryList">
-                          
+                        <div className="garden__Plants__Scroll" id="categoryList">                          
                              <PlantDetails 
                                 key={plantToInspect.id}
                                 isLoading={isLoading} 
@@ -298,13 +297,11 @@ const MyGarden = (props) => {
                                 toggleEditPlantedFieldActive={toggleEditPlantedFieldActive}
                                 toggleEditCommentsFieldActive={toggleEditCommentsFieldActive}
                                 earlyHarvest={earlyHarvest}
-                                />
-                        
+                                />                        
                         </div>                
                     </div> 
                 </>
-                )    
-            }
+            )}
     }
 
 
@@ -317,7 +314,7 @@ const MyGarden = (props) => {
                 <div className="logout__Grouping">
                     <button type="button" className="logout__Button__With__Image" onClick={handleLogout}>
                         { (props[0].activeUser.image !== "") &&
-                            <Image src={require(`../images/${props[0].activeUser.image}`)} roundedCircle className="user__Image__Garden" />
+                            <Image src={require(`../images/${props[0].activeUser.image}`)} roundedCircle className="user__Image__Garden" alt="user"/>
                         }
                     <p className="logout__Text">Log Out</p></button>
                 </div>

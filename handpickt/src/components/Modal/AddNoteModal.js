@@ -38,7 +38,6 @@ const ModalNotes = (props) => {
 
     //Set the days to their proper state during an 'edit' call//
 
-    console.log("editModal", props)
     const setDaysForEdit = () => {
         if (props.inspectViewOn) {
             (props.note.day0) && toggleSunday();

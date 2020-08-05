@@ -32,6 +32,20 @@ export default {
             body: JSON.stringify(newOject)
         }).then(data => data.json())
     },
+    search(pathway, query) {
+        return fetch(`${routeURL}/${pathway}?q=${query}`)
+        .then((response)=> response.json())
+    },
+
+    searchPlantsDB(pathway, id, query) {
+        return fetch(`${routeURL}/${pathway}?${id}&q=${query}`)
+        .then((response)=> response.json())
+    },
+
+    searchUserPlants(pathway, id, query) {
+        return fetch(`${routeURL}/${pathway}?${id}&q=${query}`)
+        .then((response)=> response.json())
+    },
 
     delete(pathway, id, ) {
         return fetch(`${routeURL}/${pathway}/${id}`, {

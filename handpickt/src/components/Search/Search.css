@@ -1,0 +1,73 @@
+.searchcheckbox {
+    border-radius: 5px;
+    background-color: cadetblue;
+    margin: 2%;
+    min-width: 20vw;
+    color: ghostwhite;
+    font-family: 'Gill Sans', 'Gill Sans MT', Calibri, 'Trebuchet MS', sans-serif;
+    font-size: 3.5vw;
+    
+}
+
+.searchcheckboxAfter {
+    border-radius: 5px;
+    background-color: goldenrod;
+    margin: 2%;
+    min-width: 20vw;
+    color: ghostwhite;
+    font-family: 'Gill Sans', 'Gill Sans MT', Calibri, 'Trebuchet MS', sans-serif;
+    font-size: 3.5vw;
+}
+
+.searchArea {
+    border-top: 1px solid slategray;
+    border-bottom: 1px solid slategray;
+}
+
+.search__Grouping__Element {
+    margin: 0 5% 2% 10%;
+}
+
+.searchDB {
+    display: flex;
+    border-bottom: 1px solid slategray;
+}
+
+.searchDB > h3 {
+    font-family: 'Gill Sans', 'Gill Sans MT', Calibri, 'Trebuchet MS', sans-serif;
+    font-size: 5vw;
+    margin: 1.5%;
+}
+
+.search__Parameters {
+    display: flex;
+}
+
+.search__Parameters > h3 {
+    font-family: 'Gill Sans', 'Gill Sans MT', Calibri, 'Trebuchet MS', sans-serif;
+    font-size: 5vw;
+    margin: 1.5%;
+}
+
+.search__Result__Note__Button {
+    width: 60%;
+}
+
+.search_Result__Note__Content {
+    margin: 20% 10% 0 10%;
+    padding: 25% 5% 5% 5%;
+    min-width: 38vw;
+    font-family: 'Permanent Marker', cursive;
+}
+
+.user__Container__Search__Result {
+    margin-bottom: 30%;
+}
+
+.result__Separator {
+
+    border-top: 1px solid slategray;
+    border-bottom: 1px solid slategray;
+    background-color: rgba(112, 128, 144, 0.199);
+    margin: 5vw 2vw 5vw 2vw;
+}

@@ -116,7 +116,7 @@ const PageViews = (props) => {
             exact
             path="/search"
             render={props => {
-                return <Search {...props} activeUser={activeUser} setUser={setUser}/>
+                return <Search {...props} activeUser={activeUser} setUser={setUser} userPlants={userPlants}/>
             }} /> 
 
         </>

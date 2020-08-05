@@ -1,4 +1,3 @@
-
 import React, { useState, useEffect }from 'react'
 import BottomNavbar from "../Footer/FooterNav"
 import WithAuthentication from "../Auth/WithAuthentication"
@@ -79,7 +78,7 @@ const AddNote = (props) => {
         }
         return noteObj
     }
-console.log(props)
+
     const handleSaveNote = (id) => {
         setEnableSaveButton(false)
         let saveNote = makeNoteObject()

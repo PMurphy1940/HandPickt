@@ -1,11 +1,9 @@
 import React, { useState, useEffect }from 'react'
-import { Navbar, Button } from 'react-bootstrap';
 
 
 const NoteDetails = (props) => {
     const [thisNoteToday, setThisNoteToday] = useState(false)
-    const [openModal, setOpenModal] = useState(false)
-    const [weekArray, setWeekArray] = useState("")
+
     
 
     let note = props.note

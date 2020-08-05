@@ -42,7 +42,7 @@ const AddNote = (props) => {
 
     useEffect(() => {
         assignPostIt()
-    })
+    }, [])
 
     const toggleRecurring = () => {
         setRecurring(!recurring)

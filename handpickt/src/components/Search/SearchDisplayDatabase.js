@@ -3,7 +3,6 @@ import { Card, Button } from 'react-bootstrap'
 
 const SearchResultDatabase = (props) => {
 
-console.log("Database props",props)
 
     return (
         <>
@@ -27,6 +26,10 @@ console.log("Database props",props)
                 
                     <div className="Database__Search__Card__Text">
                         {props.plant.description}
+                    </div>
+                    <div className="Database__Search__Card__Text">
+                        <h4>Planting</h4>
+                        {props.plant.sowing_method}
                     </div>
                 
             </Card.Body>

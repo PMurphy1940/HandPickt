@@ -3,7 +3,6 @@ import { Card, Button } from 'react-bootstrap'
 
 const SearchResultComment = (props) => {
 
-console.log("Comments props",props)
 
     return (
         <>

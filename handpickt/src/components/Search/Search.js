@@ -11,7 +11,6 @@ import Image from 'react-bootstrap/Image'
 import "./Search.css"
 
 const Search = (props) => {
-    const [check, setCheck] =useState()
     const [searchQuery, setSearchQuery] = useState("")
     const [resultDB, setResultDB] = useState()
     const [resultUserPlant, setResultUserPlant] = useState()
@@ -67,10 +66,6 @@ const Search = (props) => {
         setSearchQuery(stateToChange)
     }
     const submitSearch = () => {
-        setResultDB()
-        setResultUserPlant()
-        setResultNote()
-        setResultArchive()
         setHoldSearchQuery(searchQuery)
         searchDatabase()
     }
@@ -79,11 +74,16 @@ const Search = (props) => {
         let userPlantSearch = []
         let userCommmentSearch = []
         let inGarden = props[0].userPlants;
+        // setResultDB(undefined)
+        // setResultUserPlant(undefined)
+        // setResultNote(undefined)
+        // setResultArchive(undefined)
+        // setResultUserComment(undefined)
 
         //First search the flat User Plants database for the keyword//
-        let id=props[0].activeUser.id
-        id = `userId=` + id
-        API.searchPlantsDB("userPlants", id, searchQuery)
+        let userId=props[0].activeUser.id
+        userId = `userId=` + userId
+        API.searchPlantsDB("userPlants", userId, searchQuery)
         .then((searchResult) => {
 
             //If there is a return, build an embed version to contian all data needed//
@@ -99,17 +99,18 @@ const Search = (props) => {
         })
         //Then search all the plants in the database that are tied to the user//
         inGarden.forEach(plant => {
-            let id = plant.plant.id
-            id = `id=` + id
+            let plantId = plant.plant.id
+            plantId = `id=` + plantId
 
-            API.searchPlantsDB("plants", id, searchQuery)
+            API.searchPlantsDB("plants", plantId, searchQuery)
                     .then((searchResult) => {
                         if (searchResult[0] !== undefined) {                  
-                            //now take those results and pass them back to the API in order to properly attach the user card.                                          
+                            //now take those results and pass them back to the API in order to properly attach the user card. //                                         
                             searchResult.forEach(result => {
-                                let id = result.id
-                                    id = `plantId=` + id
-                                API.searchUserPlants("userPlants", id, "&_expand=plant")
+                                let combinedId = result.id
+                                //combine the plant id and the user id to return only the selected plants tied to just this user//                                
+                                combinedId = `plantId=` + combinedId + `&?userId=` + userId
+                                API.searchUserPlants("userPlants", combinedId, "&_expand=plant")
                                 .then((thirdResult) => { 
                                     userPlantSearch.push(thirdResult[0])
                                     setResultUserPlant(userPlantSearch);
@@ -119,8 +120,13 @@ const Search = (props) => {
                         )
                    })
            }
-
+    //The first two are the simple flat searches.//
     const searchDatabase = () => {
+        setResultDB(undefined)
+        setResultUserPlant(undefined)
+        setResultNote(undefined)
+        setResultArchive(undefined)
+        setResultUserComment(undefined)
         if ( searchDB === true ){
             API.search("plants", searchQuery)
             .then((searchResult) => {
@@ -134,6 +140,7 @@ const Search = (props) => {
                 setResultNote(searchResult)
             })
         }
+        //This calls the complex search above that handles a search of the comments and user plants in an un-embedded format//
         if ( searchUserPlants === true) {
                 buildUserPlantSearch()
             } 
@@ -162,7 +169,7 @@ const Search = (props) => {
                 <button className={ (!searchDB) ? "searchcheckbox" : "searchcheckboxAfter"} onClick={() => toggleSearchAll()}>
                     Database
                 </button>
-                <p>search the database</p>
+                <h3>search the database</h3>
             </div>
             <div className="search__Parameters">
                 
@@ -175,7 +182,7 @@ const Search = (props) => {
                 <button className={ (!searchArchives) ? "searchcheckbox" : "searchcheckboxAfter"} onClick={() => toggleSearchArchives()}>
                     My Archives
                 </button>
-                <p>or search</p>
+                <h3>or search</h3>
             </div>
             <div className="search__Grouping"></div>
             <fieldset>
@@ -194,7 +201,7 @@ const Search = (props) => {
             <div className="user__Container__Search__Result">
                     { (resultUserPlant !== undefined) &&                   
                     <>
-                    <h4>"{holdSearchQuery}" Found in your Garden</h4>
+                    <h4 className="result__Separator"><strong>"{holdSearchQuery}"</strong> Found in your Plants</h4>
                   {  resultUserPlant.map( plant =>   <SearchResultPlantCard
                                                             key={plant.id}                                       
                                                             plant={plant}
@@ -203,7 +210,7 @@ const Search = (props) => {
                   }      
                     { (resultUserComment !== undefined) &&                   
                     <>
-                    <h4>"{holdSearchQuery}" Found in your Comments</h4>
+                    <h4 className="result__Separator"><strong>"{holdSearchQuery}"</strong> Found in your Comments</h4>
                     </>
                     }
                     {(resultUserComment !== undefined) &&
@@ -223,7 +230,7 @@ const Search = (props) => {
                   }      
                     { (resultDB !== undefined) &&                   
                     <>
-                    <h4>"{holdSearchQuery}" Found in the Database</h4>
+                    <h4 className="result__Separator"><strong>"{holdSearchQuery}"</strong> Found in the Database</h4>
                   {  resultDB.map( plant =>   <SearchResultDatabase
                                                             key={plant.id}                                       
                                                             plant={plant}
@@ -232,7 +239,7 @@ const Search = (props) => {
                   }      
                     { (resultNote !== undefined) &&                   
                     <>
-                    <h4>"{holdSearchQuery}" Found in your Notes</h4>
+                    <h4 className="result__Separator"><strong>"{holdSearchQuery}"</strong> Found in your Notes</h4>
                   {  resultNote.map( note =>   <SearchResultNoteCard
                                                             key={note.id}
                                                             details={details}                                       
@@ -242,7 +249,7 @@ const Search = (props) => {
                   }      
                     { (resultArchive !== undefined) &&                   
                     <>
-                    <h4>"{holdSearchQuery}" Found in your archives</h4>
+                    <h4 className="result__Separator"><strong>"{holdSearchQuery}"</strong> Found in your archives</h4>
                   {  resultArchive.map( plant =>   <SearchResultPlantCard
                                                             key={plant.id}                                       
                                                             plant={plant}

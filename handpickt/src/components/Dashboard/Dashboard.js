@@ -24,9 +24,11 @@ const Dashboard = (props) => {
                     <img className="HPLogo__InApp" src={require(`../images/HandPickt_3.png`)} alt="HandPickt Logo" />
                 </picture>
                 <div className="search__Grouping">
-                    <Link to="/search" className="search__Object" >
+                    <Link to="/search" className="search__Object" >                   
                     <p>Search my HandPickt</p>
-                    <p>&#x1F50D;</p>
+                    <span role="img" aria-label="search">
+                    &#x1F50D;
+                    </span>
                     </Link>
                 </div>
             </div>

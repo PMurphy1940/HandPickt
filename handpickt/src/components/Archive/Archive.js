@@ -2,7 +2,6 @@ import React, { useState, useEffect } from 'react'
 import WithAuthentication from "../Auth/WithAuthentication"
 import ArchivePlantCard from "./ArchivePlantCard"
 import ArchivePlantDetails from "./ArchivePlantDetails"
-import ModalEntries from "../Modal/Modal"
 import BottomNavbar from "../Footer/FooterNav"
 import API from "../Server/HandPicktAPI"
 import { Navbar, Button } from 'react-bootstrap';

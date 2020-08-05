@@ -52,6 +52,7 @@ const ModalNotes = (props) => {
 
     useEffect(() => {
         setDaysForEdit()
+    // eslint-disable-next-line react-hooks/exhaustive-deps
     }, [])
 
     let weekArray = []

@@ -49,6 +49,7 @@ const AddNote = (props) => {
 
     useEffect(() => {
         assignPostIt()
+    // eslint-disable-next-line react-hooks/exhaustive-deps
     }, [])
 
     const toggleRecurring = () => {

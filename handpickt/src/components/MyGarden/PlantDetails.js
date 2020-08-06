@@ -20,12 +20,14 @@ const PlantDetails = (props) => {
         <>
         { (!props.isLoading) &&
         <div className="save__Card_Container">
-            <Card style={{ width: '24rem' }} className="save__Card">
+            <Card  className="save__Card">
         <div className="garden__Card__Header">
             <Card.Header as="h5">
             <div className="card__Header__Garden">
-                {props.plantToInspect.plant.common_name} 
-                <div className="progress__Container"> 
+                <div className="card__PlantName__Details">
+                    {props.plantToInspect.plant.common_name}
+                </div> 
+                <div className="progress__Container__Details"> 
                 {(props.plantToInspect.percentComplete < 100) ?            
                     <CircularProgressbar
                     className="ProgressBar"
@@ -36,7 +38,7 @@ const PlantDetails = (props) => {
                     
                     })}
                     /> : <CircularProgressbar
-                    className="ProgressBar"
+                    className="ProgressBar__Complete"
                     value={props.plantToInspect.percentComplete}
                     strokeWidth={50}
                     styles={buildStyles({
@@ -46,12 +48,12 @@ const PlantDetails = (props) => {
                     />
                 }
                 </div>
-                <button disabled={!disableEarly} className="fas fa-utensils knife" onClick={props.earlyHarvest}></button>  
+                <button disabled={!disableEarly} className="fas fa-utensils knife__Details" onClick={props.earlyHarvest}></button>  
             </div>
             </Card.Header>
         </div>
-                <Card.Body>
-                <img className="plant__details__Image" src={require(`../images/beans.png`)} alt="HandPickt Logo" />               
+                <Card.Body style={{marginTop: "15%" }}>
+                <img className="plant__details__Image" src={require(`../images/${props.plantToInspect.plant.image}`)} alt={props.name} />               
                 { (props.editPlantedFieldActive) ?
                     <>
                     Planted on <input

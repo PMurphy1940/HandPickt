@@ -13,7 +13,7 @@ const ArchivePlantDetails = (props) => {
         <>
         { (!props.isLoading) &&
         <div className="save__Card_Container">
-            <Card style={{ width: '24rem' }} className="save__Card">
+            <Card className="save__Card">
         <div className="garden__Card__Header">
             <Card.Header as="h5">
             <div className="card__Header__Garden">
@@ -23,7 +23,7 @@ const ArchivePlantDetails = (props) => {
             </Card.Header>
         </div>
                 <Card.Body>
-                <img className="plant__details__Image" src={require(`../images/beans.png`)} alt="HandPickt Logo" />               
+                <img className="plant__details__Image" src={require(`../images/${props.plantToInspect.plant.image}`)} alt={props.name} />               
                 
                     Last planted on {helper.dateConverter(props.plantToInspect.plantingDate)} <br></br>                   
                     Archived on {helper.dateConverter(props.plantToInspect.archiveDate)}

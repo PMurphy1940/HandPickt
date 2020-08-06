@@ -19,7 +19,6 @@
 }
 
 .plant__Category__Scroll {
-    /* display: block; */
     display: flex;
     overflow-y: hidden;
     border-top: 2px solid slategray;
@@ -50,6 +49,7 @@
 }
 
 .plant__Specific__Image {
+    margin-top: 5%;
     height: 15vh;
     width: 80vw;
     object-fit: cover;

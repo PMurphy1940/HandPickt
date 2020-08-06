@@ -41,13 +41,14 @@ const BottomNavbar = (props) => {
 
 
     return (
-        <>
-            <Link to="/dashboard" className="fas fa-home navLink"></Link>
-            <Link to="/mygarden" className="fas fa-seedling navLink"></Link>
-            {centerFunction()}
-            <Link to="/notes" className="fas fa-clipboard navLink"></Link>
-            <Link to="/archive" className="fas fa-archive navLink"></Link>     
-        </>
+        
+            <div className="navbar__Container">
+                <Link to="/dashboard" className="fas fa-home navLink"></Link>
+                <Link to="/mygarden" className="fas fa-seedling navLink"></Link>
+                {centerFunction()}
+                <Link to="/notes" className="fas fa-clipboard navLink"></Link>
+                <Link to="/archive" className="fas fa-archive navLink"></Link>     
+            </div>
     )
 }
 

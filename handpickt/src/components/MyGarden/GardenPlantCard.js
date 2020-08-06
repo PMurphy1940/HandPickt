@@ -14,11 +14,13 @@ const GardenPlantCard = (props) => {
     return (
         <>
         <div className="save__Card_Container">
-            <Card style={{ width: '24rem' }} className="save__Card">
+            <Card  className="save__Card">
         <div className="garden__Card__Header">
-            <Card.Header as="h5">
-            <div className="card__Header__Garden">
-                {props.name} 
+            <Card.Header as="h5" >
+            <div className="garden__Card__Header__Content">
+                <div className="card__PlantName__Details">
+                    {props.name}
+                </div> 
                 <div className="progress__Container"> 
                 {(props.plant.percentComplete < 100) ?            
                     <CircularProgressbar
@@ -31,7 +33,7 @@ const GardenPlantCard = (props) => {
                     })}
                     /> : 
                     <CircularProgressbar
-                    className="ProgressBar"
+                    className="ProgressBar__Complete"
                     value={props.plant.percentComplete}
                     strokeWidth={50}
                     styles={buildStyles({
@@ -46,8 +48,8 @@ const GardenPlantCard = (props) => {
             </div>
             </Card.Header>
         </div>
-                <Card.Body>
-                <img className="plant__Specific__Image" src={require(`../images/beans.png`)} alt="HandPickt Logo" />               
+                <Card.Body style={{marginTop: "5%" }}>
+                <img className="plant__Specific__Image" src={require(`../images/${props.plant.plant.image}`)} alt={props.name} />               
                 Planted on {helper.dateConverter(props.plant.plantingDate)}
                 
                 <Card.Title>

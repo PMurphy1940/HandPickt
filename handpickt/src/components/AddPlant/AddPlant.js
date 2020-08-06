@@ -201,7 +201,8 @@ const AddPlant = (props) => {
                                 categories.map(category => <PlantCategoryCard 
                                                                         key={category} 
                                                                         name={category} 
-                                                                        selectType={selectCategory} 
+                                                                        selectType={selectCategory}
+                                                                        showCategories={showCategories} 
                                                                         back={false} />) 
                                 : 
                                 selectedPlantArray.map(plant => <PlantCategoryCard 

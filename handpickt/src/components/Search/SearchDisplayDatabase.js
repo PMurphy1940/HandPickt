@@ -7,7 +7,7 @@ const SearchResultDatabase = (props) => {
     return (
         <>
         <div className="save__Card_Container">
-            <Card style={{ width: '24rem' }} className="save__Card">
+            <Card className="save__Card">
         <div className="garden__Card__Header">
             <Card.Header as="h5">
             <div className="card__Header__Garden">
@@ -19,7 +19,7 @@ const SearchResultDatabase = (props) => {
             </Card.Header>
         </div>
                 <Card.Body>
-                <img className="plant__Specific__Image" src={require(`../images/beans.png`)} alt="HandPickt Logo" />                             
+                <img className="plant__Specific__Image" src={require(`../images/${props.plant.image}`)} alt={props.name} />                             
                 <Card.Title>
                 {props.plant.days_to_maturity} days to maturity
                 </Card.Title>

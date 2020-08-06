@@ -10,9 +10,17 @@ const PlantCategoryCard = (props) => {
             <div className="plant__Card__Header">
             <Card.Header as="h5">{props.name}</Card.Header>
             </div>
-                <Card.Body>               
-                    <img className="plant__Category__Image" src={require(`../images/beans.png`)} alt="HandPickt Logo" />               
+             
+                <Card.Body>
+                {(props.showCategories)  ?                
+                    <img className="plant__Category__Image" src={require(`../images/beans.png`)} alt={props.name} />               
+                  :
+                    <img className="plant__Category__Image" src={require(`../images/${props.plant.image}`)} alt={props.name} />   }            
                 <Card.Text>
+                             
+                    
+                
+            
                 With supporting text below as a natural lead-in to additional content.
                 </Card.Text>
                 <div className="add__Button__Container">

@@ -7,7 +7,7 @@ const SavePlant = (props) => {
     return (
         <>
         <div className="save__Card_Container">
-            <Card style={{ width: '24rem' }} className="save__Card">
+            <Card className="save__Card">
         <div className="plant__Specific__Header">
             <Card.Header as="h5">{props.plant.common_name}</Card.Header>
         </div>

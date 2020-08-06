@@ -1,0 +1,21 @@
+.sunshine__Pic__Access__Denied {
+    height: 35vw;
+    margin-bottom: 10vh;
+}
+
+.logout_Outline {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+  
+}
+
+.returnTo__Login {
+    color: black;
+    font-size: 4vw;
+}
+
+.Denied {
+    text-align: center;
+    font-size: 5vw;
+}

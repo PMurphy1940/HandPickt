@@ -19,7 +19,9 @@ const SearchResultDatabase = (props) => {
             </Card.Header>
         </div>
                 <Card.Body>
-                <img className="plant__Specific__Image" src={require(`../images/${props.plant.image}`)} alt={props.name} />                             
+                <div className="image__Centering">
+                    <img className="plant__Specific__Image" src={require(`../images/${props.plant.image}`)} alt={props.name} />                             
+                </div>
                 <Card.Title>
                 {props.plant.days_to_maturity} days to maturity
                 </Card.Title>

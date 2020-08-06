@@ -1,6 +1,7 @@
 
 .bottom__Nav {
     background-color: white;
+    border-top: ridge slategray 2px;
 }
 .navLink {
     padding: 7.1vw;

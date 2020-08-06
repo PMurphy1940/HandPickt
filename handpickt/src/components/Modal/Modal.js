@@ -59,7 +59,7 @@ const modalView = () => {
                 <Modal isOpen={props.openModal}>
                     <ModalHeader >You may Archive the plant or Delete outright</ModalHeader>
                     <ModalBody>
-                        If you choose to Archive, you may save a comment with the plant on the next page.
+                        If you choose to Archive, you may still modify your comments via the Archive page.
                     </ModalBody>
                     <ModalFooter>
                     <Button color="primary" onClick={() => props.toggleModal()}>Cancel</Button>{' '}

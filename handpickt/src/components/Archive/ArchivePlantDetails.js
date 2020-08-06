@@ -23,7 +23,9 @@ const ArchivePlantDetails = (props) => {
             </Card.Header>
         </div>
                 <Card.Body>
-                <img className="plant__details__Image" src={require(`../images/${props.plantToInspect.plant.image}`)} alt={props.name} />               
+                <div className="image__Centering">
+                    <img className="plant__details__Image" src={require(`../images/${props.plantToInspect.plant.image}`)} alt={props.name} />                                  
+                </div>
                 
                     Last planted on {helper.dateConverter(props.plantToInspect.plantingDate)} <br></br>                   
                     Archived on {helper.dateConverter(props.plantToInspect.archiveDate)}

@@ -44,7 +44,7 @@
 
 .plant__Category__Image {
     height: 15vh;
-    width: 52vw;
+    width: 100%;
     object-fit: cover;
 }
 
@@ -97,4 +97,9 @@
 .addanother__Button {
     min-width: 65%;
     margin: 10%;
+}
+
+.category__Description__Container {
+    overflow: scroll;
+    max-height: 10vh;
 }

@@ -85,24 +85,28 @@ const AddPlant = (props) => {
     }, [])
 
     useEffect(() => {
-        setCategories(categoryArrayMaker)
+        categoryArrayMaker()
         // eslint-disable-next-line react-hooks/exhaustive-deps
     }, [plantList])
 
     //Produce an array of the available categories//
     const categoryArrayMaker = () => {
-            const categoryArrayWithDuplicates = plantList.map(plant => {
-                return (plant.category)
-            })
-            //Remove duplicate categories from the array//
-            let categoryArray = []
-            categoryArrayWithDuplicates.forEach((category) => {
-                let capsCat = helper.firstLetterCase(category)
-                if (!categoryArray.includes(capsCat)) {
-                    categoryArray.push(capsCat)
-                }
-            })
-            return categoryArray
+        API.getAll("cats")
+        .then((catsData) => {
+            setCategories(catsData)
+        })
+            // const categoryArrayWithDuplicates = plantList.map(plant => {
+            //     return (plant.category)
+            // })
+            // //Remove duplicate categories from the array//
+            // let categoryArray = []
+            // categoryArrayWithDuplicates.forEach((category) => {
+            //     let capsCat = helper.firstLetterCase(category)
+            //     if (!categoryArray.includes(capsCat)) {
+            //         categoryArray.push(capsCat)
+            //     }
+            // })
+            // return categoryArray
           
     }
     //Ensure correct grammar on 'Select a plant' message//
@@ -199,10 +203,11 @@ const AddPlant = (props) => {
                             <div className="plant__Category__Scroll" id="categoryList">
                             { showCategories ?
                                 categories.map(category => <PlantCategoryCard 
-                                                                        key={category} 
-                                                                        name={category} 
+                                                                        key={category.id} 
+                                                                        name={category.category_name} 
                                                                         selectType={selectCategory}
-                                                                        showCategories={showCategories} 
+                                                                        showCategories={showCategories}
+                                                                        category={category} 
                                                                         back={false} />) 
                                 : 
                                 selectedPlantArray.map(plant => <PlantCategoryCard 

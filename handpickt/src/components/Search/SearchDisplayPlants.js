@@ -3,7 +3,7 @@ import { Card, Button } from 'react-bootstrap'
 
 const SearchResultPlantCard = (props) => {
 
-
+console.log(props)
     const resultVerify = () => {
 
          if (props.plant.plant === undefined) {
@@ -27,7 +27,10 @@ const SearchResultPlantCard = (props) => {
                             </Card.Header>
                         </div>
                                 <Card.Body>
-                                <img className="plant__Specific__Image" src={require(`../images/${props.plant.plant.image}`)} alt={props.name} />           
+                                <div className="image__Centering">
+                                   <img className="plant__Specific__Image" src={require(`../images/${props.plant.plant.image}`)} alt={props.name} />             
+                                </div>
+                                
                                 <Card.Title>
                                 </Card.Title>
                                 <Card.Text className="garden__Specific__Text">
@@ -36,7 +39,7 @@ const SearchResultPlantCard = (props) => {
                                 </Card.Text>
                                 
                                 <div className="add__Button__Container">
-                                <Button variant="primary" onClick={ () => props.details(props.plant.id)}>Inspect</Button>
+                                <Button variant="primary" onClick={ () => props[0].history.push("/mygarden")}>Take me to My Garden</Button>
                                 </div>
                             </Card.Body>
                         </Card>

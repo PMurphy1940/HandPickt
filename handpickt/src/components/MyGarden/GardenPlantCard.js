@@ -49,7 +49,9 @@ const GardenPlantCard = (props) => {
             </Card.Header>
         </div>
                 <Card.Body style={{marginTop: "5%" }}>
-                <img className="plant__Specific__Image" src={require(`../images/${props.plant.plant.image}`)} alt={props.name} />               
+                <div className="image__Centering">
+                   <img className="plant__Specific__Image" src={require(`../images/${props.plant.plant.image}`)} alt={props.name} />                
+                </div>                
                 Planted on {helper.dateConverter(props.plant.plantingDate)}
                 
                 <Card.Title>

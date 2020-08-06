@@ -17,7 +17,9 @@ const SearchResultComment = (props) => {
             </Card.Header>
         </div>
                 <Card.Body>
-                <img className="plant__Specific__Image" src={require(`../images/${props.plant.plant.image}`)} alt={props.name} />               
+                <div className="image__Centering">
+                    <img className="plant__Specific__Image" src={require(`../images/${props.plant.plant.image}`)} alt={props.name} />                                  
+                </div>
                 <Card.Title>
                 </Card.Title>
                 <Card.Text className="garden__Specific__Text">

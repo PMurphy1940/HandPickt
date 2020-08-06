@@ -95,8 +95,10 @@
     position: relative;
 }
 
-
-
+.image__Centering {
+    display: flex;
+    justify-content: center;
+}
 .plant__details__Image {
     height: 30vh;
     width: 80vw;

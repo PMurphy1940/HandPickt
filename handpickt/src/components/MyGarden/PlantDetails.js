@@ -53,7 +53,9 @@ const PlantDetails = (props) => {
             </Card.Header>
         </div>
                 <Card.Body style={{marginTop: "15%" }}>
-                <img className="plant__details__Image" src={require(`../images/${props.plantToInspect.plant.image}`)} alt={props.name} />               
+                <div className="image__Centering">
+                    <img className="plant__details__Image" src={require(`../images/${props.plantToInspect.plant.image}`)} alt={props.name} />               
+                </div>
                 { (props.editPlantedFieldActive) ?
                     <>
                     Planted on <input

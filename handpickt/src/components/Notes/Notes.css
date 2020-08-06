@@ -113,10 +113,11 @@
 }
 #pic3 {
     background-image: url(../images/addnote3.png);
-    width: 95%;   
+  
 }
 #pic4 {
     background-image: url(../images/addnote4.png);
+    transform: rotate(-4deg);
 }
 
 #pic4 > div {
@@ -125,6 +126,7 @@
 
 #pic5 {
     background-image: url(../images/addnote5.png);
+    
 }
 
 #pic6 {
@@ -179,9 +181,8 @@
 }
 
 .note__Content {
-    margin: 20% 0 0 0;
+    margin: 20% 3vw 0 3vw;
     padding: 25% 5% 5% 5%;
-    min-width: 38vw;
     font-family: 'Permanent Marker', cursive;
 }
 
@@ -210,11 +211,12 @@
 
 .note__Specifics__Edit{ 
     min-width: 55vw;
+    position: relative;
 }
 
 #note__Edit__Done{
     position: absolute;
-    right: 10%;
+    left: 5vw;
 }
 
 .note__Delete {

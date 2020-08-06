@@ -3,18 +3,28 @@ import { Card, Button } from 'react-bootstrap'
 
 const PlantCategoryCard = (props) => {
 
-
     return (
       <div className="plant__Card">
         <Card style={{ width: '16rem' }} className="plant__Card__Individual">
             <div className="plant__Card__Header">
-            <Card.Header as="h5">{props.name}</Card.Header>
+            <Card.Header as="h5" style={{ height: '4rem' }}>{props.name}</Card.Header>
             </div>
-                <Card.Body>               
-                    <img className="plant__Category__Image" src={require(`../images/beans.png`)} alt="HandPickt Logo" />               
-                <Card.Text>
-                With supporting text below as a natural lead-in to additional content.
-                </Card.Text>
+             
+                <Card.Body>
+                {(props.showCategories)  ?                
+                    <img className="plant__Category__Image" src={require(`../images/${props.category.category_image}`)} alt={props.name} />               
+                  :
+                    <img className="plant__Category__Image" src={require(`../images/${props.plant.image}`)} alt={props.plant.common_name} />   }            
+                
+                  <div className="category__Description__Container">  
+                  {(props.showCategories)  ?                
+                    props.category.category_description
+                  :
+                    props.plant.description
+                    }                   
+                    
+                  </div> 
+              
                 <div className="add__Button__Container">
 
                 { !props.back &&

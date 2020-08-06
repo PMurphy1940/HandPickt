@@ -7,7 +7,6 @@ import "./Login.css"
 
 const Login = (props) => {
     const [passwordView, setPasswordView] = useState(true)
-    // const [authenticated, setAuthenticated] = useState(false)
     const [badAccountName, setBadAccountName] = useState (false)
     const [badPassword, setBadPassword] = useState (false)
 
@@ -16,12 +15,6 @@ const Login = (props) => {
         setBadAccountName(!badAccountName)
     }
 
-    //Testing buttons//
-
-    // <Button  variant="light" onClick={toggleBadAccount} >Toggle bad account</Button>{' '}
-    // <Button  variant="light" onClick={toggleBadPassword} >Toggle bad password</Button>{' '}
-
-    //End of testing buttons//
 
     //Make password visible//
     const togglePasswordView = () => {

@@ -48,9 +48,10 @@ const PageViews = (props) => {
     useEffect(() => {
         checkForNoteAlert(userNotes)
         // eslint-disable-next-line react-hooks/exhaustive-deps
-    }, [userNotes])
+    }, [userNotes, activeUserId])
 
     const checkForNoteAlert = (notes) => {
+        setNoteAlert(false)
         let date = new Date()
         let dayOfWeek = date.getDay()
         dayOfWeek = "day" + dayOfWeek
@@ -65,8 +66,7 @@ const PageViews = (props) => {
         if (singleNote.recurring === true) {
                 if (singleNote[day] === true) {
                     setNoteAlert(true)
-                }
-            
+                }           
         }
     }
     

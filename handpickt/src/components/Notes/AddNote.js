@@ -39,6 +39,7 @@ const AddNote = (props) => {
     const toggleModal = () => {
         setOpenModal(!openModal)
     }
+    //Randomly assigns a PostIt note image//
     const assignPostIt = () => {
         let randomNumber = Math.floor(Math.random() * 7) + 1       
         setNote({...note,
@@ -67,7 +68,7 @@ const AddNote = (props) => {
         toggleModal();
         setWeekArray(weekArrayFromModal);
     }
-
+    //Assemble the note object to send to the database//
     const makeNoteObject = () => {
         let today = new Date()
         console.log(weekArray)

@@ -29,9 +29,6 @@ const Search = (props) => {
         props[0].history.push("/logout");
     }
 
-    const details = () => {
-
-    }
  
     //These handle the search criteria buttons on the search field///
     const toggleSearchUserPlants = () => {        
@@ -74,11 +71,6 @@ const Search = (props) => {
         let userPlantSearch = []
         let userCommmentSearch = []
         let inGarden = props[0].userPlants;
-        // setResultDB(undefined)
-        // setResultUserPlant(undefined)
-        // setResultNote(undefined)
-        // setResultArchive(undefined)
-        // setResultUserComment(undefined)
 
         //First search the flat User Plants database for the keyword//
         let userId=props[0].activeUser.id
@@ -120,13 +112,16 @@ const Search = (props) => {
                         )
                    })
            }
-    //The first two are the simple flat searches.//
+    
     const searchDatabase = () => {
+        //Clear the results on a new search//
         setResultDB(undefined)
         setResultUserPlant(undefined)
         setResultNote(undefined)
         setResultArchive(undefined)
         setResultUserComment(undefined)
+
+        //The first two are the simple flat searches.//
         if ( searchDB === true ){
             API.search("plants", searchQuery)
             .then((searchResult) => {
@@ -205,6 +200,7 @@ const Search = (props) => {
                     <>
                     <h4 className="result__Separator"><strong>"{holdSearchQuery}"</strong> Found in your Plants</h4>
                   {  resultUserPlant.map( plant =>   <SearchResultPlantCard
+                                                            {...props}
                                                             key={plant.id}                                       
                                                             plant={plant}
                                                         />
@@ -221,9 +217,9 @@ const Search = (props) => {
                                                                 key={plant.id} 
                                                                 name={plant.plant.common_name}  
                                                                 back={true} 
-                                                                
+                                                                {...props}
                                                                 plant={plant}
-                                                                details={details}                                                            
+                                                                                                                           
                                                                 />
                                                         )
                                             }
@@ -236,6 +232,7 @@ const Search = (props) => {
                   {  resultDB.map( plant =>   <SearchResultDatabase
                                                             key={plant.id}                                       
                                                             plant={plant}
+                                                            
                                                             />
                   )}</>
                   }      
@@ -244,7 +241,7 @@ const Search = (props) => {
                     <h4 className="result__Separator"><strong>"{holdSearchQuery}"</strong> Found in your Notes</h4>
                   {  resultNote.map( note =>   <SearchResultNoteCard
                                                             key={note.id}
-                                                            details={details}                                       
+                                                                                                  
                                                             note={note}
                                                         />
                   )}</>
@@ -253,6 +250,7 @@ const Search = (props) => {
                     <>
                     <h4 className="result__Separator"><strong>"{holdSearchQuery}"</strong> Found in your archives</h4>
                   {  resultArchive.map( plant =>   <SearchResultPlantCard
+                                                            {...props}
                                                             key={plant.id}                                       
                                                             plant={plant}
                                                         />

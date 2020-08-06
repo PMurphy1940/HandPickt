@@ -3,9 +3,7 @@ import { Card, Button } from 'react-bootstrap'
 
 const SearchResultPlantCard = (props) => {
 
-console.log("Display props",props)
-
-
+console.log(props)
     const resultVerify = () => {
 
          if (props.plant.plant === undefined) {
@@ -20,7 +18,7 @@ console.log("Display props",props)
              return (
                  <>
                     <div className="save__Card_Container">
-                            <Card style={{ width: '24rem' }} className="save__Card">
+                            <Card className="save__Card">
                         <div className="garden__Card__Header">
                             <Card.Header as="h5">
                             <div className="card__Header__Garden">
@@ -29,7 +27,10 @@ console.log("Display props",props)
                             </Card.Header>
                         </div>
                                 <Card.Body>
-                                <img className="plant__Specific__Image" src={require(`../images/beans.png`)} alt="vegetable garden plants" />           
+                                <div className="image__Centering">
+                                   <img className="plant__Specific__Image" src={require(`../images/${props.plant.plant.image}`)} alt={props.name} />             
+                                </div>
+                                
                                 <Card.Title>
                                 </Card.Title>
                                 <Card.Text className="garden__Specific__Text">
@@ -38,7 +39,7 @@ console.log("Display props",props)
                                 </Card.Text>
                                 
                                 <div className="add__Button__Container">
-                                <Button variant="primary" onClick={ () => props.details(props.plant.id)}>Inspect</Button>
+                                <Button variant="primary" onClick={ () => props[0].history.push("/mygarden")}>Take me to My Garden</Button>
                                 </div>
                             </Card.Body>
                         </Card>

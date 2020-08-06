@@ -4,8 +4,6 @@ import React, { useState, useEffect }from 'react'
 const NoteDetails = (props) => {
     const [thisNoteToday, setThisNoteToday] = useState(false)
 
-    
-
     let note = props.note
 
     let today = `todayDetails${note.imageNumber}`
@@ -18,13 +16,13 @@ const NoteDetails = (props) => {
         // eslint-disable-next-line react-hooks/exhaustive-deps
     }, [note])
 
+    //check to see if the note has a daily occurence tied to today//
     const checkForNoteAlert = (note) => {
         let date = new Date()
         let dayOfWeek = date.getDay()
         dayOfWeek = "day" + dayOfWeek
         
-            checkRecurrence(note, dayOfWeek)
-             
+            checkRecurrence(note, dayOfWeek)            
     }
 
     const checkRecurrence = (singleNote, day) => {
@@ -32,10 +30,11 @@ const NoteDetails = (props) => {
         if (singleNote.recurring === true) {
                 if (singleNote[day] === true) {
                     setThisNoteToday(true)
-                }
-            
-        }
+                }}
     }
+    
+    //make sure the scroll starts at the top of the page//
+
     useEffect(() => {
         window.scrollTo(0, 0)
       }, [])

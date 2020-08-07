@@ -16,6 +16,7 @@ const Notes = (props) => {
     const [recurring, setRecurring] = useState(false)
     const [weekArray, setWeekArray] = useState("")
 
+    window.scrollTo(0,0)
     
     //Toggle function for modal window//
     const toggleModal = () => {

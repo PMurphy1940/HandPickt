@@ -3,7 +3,6 @@ import { Card, Button } from 'react-bootstrap'
 
 const SearchResultPlantCard = (props) => {
 
-console.log(props)
     const resultVerify = () => {
 
          if (props.plant.plant === undefined) {

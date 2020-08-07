@@ -46,7 +46,7 @@ const Search = (props) => {
         setSearchNotes(false)
         setSearchArchives(false)
     }
-    
+    //Check on each button change to see if all user account buttons are off, and if so, set the search to 'Database'//
     const checkForAll =  () => {
         if ( searchUserPlants === false && searchNotes === false && searchArchives === false) {
             setSearchDB(true);
@@ -62,11 +62,15 @@ const Search = (props) => {
         stateToChange = event.target.value
         setSearchQuery(stateToChange)
     }
+    //Hold the search query in state so the found 'text' doesn't change if the user continues to modify the search field
+    //Found 'text' only changes on submit of a new query//
     const submitSearch = () => {
         setHoldSearchQuery(searchQuery)
         searchDatabase()
     }
-    //This section has the route to search the user comments for the keyword, and then search the users plants and combine the data//
+
+//Complex Search//
+//This section has the route to search the user comments for the keyword, and then search the users plants and combine the data//
     const buildUserPlantSearch = () => {
         let userPlantSearch = []
         let userCommmentSearch = []
@@ -112,7 +116,8 @@ const Search = (props) => {
                         )
                    })
            }
-    
+//End of complex search//
+
     const searchDatabase = () => {
         //Clear the results on a new search//
         setResultDB(undefined)
@@ -135,7 +140,7 @@ const Search = (props) => {
                 setResultNote(searchResult)
             })
         }
-        //This calls the complex search above that handles a search of the comments and user plants in an un-embedded format//
+        //This calls the Complex Search above that handles a search of the comments and user plants in an non-embedded format//
         if ( searchUserPlants === true) {
                 buildUserPlantSearch()
             } 

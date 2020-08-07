@@ -93,21 +93,20 @@ const AddPlant = (props) => {
     const categoryArrayMaker = () => {
         API.getAll("cats")
         .then((catsData) => {
-            setCategories(catsData)
-        })
-            // const categoryArrayWithDuplicates = plantList.map(plant => {
-            //     return (plant.category)
-            // })
-            // //Remove duplicate categories from the array//
-            // let categoryArray = []
-            // categoryArrayWithDuplicates.forEach((category) => {
-            //     let capsCat = helper.firstLetterCase(category)
-            //     if (!categoryArray.includes(capsCat)) {
-            //         categoryArray.push(capsCat)
-            //     }
-            // })
-            // return categoryArray
-          
+            //Sort the returned categories into alphabetical order//
+            let sortedCategorydata = catsData.sort((a, b) => {                
+                let catA = helper.firstLetterCase(a.category_name)
+                let catB = helper.firstLetterCase(b.category_name)
+                if (catA < catB) {
+                    return -1;
+                }
+                if (catA > catB) {
+                    return 1;
+                }
+                return 0           
+            })
+            setCategories(sortedCategorydata)
+        })        
     }
     //Ensure correct grammar on 'Select a plant' message//
     const makeSelectMessage = (category) => {
@@ -126,7 +125,6 @@ const AddPlant = (props) => {
             }           
             return `Select an ${singularPlant} to plant`
         }
-
         else {if(category.endsWith("es")) {
                     let index = category.lastIndexOf("es")
                     singularPlant = category.slice(0, index)
@@ -159,7 +157,6 @@ const AddPlant = (props) => {
         const change = { ...plantForm};
         change[e.target.id] = e.target.value;
         setPlantForm(change);
-        console.log(change)
     }
 
     const makeComment = () => {

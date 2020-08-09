@@ -5,7 +5,11 @@ HandPickT is a vegetable garden plant tracking app designed with moble devices i
 • See estimated time to harvest, calculated from the planting date<br>
 • Make notes regarding their garden. <br>
 • Search the plant database or their own 'garden' for keywords<br>
-• Archive or delete a plant after it is no longer producing or has been removed from the garden.  
+• Archive or delete a plant after it is no longer producing or has been removed from the garden.
+
+### `Getting started`
+
+
 
 ### `Login/Register`
 

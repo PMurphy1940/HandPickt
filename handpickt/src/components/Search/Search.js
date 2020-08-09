@@ -22,6 +22,10 @@ const Search = (props) => {
     const [searchUserPlants, setSearchUserPlants] = useState(false)
     const [searchNotes, setSearchNotes] = useState(false)
     const [searchArchives, setSearchArchives] = useState(false)
+    const [plantIsLoading, setPlantIsLoading] = useState(true)
+    const [userPlantArray, setUserPlantArray] = useState([])
+    const [commentIsLoading, setCommentIsLoading] = useState(true)
+    const [userCommentArray, setUserCommentArray] = useState([])
 
     const handleLogout = () => {
         sessionStorage.removeItem("credentials")
@@ -65,13 +69,25 @@ const Search = (props) => {
     //Hold the search query in state so the found 'text' doesn't change if the user continues to modify the search field
     //Found 'text' only changes on submit of a new query//
     const submitSearch = () => {
+        setPlantIsLoading(true)
         setHoldSearchQuery(searchQuery)
         searchDatabase()
     }
 
 //Complex Search//
+ 
+    //Set result state only after all the chained API calls have completed//   
+    useEffect(() => {
+        setResultUserPlant(userPlantArray)
+    }, [plantIsLoading])
+
+    useEffect(() => {
+        setResultUserComment(userCommentArray)
+    }, [commentIsLoading])
+
 //This section has the route to search the user comments for the keyword, and then search the users plants and combine the data//
     const buildUserPlantSearch = () => {
+        let flatPlantArray = []
         let userPlantSearch = []
         let userCommmentSearch = []
         let inGarden = props[0].userPlants;
@@ -88,8 +104,10 @@ const Search = (props) => {
                 API.getOne(result.id, "userPlants", "&_expand=plant")
                 .then((secondResult) => {
                     userCommmentSearch.push(secondResult[0])
+                    setUserCommentArray(userCommmentSearch)
+                    checkSearchCommentLoadingState(userCommmentSearch.length, searchResult.length)
                 })
-                setResultUserComment(userCommmentSearch)
+                
                 
             })}
         })
@@ -97,10 +115,11 @@ const Search = (props) => {
         inGarden.forEach(plant => {
             let plantId = plant.plant.id
             plantId = `id=` + plantId
-
+            
             API.searchPlantsDB("plants", plantId, searchQuery)
-                    .then((searchResult) => {
-                        if (searchResult[0] !== undefined) {                  
+                    .then((searchResult) => {                       
+                        if (searchResult[0] !== undefined) { 
+                            flatPlantArray.push(searchResult[0])                         
                             //now take those results and pass them back to the API in order to properly attach the user card. //                                         
                             searchResult.forEach(result => {
                                 let combinedId = result.id
@@ -109,13 +128,26 @@ const Search = (props) => {
                                 API.searchUserPlants("userPlants", combinedId, "&_expand=plant")
                                 .then((thirdResult) => { 
                                     userPlantSearch.push(thirdResult[0])
-                                    setResultUserPlant(userPlantSearch);
+                                    setUserPlantArray(userPlantSearch)
+                                    checkSearchPlantLoadingState(userPlantSearch.length, flatPlantArray.length)
                                     })
                                 })
                             }}
                         )
                    })
            }
+    //Compares the length of the initial flat arrays to the length of the embedded arrays to ensure they are the same, and therefore the embed process is complete and the data is ready for display//      
+    const checkSearchPlantLoadingState = (flatLength, embedLength) => {
+        if (flatLength === embedLength && flatLength !== 0) {
+            setPlantIsLoading(false)
+        }
+    }
+
+    const checkSearchCommentLoadingState = (flatLength, embedLength) => {
+        if (flatLength === embedLength && flatLength !== 0) {
+            setCommentIsLoading(false)
+        }
+    }
 //End of complex search//
 
     const searchDatabase = () => {
@@ -203,7 +235,8 @@ const Search = (props) => {
             <div className="user__Container__Search__Result">
                     { (resultUserPlant !== undefined) &&                   
                     <>
-                    <h4 className="result__Separator"><strong>"{holdSearchQuery}"</strong> Found in your Plants</h4>
+                    { (holdSearchQuery !== "") && 
+                    <h4 className="result__Separator"><strong>"{holdSearchQuery}"</strong> Found in your Plants</h4>}
                   {  resultUserPlant.map( plant =>   <SearchResultPlantCard
                                                             {...props}
                                                             key={plant.id}                                       
@@ -213,7 +246,8 @@ const Search = (props) => {
                   }      
                     { (resultUserComment !== undefined) &&                   
                     <>
-                    <h4 className="result__Separator"><strong>"{holdSearchQuery}"</strong> Found in your Comments</h4>
+                    { (holdSearchQuery !== "") &&
+                    <h4 className="result__Separator"><strong>"{holdSearchQuery}"</strong> Found in your Comments</h4>}
                     </>
                     }
                     {(resultUserComment !== undefined) &&

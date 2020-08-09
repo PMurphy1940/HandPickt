@@ -34,7 +34,7 @@ const SearchResultNoteCard = (props) => {
 
      return (
         <>
-
+                
                 <button className="search__Result__Note__Button" onClick={ () => props.details(props.note.id)}> 
                     <div className="note__Card_Container__Odd" id={pic}>
                         <div className="note__Specifics">       

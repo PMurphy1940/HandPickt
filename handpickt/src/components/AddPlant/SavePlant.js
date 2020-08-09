@@ -12,7 +12,7 @@ const SavePlant = (props) => {
             <Card.Header as="h5">{props.plant.common_name}</Card.Header>
         </div>
                 <Card.Body>
-                <img className="plant__Specific__Image" src={require(`../images/beans.png`)} alt="HandPickt Logo" />               
+                <img className="plant__Category__Image" src={require(`../images/${props.plant.image}`)} alt={props.plant.common_name} />                  
                 <Card.Title>{props.plant.days_to_maturity} days to harvest</Card.Title>
                 <Card.Text className="plant__Specific__Text">
                 {props.plant.description}

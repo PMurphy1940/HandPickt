@@ -1,0 +1,691 @@
+{
+    "users": [],
+    "userPlants": [],
+    "notes": [],
+    "cats": [
+      {
+        "category_name": "Broccoli",
+        "category_description": "Broccoli is an edible green plant in the cabbage family whose large flowering head and stalk is eaten as a vegetable.",
+        "category_image": "cat_broccoli.jpeg",
+        "id": 1
+      },
+      {
+        "category_name": "Beans",
+        "category_description": "Bean, seed or pod of certain leguminous plants of the family Fabaceae. ... Rich in protein and providing moderate amounts of iron, thiamin, and riboflavin, beans are used worldwide for cooking in either fresh or dried form.",
+        "category_image": "tricolorbeans.png",
+        "id": 2
+      },
+      {
+        "category_name": "Beets",
+        "category_description": "A root vegetable grown for the leaves that are used as cooking greens (beet greens) and the firm textured bulbous root, which is served as a cooked vegetable. Beets are high in sugar content and thus, when cooked they provide a sweet flavor as a food dish.",
+        "category_image": "cat_beets.jpg",
+        "id": 3
+      },
+      {
+        "category_name": "Cabbage",
+        "category_description": "Cabbage is a leafy green, red (purple), or white (pale green) biennial plant grown as an annual vegetable crop for its dense-leaved heads.",
+        "category_image": "cat_cabbage.jpg",
+        "id": 4
+      },
+      {
+        "category_name": "Carrots",
+        "category_description": "The carrot (Daucus carota subsp. sativus) is a root vegetable, usually orange in color, though purple, black, red, white, and yellow cultivars exist. At first, it grows a rosette of leaves while building up the enlarged taproot.",
+        "category_image": "cat_carrots.jpg",
+        "id": 5
+      },
+      {
+        "category_name": "Corn",
+        "category_description": "Corn is a plant that grows long ears of kernels on tall, grass-like stalks.",
+        "category_image": "cat_corn.jpg",
+        "id": 6
+      },
+      {
+        "category_name": "Cucumbers",
+        "category_description": "Cucumber is a creeping plant of the gourd family. Widely cultivated for its edible fruit. Its delicate flavor makes it popular for salads and relishes. Small fruits are often pickled.",
+        "category_image": "cat_cucumber.jpg",
+        "id": 7
+      },
+      {
+        "category_name": "Eggplant",
+        "category_description": "Eggplant, Solanum melongena, is a tropical, herbaceous, perennial plant, closely related to tomato, which is grown for its edible fruit.",
+        "category_image": "cat_eggplant.jpg",
+        "id": 8
+      },
+      {
+        "category_name": "Lettuce",
+        "category_description": "Lettuce is most often grown as a leaf vegetable, but sometimes for its stem and seeds.",
+        "category_image": "cat_lettuce.jpeg",
+        "id": 9
+      },
+      {
+        "category_name": "Melons",
+        "category_description": "A melon is any of various plants of the family Cucurbitaceae with sweet, edible, and fleshy fruit.",
+        "category_image": "cat_melons.jpeg",
+        "id": 10
+      },
+      {
+        "category_name": "Onions",
+        "category_description": "An onion is a round vegetable with a light brown skin. It has many white layers on its inside which have a strong, sharp smell and taste.",
+        "category_image": "cat_onions.jpg",
+        "id": 11
+      },
+      {
+        "category_name": "Peas",
+        "category_description": "The pea is most commonly the small spherical seed or the seed-pod of the pod fruit Pisum sativum. Each pod contains several peas, which can be green or yellow.",
+        "category_image": "cat_peas.jpeg",
+        "id": 12
+      },
+      {
+        "category_name": "Peppers",
+        "category_description": "Peppers are part of the genus Capsicum, which includes the hot varieties, also known as chile peppers, and the sweet varieties, such as the bell pepper.",
+        "category_image": "cat_peppers.jpg",
+        "id": 13
+      },
+      {
+        "category_name": "Radishes",
+        "category_description": "Radish, Raphanus sativus, is an herbaceous annual or biennial plant in the family Brassicaceae, grown for its edible taproot.",
+        "category_image": "cat_radishes.jpg",
+        "id": 14
+      },
+      {
+        "category_name": "Squash",
+        "category_description": "Squash is the collective name given to several species of plant in the genus Cucurbita. Squash plants produce yellow or orange flowers and green, white or yellow fruit in a variety of shapes and sizes with smooth or ridged skin.",
+        "category_image": "cat_squash.jpg",
+        "id": 15
+      },
+      {
+        "category_name": "Tomatoes",
+        "category_description": "The tomato is the edible, often red, berry of the plant Solanum lycopersicum, commonly known as a tomato plant.",
+        "category_image": "cat_tomatoes.jpeg",
+        "id": 16
+      },
+      {
+        "category_name": "Okra",
+        "category_description": "Okra or Okro, Abelmoschus esculentus, known in many English-speaking countries as ladies' fingers or ochro, is a flowering plant in the mallow family. It is valued for its edible green seed pods. ",
+        "category_image": "cat_okra.jpg",
+        "id": 17
+      }
+    ],
+    "plants": [
+      {
+        "common_name": "Belstar Broccoli",
+        "catId": 1,
+        "category": "broccoli",
+        "days_to_maturity": 65,
+        "description": "Grow this star in your garden! Selected for its heat tolerance, it's great for spring sowing. The big, 6-8in blue-green, tightly-packed heads of 'Belstar' are followed by many smaller side-shoots for multiple harvests. It also grows well in the winter in mild climates.",
+        "sowing_method": "4 to 6 weeks before your average last frost date, or when soil temperature is at least 40°F, ideally 60°–85°F. Also in late summer for fall harvest. Mild Climates: Best sown in fall or winter for cool–season harvest.",
+        "image": "belstar_broccoli.jpg",
+        "id": 1
+      },
+      {
+        "common_name": "Di Cicco Broccoli",
+        "category": "broccoli",
+        "catId": 1,
+        "days_to_maturity": 48,
+        "description": "An Italian classic, 'Di Cicco' is a superb variety, producing numerous, small to medium-sized heads well into the summer for more delicious broccoli more often! We recommend harvesting the main head when it is 3in in diameter; this will encourage side shoots. 'Di Cicco' is a good freezer variety; leaves are also edible, cooked like chard. Seeds are excellent for sprouting!",
+        "sowing_method": "4 to 6 weeks before your average last frost date, or when soil temperature is at least 40°F, ideally 60°–85°F. Also in late summer for fall harvest. Mild Climates: Best sown in fall or winter for cool–season harvest.",
+        "image": "broccoli_di_cicco.jpg",
+        "id": 2
+      },
+      {
+        "common_name": "Blue Lake 274 Bush Bean",
+        "category": "beans",
+        "catId": 2,
+        "days_to_maturity": 58,
+        "description": "The snap bean (or green bean) is eaten pod and all and is one vegetable that tastes significantly better when grown at home rather than bought at the grocery store. 'Blue Lake 274' produces a very large crop of round, 6in pods all at once on 16–18in tall, bushy plants that are disease resistant; beans are stringless when picked young. Excellent flavor, one of the best for freezing. A good container variety.",
+        "sowing_method": "1 to 2 weeks after your average last frost date, and when soil temperature is at least 65°F, ideally 70°–85°F. Successive Sowings: Every 7 to 14 days up to 80 days before your average first fall frost date. NOTE: In very hot summer areas, skip sowing as high heat approaches; temperatures consistently above 90°F will prevent beans from forming.",
+        "image": "blue_lake_bean.jpg",
+        "id": 3
+      },
+      {
+        "common_name": "Gold Rush Bush Bean",
+        "category": "beans",
+        "catId": 2,
+        "days_to_maturity": 54,
+        "description": "'Gold Rush's' clusters of yellow pods really pop against the green foliage of the plant so they are easy to harvest. This golden-yellow bean holds its quality well, both on the plant and post-harvest. A good container variety. Disease resistance.",
+        "sowing_method": "1 to 2 weeks after your average last frost date, and when soil temperature is at least 65°F, ideally 70°–85°F. Successive Sowings: Every 7 to 14 days up to 80 days before your average first fall frost date. NOTE: In very hot summer areas, skip sowing as high heat approaches; temperatures consistently above 90°F will prevent beans from forming.",
+        "image": "Bean_Goldrush_Wax.jpg",
+        "id": 4
+      },
+      {
+        "common_name": "Pinkeye Purple Hull Bush Cowpea Bean",
+        "category": "beans",
+        "catId": 2,
+        "days_to_maturity": 62,
+        "description": "Pinkeye Purple Hull' are productive, compact, 2'-tall plants that don't need to be staked, and produce prolifically in drier conditions than other beans. Cowpeas, also called crowder peas, are very nutritious, low in fat and high in fiber and protein. Serve with cooked greens, ham hocks, and rice for a traditional Southern dish, or add to your favorite soup or stew. 62 days for fresh; 90 for dry cowpeas.",
+        "sowing_method": "1 to 2 weeks after your average last frost date, and when soil temperature is at least 65°F, ideally 70°–85°F. Successive Sowings: Every 7 to 14 days up to 80 days before your average first fall frost date. NOTE: In very hot summer areas, skip sowing as high heat approaches; temperatures consistently above 90°F will prevent beans from forming.",
+        "image": "purple_hull_bean.jpg",
+        "id": 5
+      },
+      {
+        "common_name": "Seychelles Pole Bean",
+        "category": "beans",
+        "catId": 2,
+        "days_to_maturity": 55,
+        "description": "A 2017 All-America Selections winner, 'Seychelles' (pronounced 'say-shells') 7'–9' long vines produce trusses (clusters) of delicious, 4–6in long, dark green, tender pods that remain straight and out-perform many standard varieties. Expect earlier and more abundant harvests from this excellent-quality pole bean, which continues to produce until frost. Seeds are slow to develop, and the pods' deep green color remains when cooked. Disease resistant to anthracnose and common bean mosaic virus.",
+        "sowing_method": "1 to 2 weeks after your average last frost date, and when soil temperature is at least 65°F, ideally 70°–85ˌF. Successive Sowings: Every 7 to 14 days up to 80 days before your average first fall frost date. NOTE: In very hot summer areas, skip sowing as high heat approaches; temperatures consistently above 90°F will prevent beans from forming.",
+        "image": "seychelles_bean.jpg",
+        "id": 6
+      },
+      {
+        "common_name": "Kentucky Wonder Pole Bean",
+        "category": "beans",
+        "catId": 2,
+        "days_to_maturity": 63,
+        "description": "You can't lose with this 1800s heirloom. 'Kentucky Wonder' (brown seeded) has wonderful, if not unsurpassed flavor. It out-produces most other pole beans with heavy crops of 9in long, gently curved, oval pods. A multi-use bean: drying, shelling and green. Stringless when young. Excellent for freezing. Good production even in hot climates. Disease resistant.",
+        "sowing_method": "1 to 2 weeks after your average last frost date, and when soil temperature is at least 65?F, ideally 70??85?F. Successive Sowings: Every 7 to 14 days up to 80 days before your average first fall frost date. NOTE: In very hot summer areas, skip sowing as high heat approaches, temperatures consistently above 90?F will prevent beans from forming.",
+        "image": "kentucky_pole_bean.png",
+        "id": 7
+      },
+      {
+        "common_name": "Golden Boy Beet",
+        "category": "beets",
+        "catId": 3,
+        "days_to_maturity": 65,
+        "description": "Deliciously mild beet that doesn't stain like reds! 'Golden Boy' is a stunning, golden-orange fleshed beet with bright green leaves, uniform globes, and refined taproots. Strong, upright stems make for an attractive bunch. Sweetest and most tender when young. Greens are also tender and delicious.",
+        "sowing_method": "2 to 4 weeks before your average last frost date, when soil temperature is at least 45°F, ideally 60°–85°F, for early summer crop. 6 to 8 weeks before your average first fall frost date for late summer/fall crop. Mild Climates: Sow fall through winter.",
+        "image": "beet-golden.jpg",
+        "id": 8
+      },
+      {
+        "common_name": "Bull's Blood Beet",
+        "category": "beets",
+        "catId": 3,
+        "days_to_maturity": 50,
+        "description": "Sow one row for the beautiful greens, and another row for the delicious roots! 'Bull's Blood' is valued for its tender, sweet, dark red, almost burgundy foliage. Selected from a French heirloom for the darkest colored leaves, the 16in 'greens' rival chard and spinach for delectability and nutritional content. The roots are also quite tasty when harvested small. Beets are excellent for mild climates where multiple crops are possible.",
+        "sowing_method": "2 to 4 weeks before your average last frost date, when soil temperature is at least 45°F, ideally 60°–85°F, for early summer crop. 6 to 8 weeks before your average first fall frost date for late summer/fall crop. Mild Climates: Sow fall through winter.",
+        "image": "Beet-Bulls-Blood.jpg",
+        "id": 9
+      },
+      {
+        "common_name": "Copenhagen Market Cabbage",
+        "category": "cabbage",
+        "catId": 4,
+        "days_to_maturity": 65,
+        "description": "Introduced by H. Hartman & Company in 1909, this Denmark original has been a gardeners' favorite for over a century and is the standard of excellence for many varieties that were developed after it! Cabbage heads are 6-8in in diameter and 3-4 pounds, tightly-wrapped, and perfect for small gardens. Adaptable to a range of climates. Resists splitting and stores up to 6 months.",
+        "sowing_method": "4 to 6 weeks before your average last frost date for a summer crop, or 10 to 12 weeks before your average first fall frost date for a fall crop.",
+        "image": "copenhagen_cabbage.jpg",
+        "id": 10
+      },
+      {
+        "common_name": "Red Acre Cabbage",
+        "category": "cabbage",
+        "catId": 4,
+        "days_to_maturity": 75,
+        "description": "Perk up cole slaw or your favorite stir-fry with this gorgeous, deep-red cabbage. The sweet flavor of cabbage fresh from the garden is much better than store-bought. Solid heads form early on small, compact plants making 'Red Acre' an ideal choice for small gardens. Resistant to splitting and cabbage yellows disease. Heads store exceptionally well in the refrigerator or root cellar.",
+        "sowing_method": "4 to 6 weeks before your average last frost date for a summer crop, or 10 to 12 weeks before your average first fall frost date for a fall crop.",
+        "image": "red_cabbage.jpg",
+        "id": 11
+      },
+      {
+        "common_name": "Atomic Red Carrot",
+        "category": "carrots",
+        "catId": 5,
+        "days_to_maturity": 70,
+        "description": "Atomic Red' is an 8-10in long, crisp, sweet imperator-type root. When you steam, roast, or stir-fry it, the contrast between the brilliant, deep red outer layer and orange core intensifies. Grow successive crops every 3 weeks to ensure continuous harvests as this colorful carrot is sure to be in high demand once it is seen and tasted.",
+        "sowing_method": "2 to 4 weeks before your average last frost date, and when soil temperature is at least 45°F, ideally 60°–85°F. Successive Sowings: Every 3 weeks until 10 to 12 weeks before your average first fall frost date. In very warm climates, carrots are grown primarily in fall, winter, and spring.",
+        "image": "AtomicRedCarrot.jpeg",
+        "id": 12
+      },
+      {
+        "common_name": "Danvers 126 Carrot",
+        "category": "carrots",
+        "catId": 5,
+        "days_to_maturity": 65,
+        "description": "The Danvers carrot was developed during the late 19th century in Massachusetts; it worked wonderfully interplanted with onions and grew particularly well in heavy, rocky soils. 'Danvers 126' is intensely sweet, and very resistant to cracks and splits. Strong tops make harvesting easy.",
+        "sowing_method": "2 to 4 weeks before your average last frost date, and when soil temperature is at least 45°F, ideally 60°–85°F. Successive Sowings: Every 3 weeks until 10 to 12 weeks before your average first fall frost date. In very warm climates, carrots are grown primarily in fall, winter, and spring.",
+        "image": "danvers-126-carrot.jpg",
+        "id": 13
+      },
+      {
+        "common_name": "Buttergold Sweet Corn",
+        "category": "corn",
+        "catId": 6,
+        "days_to_maturity": 63,
+        "description": "You can enjoy flavorful, tender, sweet corn sooner than ever before! With superior cool soil emergence, 'Buttergold' performs well in northern climates, but also does well anywhere that other corn varieties are grown. The large, 7–8in ears have 12–14 rows of juicy, yellow kernels. Excellent for freezing.",
+        "sowing_method": "1 to 2 weeks after your average last frost date, and when soil temperature is at least 60°F; ideally 65°–90°F.",
+        "image": "ButterGoldSweetCorn.jpg",
+        "id": 14
+      },
+      {
+        "common_name": "Rio Grande Blue Flour Corn",
+        "category": "corn",
+        "catId": 6,
+        "days_to_maturity": 90,
+        "description": "'Rio Grande Blue' corn's origins trace back to the Pueblo Native Americans in New Mexico. Blue corns, on average, have 20% higher protein content, more antioxidants, and a lower glycemic index than standard corn. Hang the 10–12in ears to dry for a beautiful autumn display then save them to make delicious meals. Recipe inside for chocolate atole, a traditional warm beverage served during the Mexican holiday, Dia de los Muertos.",
+        "sowing_method": "1 to 2 weeks after your average last frost date, and when soil temperature is at least 60°F; ideally 65°–90°F.",
+        "image": "bluecorn.jpeg",
+        "id": 15
+      },
+      {
+        "common_name": "Pickles Cucumber",
+        "category": "cucumbers",
+        "catId": 7,
+        "days_to_maturity": "55",
+        "description": "Making pickles at home is easy with 'Homemade Pickles'. This plant has very high yields, and is ready to harvest early; pick anywhere from 1½–6in long. They have the perfect interior texture for pickles, but can also be eaten fresh. The 4'–5' compact vines are great in containers. Disease resistant.",
+        "sowing_method": "1 to 2 weeks after your average last frost date, and when soil temperature is at least 60°F, ideally 70°–90°F.",
+        "image": "pickles_cucumber.jpg",
+        "id": 16
+      },
+      {
+        "common_name": "Straight Eight Cucumber",
+        "category": "cucumbers",
+        "catId": 7,
+        "days_to_maturity": 63,
+        "description": "There is nothing more refreshing than a cool cucumber. This treasured, open-pollinated variety is still around because it is simply one of the best! Vigorous vines produce cylindrical, very straight, crisp cucumbers about 8in long. Who can resist a salad of homegrown sliced cucumber, tomatoes, and fresh mozzarella dressed with olive oil, red wine vinegar, salt, and pepper? Yum!",
+        "sowing_method": "1 to 2 weeks after your average last frost date, and when soil temperature is at least 60°F, ideally 70°–90°F.",
+        "image": "straight8cuke.jpeg",
+        "id": 17
+      },
+      {
+        "common_name": "Black Beauty Eggplant",
+        "category": "eggplant",
+        "catId": 8,
+        "days_to_maturity": 80,
+        "description": "A beautiful vegetable with lovely, lavender blossoms pretty enough to grow in the flower garden. 'Black Beauty' has set the standard since 1902 for large, high-quality fruit. Outstanding when harvested at their peak, the skin is tender, so no need to peel it. A widely used international food; there are countless recipes from Italy to China to Russia and beyond.",
+        "sowing_method": "2 to 4 weeks after your average last frost date, when soil temperature is at least 70°F, ideally 80°–90°F, and when outside night air temperature is above 60°F.",
+        "image": "black_beauty_eggplant.jpg",
+        "id": 18
+      },
+      {
+        "common_name": "Ichiban Eggplant",
+        "category": "eggplant",
+        "catId": 8,
+        "days_to_maturity": 70,
+        "description": "Eggplant is the king of summer vegetables in Japan. This long, slender purple variety is both attractive, flavorsome, and fragrant when cooked. A widely used international food, there are countless recipes from Italy to China to Russia and beyond. Also called Italian Long Purple, it was recorded in the U.S. as early as 1855, but thought to originate in Japan. Staking is recommended for this variety.",
+        "sowing_method": "2 to 4 weeks after your average last frost date, when soil temperature is at least 70°F, ideally 80-90°F, and when outside night air temperature is above 60°F.",
+        "image": "ichiban.jpg",
+        "id": 19
+      },
+      {
+        "common_name": "Black Seeded Simpson Leaf Lettuce",
+        "category": "lettuce",
+        "catId": 9,
+        "days_to_maturity": 40,
+        "description": "Since 1850, 'Black Seeded Simpson' has been a garden favorite for quality, texture, and flavor. Full-sized, frilly leaves can be picked in just over a month, and baby greens can be harvested in 3 weeks! Withstands hot, dry conditions and light frosts better than other varieties.",
+        "sowing_method": "2 to 4 weeks before your average last frost date, and when soil temperature is at least 40°F, ideally 60°–70°F. Successive Sowings: Every 3 weeks until 4 to 6 weeks before your average first fall frost date. Mild Climates: Sow in fall and winter for cool season harvests.",
+        "image": "bl_seeded_simpson.jpg",
+        "id": 20
+      },
+      {
+        "common_name": "Baby Greens Mesclun Lettuce Seeds",
+        "category": "lettuce",
+        "catId": 9,
+        "days_to_maturity": 21,
+        "description": "Discover the fresh flavor and satisfaction of picking lettuce from your own garden! This exciting mix of butterhead, leaf, and romaine lettuce remain wonderfully tasty, even picked at full size. You don't have to have a large vegetable garden to enjoy fresh, baby greens, either. Perfect for growing in containers indoors or out, and pretty enough to use as a border around your flower bed! Contains equal parts: 'Buttercrunch', 'Black Seeded Simpson', 'Green Salad Bowl', 'Lolla Rossa', 'Red Oak Leaf', and 'Rouge d'Hiver'.",
+        "sowing_method": "2 to 4 weeks before your average last frost date, and when soil temperature is at least 40°F, ideally 60°–70°F. Successive Sowings: Every 3 weeks until 4 to 6 weeks before your average first fall frost date. Mild Climates: Sow in fall and winter for cool season harvests.",
+        "image": "mesclun-salad.jpg",
+        "id": 21
+      },
+      {
+        "common_name": "Red Fire Leaf Lettuce",
+        "category": "lettuce",
+        "catId": 9,
+        "days_to_maturity": 55,
+        "description": "Flame-tipped, green leaves pack luscious flavor even in the heat of summer. Slow-to-bolt (flower) characteristic means it holds well in your garden, so you can take your time harvesting over a long period. Disease resistance to downy mildew, bottom rot, and tipburn.",
+        "sowing_method": "2 to 4 weeks before your average last frost date, and when soil temperature is at least 40°F, ideally 60°–70°F. Successive Sowings: Every 3 weeks until 4 to 6 weeks before your average first fall frost date. Mild Climates: Sow in fall and winter for cool season harvests.",
+        "image": "red_leaf_lettuce.png",
+        "id": 22
+      },
+      {
+        "common_name": "Romaine Lettuce",
+        "category": "lettuce",
+        "catId": 9,
+        "days_to_maturity": 68,
+        "description": "Also called 'Sucrine' or 'Sugar Cos', 'Little Gem' is an English heirloom that is a small variety of romaine, but has the succulent sweetness of a butterhead. The glossy-leafed heads are a petite, 6in tall and 4in wide—the perfect size for an individual dinner salad.",
+        "sowing_method": "2 to 4 weeks before your average last frost date, and when soil temperature is at least 40°F, ideally 60°–70°F. Successive Sowings: Every 3 weeks until 4 to 6 weeks before your average first fall frost date. Mild Climates: Sow in fall and winter for cool season harvests.",
+        "image": "romaine-lettuce.jpg",
+        "id": 23
+      },
+      {
+        "common_name": "Cantaloupe Melon",
+        "category": "melons",
+        "catId": 10,
+        "days_to_maturity": 80,
+        "description": "'Hearts of Gold' is a high-quality heirloom that can be grown in short season climates. These very productive plants produce fruit that is dark orange, firm-fleshed, and aromatic. Round, 3-pound fruits up to 6in in diameter.",
+        "sowing_method": "1 to 2 weeks after your average last frost date, and when soil temperature is 70°–90°F.",
+        "image": "cantaloupe.jpg",
+        "id": 24
+      },
+      {
+        "common_name": "Cipollini Onion",
+        "category": "onions",
+        "catId": 11,
+        "days_to_maturity": 70,
+        "description": "This Italian heirloom has been available to gardeners since the late 1800s, but is hard to find in stores. The wine-colored, flattened globes are 1in high by 2–3in in diameter. Their sweet flavor is delicious fresh or cooked—perfect for roasting and grilled kebabs.",
+        "sowing_method": "4 to 6 weeks before your average last frost date, or as soon as soil can be worked; when soil temperature is at least 45°F.",
+        "image": "cippolini_onion.jpg",
+        "id": 25
+      },
+      {
+        "common_name": "Yellow Onion",
+        "category": "onions",
+        "catId": 11,
+        "days_to_maturity": 110,
+        "description": "Onion growers in Parma, Italy were elated with the 1896 introduction of 'Dorata di Parma' or 'Golden of Parma' as it translates. This heirloom is not only sweet and mild, but has more complex onion flavor. It stores an incredibly long time, lasting until the following harvest in some cases. Over time in storage, the flavor becomes more pungent. Long day onions, like 'Yellow of Parma', grow largest in the north, above the 37th parallel, where summer days are longest.",
+        "sowing_method": "4 to 6 weeks before your average last frost date, or as soon as soil can be worked; when soil temperature is at least 45°F.",
+        "image": "yellow_onions.jpg",
+        "id": 26
+      },
+      {
+        "common_name": "White Lisbon/Scallion Onion",
+        "category": "onions",
+        "catId": 11,
+        "days_to_maturity": 60,
+        "description": "'White Lisbon' is a green or spring onion, and sometimes referred to as a scallion or bunching onion. A popular variety since the 1700s because it produces dependably in widely varying conditions. It thrives in a wide range of soils, is heat and cold tolerant, and can be sown successively throughout the season. For the finest quality, pencil-thin onions, sow seed densely and do not thin seedlings.",
+        "sowing_method": "4 to 6 weeks before your average last frost date or as soon as the soil temperature reaches 45°F, ideally 60°–85°F, and every 2 to 4 weeks recommended for continuous production. In Mild Climates, sow in fall for spring harvest.",
+        "image": "Scallions_0.jpg",
+        "id": 27
+      },
+      {
+        "common_name": "Sugar Snap Pea",
+        "category": "peas",
+        "catId": 12,
+        "days_to_maturity": 62,
+        "description": "'Sugar Daddy' peas were bred by Dr. Calvin Lamborn, the innovative research director that developed the first edible-podded snap pea, 'Sugar Snap'. However, 'Sugar Daddy' has some big improvements—stringless pods, shorter vines, and improved disease resistance. Slender, 3in pods have a deep green color adding to their appeal. The short plants reach only 24-30in tall and don't need support; a short fence or trellis will make it easier to find and harvest the crunchy peas, though. Pods can be served fresh by themselves or with dip, or added to give crunch to salads. Add to stir-fries and soups or steam for a delicious vegetable. Resistant to powdery mildew and tolerant to bean leaf roll virus.",
+        "sowing_method": "4 to 6 weeks before your average last frost date, when soil temperature is at least 40°F, ideally 60°–80°F and again 10 to 12 weeks before your average first frost date. In Mild Climates, sow in fall or winter for winter harvest. Best grown in temperatures less than 85°F.",
+        "image": "snap_pea.jpg",
+        "id": 28
+      },
+      {
+        "common_name": "Snow Pea",
+        "category": "peas",
+        "catId": 12,
+        "days_to_maturity": 60,
+        "description": "Homegrown peas taste so much better than store bought! 'Oregon Sugar Pod II' produces a huge number of 4in delicious pods that are harvested and eaten when the pods are flat, before the seeds form. Short, 28in vines are easy to manage. Resists mildew, pea enation virus, and leaf roll. Excellent freezer and late-summer variety. Grow on a trellis.",
+        "sowing_method": "4 to 6 weeks before your average last frost date, when soil temperature is at least 40°F, ideally 60°–80°F and again 10 to 12 weeks before your average first frost date. In Mild Climates, sow in fall or winter for winter harvest. Best grown in temperatures less than 85°F.",
+        "image": "snow_pea.jpg",
+        "id": 29
+      },
+      {
+        "common_name": "Sweet Bell Pepper",
+        "category": "peppers",
+        "catId": 13,
+        "days_to_maturity": 75,
+        "description": "An old-time favorite since 1928 for good reason! 'California Wonder's' large, uniform shape makes it ideal for stuffing. Delicious grilled, they are perfect for shish kabobs. Peppers left on the plant will turn a beautiful, bright red, and have more vitamin C than an orange! Good container variety, and dependable performer even in short season climates.",
+        "sowing_method": "2 to 4 weeks after average last frost, when soil temperature is at least 70°F.",
+        "image": "sweet_bell.jpg",
+        "id": 30
+      },
+      {
+        "common_name": "Cayenne Chile Pepper",
+        "category": "peppers",
+        "catId": 13,
+        "days_to_maturity": "",
+        "description": "Pencil-thin cayenne peppers are used fresh in hot sauces and chilis, dried or ground for cayenne pepper or red pepper flakes, as a flavor in oil and vinegar dressing, and strung on a string as an attractive southwestern style decoration called a ristra. Prolific plants produce green, 4-6in peppers that turn either red or yellow; very decorative in the garden. 30,000-50,000 Scoville heat units (hot).",
+        "sowing_method": "2 to 4 weeks after average last frost, when soil temperature is at least 70°F.",
+        "image": "cayanne_chili.jpeg",
+        "id": 31
+      },
+      {
+        "common_name": "Jalapeño Chile Pepper",
+        "category": "peppers",
+        "catId": 13,
+        "days_to_maturity": 70,
+        "description": "Large, quality jalapeño great for stuffing, as each pepper can reach a colossal, 4in long. Hotter, larger, and more productive than other jalapeños. At the higher end of the heat scale for jalapeños, 'Jalafuego' registers a 4,000-6,000 Scoville heat unit rating (medium hot). Delicious fresh, deep fried, in salsa, or dried and smoked for chipotles. High disease resistance to bacterial leaf spot races 1-3 and potato virus",
+        "sowing_method": "2 to 4 weeks after average last frost, when soil temperature is at least 70°F.",
+        "image": "Jalepeno-Chile.jpg",
+        "id": 32
+      },
+      {
+        "common_name": "Habanero Chile Pepper",
+        "category": "peppers",
+        "catId": 13,
+        "days_to_maturity": 100,
+        "description": "Prized by chile aficionados not only for its intense heat, but its distinct fruitiness, the habanero is used in sensational salsas (see recipe inside), and will turn a bland barbeque into a fiery feast! Habaneros are said to be 100 times hotter than jalapeños (but after the first 100,000 Scoville heat units, who's counting?) 100,000-350,000 Scoville heat units (extremely hot).",
+        "sowing_method": "2 to 4 weeks after average last frost, when soil temperature is at least 70°F.",
+        "image": "habanero.jpg",
+        "id": 33
+      },
+      {
+        "common_name": "Purple Beauty Sweet Pepper",
+        "category": "peppers",
+        "catId": 13,
+        "days_to_maturity": 75,
+        "description": "Uniquely beautiful, as these peppers grow, they change from a creamy lime color to deep purple and eventually red, with a contrasting lime-green interior. Productive, very early, compact plants. 'Purple Beauty' is sure to deliver no matter your climate! Also grown for its ornamental quality; great in containers.",
+        "sowing_method": "2 to 4 weeks after average last frost, when soil temperature is at least 70°F.",
+        "image": "purple_bell_pepper.jpg",
+        "id": 34
+      },
+      {
+        "common_name": "Cherry Belle Radish",
+        "category": "radishes",
+        "catId": 14,
+        "days_to_maturity": 24,
+        "description": "Radish is a frost-tolerant, fast-maturing, easy-to-grow vegetable. The mild flavor and crisp texture of this Holland heirloom make it a great addition to salads, sandwiches, and snack trays. Cut radishes to create beautiful radish 'roses' and use as a garnish or on a relish tray. ",
+        "sowing_method": "4 to 6 weeks before your average last frost date, and when soil temperature is above 40°F, ideally 65°–85°F. Successive Sowings: Every 1 to 2 weeks until late spring. Sow again in late summer until 4 weeks before your average first fall frost date.",
+        "image": "cherry_belle_radish.jpg",
+        "id": 35
+      },
+      {
+        "common_name": "Crimson Giant Radish",
+        "category": "radishes",
+        "catId": 14,
+        "days_to_maturity": 28,
+        "description": "This large spring radish with crisp, white interior and mild flavor is refreshing in salads, on sandwiches, or eaten like an apple! Grows best during the cool weather of spring and fall. 'Crimson Giant' is fun for kids because it grows so fast!",
+        "sowing_method": "4 to 6 weeks before your average last frost date, and when soil temperature is above 40°F, ideally 65°–85°F. Successive Sowings: Every 1 to 2 weeks until late spring. Sow again in late summer until 4 weeks before your average first fall frost date.",
+        "image": "Radish-Crimson-Giant.jpg",
+        "id": 36
+      },
+      {
+        "common_name": "Black Beauty Summer Squash",
+        "category": "squash",
+        "catId": 15,
+        "days_to_maturity": 55,
+        "description": "Zucchini is one vegetable that just won't quit! This highly productive bush-type heirloom from the 1920s takes up little garden space. Dark green, shiny fruits with tender skin are very versatile in the kitchen. Can be steamed, sautéed, added to soups, omelets, and breads, made into relish, and eaten raw in salads or with dip.",
+        "sowing_method": "1 to 2 weeks after your average last frost date, and when soil temperature is 70°–85°F.",
+        "image": "zuchinni.jpg",
+        "id": 36
+      },
+      {
+        "common_name": "Early Straightneck Summer Squash",
+        "category": "squash",
+        "catId": 15,
+        "days_to_maturity": 45,
+        "description": "This award-winning variety is still a favorite and for good reason! Thick, firm, fine-grained delicious squash is ready to harvest in just 45 days! Versatile summer squash can be eaten raw, pickled, or cooked in innumerable ways, including in sweet breads. Best picked at 4–7in, or smaller for 'baby' size. If left on the vine, it may grow so big that it would take two people to carry it!",
+        "sowing_method": "1 to 2 weeks after your average last frost date, and when soil temperature is 70°–85°F.",
+        "image": "yellow_squash.jpg",
+        "id": 37
+      },
+      {
+        "common_name": "Butternut Winter Squash",
+        "category": "squash",
+        "catId": 15,
+        "days_to_maturity": 100,
+        "description": "Winter squash gives you the perfect reason to look forward to winter! The rich, sweet flavor of butternut quickly became a classic and has set a bigh bar. Roast, bake, or pureé into a soup for classic winter fare. 4 to 5 fruits per plant; solid stems resist squash vine borers. Stores for months! 1970 All-America selections winner.",
+        "sowing_method": "1 to 2 weeks after your average last frost date, and when soil temperature is 70°–85°F.",
+        "image": "polaris-butternut-squash.jpg",
+        "id": 38
+      },
+      {
+        "common_name": "Sweet REBA Winter Acorn Squash",
+        "category": "squash",
+        "catId": 15,
+        "days_to_maturity": 90,
+        "description": "Developed for resistance to powdery mildew, REBA is an acronym for 'Resistant Early Bush Acorn.' 'Sweet REBA' continues to develop full-flavored fruit long after other squash have been stopped by powdery mildew. The result is 4 or 5, 1-2 pound, uniform, sweet, meaty fruits per bush plant that won't take over the garden. Nothing beats the rich, flavor of baked winter squash on a chilly, autumn day!",
+        "sowing_method": "1 to 2 weeks after your average last frost date, and when soil temperature is 70°–85°F.",
+        "image": "acorn.jpg",
+        "id": 39
+      },
+      {
+        "common_name": "Spaghetti Winter Squash",
+        "category": "squash",
+        "catId": 15,
+        "days_to_maturity": 90,
+        "description": "Also called gold string melon, spaghetti squash is unique among winter squashes; when cooked, the flesh falls away from the shell in strands like spaghetti, and retains a tender, yet al dente, texture. Savory flavor that is delicious, and low calorie, with a simple bit of butter and salt. Each plant can yield 5 to 7 squash.",
+        "sowing_method": "1 to 2 weeks after your average last frost date, and when soil temperature is 70°–85°F.",
+        "image": "spaghetti_squash.jpg",
+        "id": 40
+      },
+      {
+        "common_name": "Beefsteak Tomato",
+        "category": "tomatoes",
+        "catId": 16,
+        "days_to_maturity": 96,
+        "description": "What tomato lover wouldn't love thick, meaty slices of homegrown tomatoes on their sandwiches? 'Beefsteak' is a century-old favorite not only for sandwiches, but also any dish calling for rich, tomato flavor. Vines are so vigorous (up to 6' or more) you will need a sturdy wire cage to support them and the 1–2-pound fruits! Produces summer to fall.",
+        "sowing_method": "1 to 2 weeks after your average last frost date, and when soil temperature is at least 60°F",
+        "image": "beefsteak_tomato.jpg",
+        "id": 41
+      },
+      {
+        "common_name": "Cherokee Purple Tomato",
+        "category": "tomatoes",
+        "catId": 16,
+        "days_to_maturity": 80,
+        "description": "'Cherokee Purple' is said to have been given to a Tennessee family by the Cherokees over 100 years ago. This treasured tomato has just the right balance of sweetness and even a hint of smoke, making it a winner in taste tests. From summer to fall, you'll harvest more than enough 10–12 oz. tomatoes from this well-regarded heirloom variety. Provide support for vigorous vines that reach 6' or more.",
+        "sowing_method": "1 to 2 weeks after your average last frost date, and when soil temperature is at least 60°F.",
+        "image": "cherokee_tomato.jpg",
+        "id": 42
+      },
+      {
+        "common_name": "Chocolate Cherry Tomato",
+        "category": "tomatoes",
+        "catId": 16,
+        "days_to_maturity": 70,
+        "description": "'Chocolate Cherry' tomatoes—doesn't just the name make you hungry? These 1in purplish-red, delectable tomatoes are great for snacking on and add a little sweetness to salads and pastas. The prolific vines bear seemingly endless trusses with 6–8 crack-resistant fruits that will keep you coming back for harvest after harvest.",
+        "sowing_method": "1 to 2 weeks after your average last frost date, and when soil temperature is at least 60°F.",
+        "image": "chocolate_cherry_tomato.jpg",
+        "id": 43
+      },
+      {
+        "common_name": "Golden Jubilee Pole Tomato",
+        "category": "tomatoes",
+        "catId": 16,
+        "days_to_maturity": 75,
+        "description": "Like sunshine in the garden, 'Golden Jubilee' is bright and golden with firm texture. Mild, low-acid flavor makes excellent tomato juice, sauce, and salsa. Small seed cavities means fewer seeds and more solid, meaty slices perfect for sandwiches and salads. Expect high yields of these 3in delights. 1943 All-America Selections award winner. Disease resistant.",
+        "sowing_method": "1 to 2 weeks after your average last frost date, and when soil temperature is at least 60°F.",
+        "image": "goldenjubileetomato.jpg",
+        "id": 44
+      },
+      {
+        "common_name": "Charleston Gray Watermelon",
+        "category": "melons",
+        "catId": 10,
+        "days_to_maturity": 85,
+        "description": "You'll have lots of thick slices for those late summer barbecues and picnics! This open-pollinated melon, developed by renowned watermelon breeder Charles Andrus, of the USDA in Charleston, SC, was the first to be resistant to both Fusarium wilt and anthracnose disease. Greenish-gray rind protects melon from sunburn. It is still affectionately called 'that gray melon from Charleston'. Fruits average 22–26in long and 25–35 pounds.",
+        "sowing_method": "1 to 2 weeks after your average last frost date, and when soil temperature is 70°–90°F.",
+        "image": "charleston_watermelon.jpg",
+        "id": 45
+      },
+      {
+        "common_name": "Baby Choi Bok Choy",
+        "category": "cabbage",
+        "catId": 4,
+        "days_to_maturity": 35,
+        "description": "This ancient, Asian green, also called pak choi, is just as excellent in a stir fry as in a marinated salad. Harvest at 5–6in tall in only about 35 days for tender, baby choi. Plants are ideal for growing in containers, make a pretty addition to mixed containers, and resist bolting.",
+        "sowing_method": "2 to 4 weeks before your average last frost date, when soil temperature is at least 60°F; ideally 75°–85°F. Sow again in late summer for fall crop. In mild climates, sow in the fall for winter or spring harvest.",
+        "image": "bokchoy.jpg",
+        "id": 46
+      },
+      {
+        "common_name": "Swiss Chard",
+        "category": "lettuce",
+        "catId": 9,
+        "days_to_maturity": 40,
+        "description": "Swiss Chard Mixed Colors have multicolored stems that brighten both vegetable and flower gardens with an attractive rainbow of colors. Stems have a mild chard flavor.",
+        "sowing_method": "Seed directly outdoors. Prefers full sun. Sow 2 seeds every 6 inches. After germination, thin to 1 plant every 6 inches. Begin harvesting in 4 to 5 weeks. Tolerates light frost without damage.",
+        "image": "Swiss-Chard-Plant.jpg",
+        "id": 47
+      },
+      {
+        "common_name": "Roma Tomato",
+        "category": "tomatoes",
+        "catId": 16,
+        "days_to_maturity": 85,
+        "description": "Tomato Roma VF is a heavy-yielding variety used for preserves, solid-pack canning tomato paste, and puree. The tomatoes have very little juice and mild flavor. The large, determinate plants have good leaf cover, and is disease tolerant.",
+        "sowing_method": "Start seeds indoors in a sunny location 6 weeks prior to warm weather. Transplant outdoors in full sun when seedlings display 4-6 leaves and the weather is warm. Seeds can be sown directly into the garden when soil is warm. Tomatoes cannot tolerate frost.",
+        "image": "roma_tomato.jpg",
+        "id": 48
+      },
+      {
+        "common_name": "Red Russian Kale",
+        "category": "kale",
+        "catId": 9,
+        "days_to_maturity": 50,
+        "description": "Kale Red Russian has flat-leaf leaves that are dark green with purple stems. This tender leafed kale can grow to 2-3 feet tall and has a mild, sweet flavor. It can be grown as a spring and early fall crop.",
+        "sowing_method": "Sow in outdoor rows as soon as the ground can be worked. Place one seed every 4 inches and cover with soil. When plants are about 3 inches tall, thin to 12 inches apart. Harvest side leaves as needed at 6 to 8 inches in length",
+        "image": "red_kale.jpg",
+        "id": 49
+      },
+      {
+        "common_name": "Dwarf Blue Kale",
+        "category": "kale",
+        "catId": 9,
+        "days_to_maturity": 55,
+        "description": "'Dwarf Blue Curled', from the 1800s, is extremely hardy and will overwinter in all but the coldest climates. Like most greens, it grows best in cool weather but will also withstand some heat. Leaves are rich in vitamins and minerals and low in calories. The flavor of the leaves is sweetened after a light frost; delicious in winter soups!",
+        "sowing_method": "1 to 2 weeks before your average last frost date, when soil temperature is above 45°F for spring/summer crop; 10 to 12 weeks before your average first fall frost date for fall crop; and in mild climates, fall for very early spring crop.",
+        "image": "dwarf_blue_kale.jpg",
+        "id": 50
+      },
+      {
+        "common_name": "Detroit Dark Red Beet",
+        "category": "beets",
+        "catId": 3,
+        "days_to_maturity": 59,
+        "description": "Perfectly round 3in beets have striking dark-red, succulent flesh infused with deep, sweet flavor. Heirloom’s baby beets make for excellent eating. Harvesting promotes growth of the remaining beets. When planting, mix beet seeds with fast sprouting radish seeds to mark the rows.",
+        "sowing_method": "Sow beet seeds in well-worked, well-drained soil in full sun after danger of frost in spring. In frost free areas, sow in fall.",
+        "image": "Beet-Detroit-Dark-Red.jpg",
+        "id": 51
+      },
+      {
+        "common_name": "Darkstar Hybrid Tomato",
+        "category": "tomatoes",
+        "catId": 16,
+        "days_to_maturity": 75,
+        "description": "With out-of-this-world sweet-sour taste, deep-purple ‘DarkStar’ is a colorful addition to the tomato universe. With subtle painterly color, this beautiful ‘mater features a constellation of down-to earth qualities. Growing on 5–7' vines, high-yielding ‘DarkStar’ produces oodles of 5–8 oz. fruits. Resists blight and has fewer blemishes than similar heirlooms.",
+        "sowing_method": "Select a location in full sun with good rich moist organic soil. Make sure you did not grow tomatoes, peppers, eggplant or potatoes in the bed the previous year to avoid disease problems.",
+        "image": "darkstar_tomato.jpg",
+        "id": 52
+      },
+      {
+        "common_name": "Super Sweet 100 Tomato",
+        "category": "tomatoes",
+        "catId": 16,
+        "days_to_maturity": 70,
+        "description": "Cherry tomatoes bursting with sugary flavor. The scarlet, cherry-sized fruits are produced in long pendulous clusters right up to frost. Grow on stakes or a fence.",
+        "sowing_method": "Tomatoes can be planted deeply, with the stem buried to the first set of leaves. The more deeply they are planted the more roots will form, providing the plant with additional support and better ability to take up nutrients. Some gardeners plant tomatoes by digging a horizontal trench and laying the plant in the trench with the top 2-4 inches of the plant pointing upward.",
+        "image": "sweet_100_tomato.jpg",
+        "id": 53
+      },
+      {
+        "common_name": "Mirabele Blanch Cherry Tomato",
+        "category": "tomatoes",
+        "catId": 16,
+        "days_to_maturity": 75,
+        "description": "These 1in fruits ripen to a pale yellow color with a light blush at the blossom end.",
+        "sowing_method": "Tomatoes can be planted deeply, with the stem buried to the first set of leaves. The more deeply they are planted the more roots will form, providing the plant with additional support and better ability to take up nutrients. Some gardeners plant tomatoes by digging a horizontal trench and laying the plant in the trench with the top 2-4 inches of the plant pointing upward.",
+        "image": "blanch_cherry_tomato.jpg",
+        "id": 54
+      },
+      {
+        "common_name": "Yellow Pear Tomato",
+        "category": "tomatoes",
+        "catId": 16,
+        "days_to_maturity": 75,
+        "description": "This extremely old variety makes a vigorous plant that bears enormous numbers of bright yellow, bite-sized fruit. The flavor is deliciously tangy. Perfect for summer party hors d'oeuvres.",
+        "sowing_method": "Tomatoes can be planted deeply, with the stem buried to the first set of leaves. The more deeply they are planted the more roots will form, providing the plant with additional support and better ability to take up nutrients. Some gardeners plant tomatoes by digging a horizontal trench and laying the plant in the trench with the top 2-4 inches of the plant pointing upward.",
+        "image": "yellow_pear_tomato.jpg",
+        "id": 55
+      },
+      {
+        "common_name": "Okra, Clemson Spineless",
+        "category": "okra",
+        "catId": 17,
+        "days_to_maturity": 55,
+        "description": "This 1939 All-America Selections winner. A favorite of American gardeners for over 80 years, vigorous 4' plants produce an abounding harvest of spineless dark-green, grooved pods. Okra adds body and flavor to soups, stews, and relishes, and can be grilled, braised, steamed, and sautéed. Garden Hint: Soak seed in warm water overnight to speed germination. Pick pods when young at 2½–3in long.",
+        "sowing_method": "Sow okra seeds in full sun and average, well-worked soil after danger of frost.",
+        "image": "clemson_okra.jpeg",
+        "id": 56
+      },
+      {
+        "common_name": "Okra, Red Velvet",
+        "category": "okra",
+        "catId": 17,
+        "days_to_maturity": 55,
+        "description": "Beautiful red-stemmed plants, 4-5' tall, produce distinctive scarlet-red pods. Tender, slightly ribbed pods are best when 3 to 6in long. ",
+        "sowing_method": "Sow okra seeds in full sun and average, well-worked soil after danger of frost.",
+        "image": "red_velvet_okra.jpeg",
+        "id": 57
+      }
+    ]
+  }

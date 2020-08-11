@@ -1,5 +1,5 @@
 import React, { useState, useEffect } from 'react'
-import { Route } from 'react-router-dom'
+import { Route, Redirect } from 'react-router-dom'
 import Login from "./Login/Login"
 import Registration from "./Registration/Registration"
 import AddAnother from "./AddPlant/AddAnother"
@@ -26,6 +26,13 @@ const ApplicationViews = (props) => {
             path="/login"
             render={props => {
                 return <Login {...props} setUser={setUser} />
+            }} />
+            
+            <Route
+            exact
+            path="/"
+            render={props => {
+                return <Redirect to="/login" {...props} setUser={setUser} />
             }} />
             <Route
             path="/accessdenied"

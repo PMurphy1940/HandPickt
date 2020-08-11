@@ -1,6 +1,6 @@
 
 ## Welcome to `HandPickT`!
-HandPickT is a vegetable garden plant tracking app designed with moble devices in mind. It affords the user the ability to:<br>
+HandPickT is a vegetable garden plant tracking app built with React.js. Designed with moble devices in mind, it affords the user the ability to:<br>
 • Store plants to the database. ie. 'plant in their garden'<br>
 • See estimated time to harvest, calculated from the planting date<br>
 • Make notes regarding their garden. <br>
@@ -9,8 +9,16 @@ HandPickT is a vegetable garden plant tracking app designed with moble devices i
 
 ### `Getting started`
 
+Feel free to clone or fork this repository and try it out. sample.json contains the category list and plants necessary to populate a user garden.<br>
+To connect with saved routes use<br>
 
+```json-server -p5002 -w sample.json```<br>
 
+To launch use<br>
+
+```npm start```
+
+## `Using HandPickT`
 ### `Login/Register`
 
 The login and register pages are the gateway to HandPickt. You may register a new user account with a user name, email address and password. This build uses simple `Non-secure` authentication. Do not enter any sensitive information! <br>• `Registering` a new user will verify that the user name and email are unique to the system and will promt if a duplicate is found. Password must be entered twice to ensure accuracy. The user may elect to show password fields by clicking the show/hide icon adjacent to the first password field ('eye'.) On a successful registration, the user will be routed to the `Dashboard` page.<br> 

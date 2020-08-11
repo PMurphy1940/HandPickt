@@ -29,7 +29,7 @@ Overview of app:
 
 
 ## Dream Stretch Goals
-1. Use the Spoontacular API to provide a spotlight recipe that features a plant that has reached its harvest window.
+1. Use the Spoonacular API to provide a spotlight recipe that features a plant that has reached its harvest window.
 2. Allow the user to save/bookmark a recipe they find appealing.
 3. A message style section that will allow users to trade tips on care and pest management, with the ability to hide a user that continually trolls the system.
 

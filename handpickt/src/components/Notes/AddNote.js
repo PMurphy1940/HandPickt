@@ -1,4 +1,4 @@
-import React, { useState, useEffect }from 'react'
+import React, { useState }from 'react'
 import BottomNavbar from "../Footer/FooterNav"
 import WithAuthentication from "../Auth/WithAuthentication"
 import API from "../Server/HandPicktAPI"
@@ -48,10 +48,6 @@ const AddNote = (props) => {
 
     let pic= `pic${note.imageNumber}`
 
-    useEffect(() => {
-        assignPostIt()
-    // eslint-disable-next-line react-hooks/exhaustive-deps
-    }, [])
 
     const toggleRecurring = () => {
         setRecurring(!recurring)
@@ -59,7 +55,6 @@ const AddNote = (props) => {
     const handleNoteField = (event) => {
         const stateToChange ={...note};      
         stateToChange[event.target.id] = event.target.value;
-         console.log(stateToChange)
         setNote(stateToChange)
         setEnableSaveButton(true)
     }
@@ -93,7 +88,7 @@ const AddNote = (props) => {
         setEnableSaveButton(false)
         let saveNote = makeNoteObject()
         API.addNew(saveNote, "notes")
-        .then(() => props[0].getUserNotes() )
+        .then(() => props[0].history.push("/notes"))
     }
 
       return (

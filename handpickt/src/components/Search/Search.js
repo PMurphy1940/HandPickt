@@ -75,15 +75,15 @@ const Search = (props) => {
     }
 
 //Complex Search//
- 
+
     //Set result state only after all the chained API calls have completed//   
     useEffect(() => {
         setResultUserPlant(userPlantArray)
-    }, [plantIsLoading])
+    }, [plantIsLoading, userPlantArray])
 
     useEffect(() => {
         setResultUserComment(userCommentArray)
-    }, [commentIsLoading])
+    }, [commentIsLoading, userCommentArray])
 
 //This section has the route to search the user comments for the keyword, and then search the users plants and combine the data//
     const buildUserPlantSearch = () => {

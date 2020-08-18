@@ -61,21 +61,23 @@ const MyGarden = (props) => {
     //Button functionality//
 
     const earlyHarvest = () => {
-        setInHarvest(true)
-        setModalType("earlyHarvest")
-        toggleModal()
+        setInHarvest(true);
+        setModalType("earlyHarvest");
+        toggleModal();
     }
     const discard = () => {
-        setEnableSaveButton(false)
-        setInspectViewOn(false)   
+        setEnableSaveButton(false);
+        setEditPlantedFieldActive(false);
+        setEditCommentsFieldActive(false);
+        setInspectViewOn(false);  
     }
 
     const toggleEditPlantedFieldActive = () => {
-        setEditPlantedFieldActive(!editPlantedFieldActive)
+        setEditPlantedFieldActive(!editPlantedFieldActive);
     }
     
     const toggleEditCommentsFieldActive = () => {
-        setEditCommentsFieldActive(!editCommentsFieldActive)
+        setEditCommentsFieldActive(!editCommentsFieldActive);
     }
     
     //GET the details plant freshly from the API//
@@ -83,9 +85,9 @@ const MyGarden = (props) => {
     const details = (id) => {
         API.getOne(id, "userPlants", "&_expand=plant")
         .then((singlePlant) => {
-            singlePlant = singlePlant[0]
-            holdPosition()
-            addDaysRemainingToSinglePlantObject(singlePlant)   
+            singlePlant = singlePlant[0];
+            holdPosition();
+            addDaysRemainingToSinglePlantObject(singlePlant);   
         })
     }
 
@@ -103,12 +105,12 @@ const MyGarden = (props) => {
                     daysRemaining: remainToHarvest,
                     percentComplete: percentCompleteToHarvest              
                 }) 
-              setIsLoading(false)
+              setIsLoading(false);
             }
             
             //Save the current scroll position and open the Details view//               
            
-            setInspectViewOn(true)           
+            setInspectViewOn(true);           
     }
     //Reset the days to harvest counter if planted date changes (prior to being saved)//
     useEffect(() => {
@@ -147,7 +149,9 @@ const MyGarden = (props) => {
     }
     //Send the Edit to the API//
     const handleSaveEdit = (id) => {
-        setEnableSaveButton(false)
+        setEnableSaveButton(false);
+        setEditPlantedFieldActive(false);
+        setEditCommentsFieldActive(false);
         let editPlant = makePlantObject()
         API.updateOne(editPlant, id, "userPlants")
         .then(() => getUserPlants() )

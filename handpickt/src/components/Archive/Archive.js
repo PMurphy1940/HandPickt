@@ -14,10 +14,10 @@ const Archive = (props) => {
     const [inspectViewOn, setInspectViewOn] = useState(false)
     const [plantToInspect, setPlantToInspect] = useState()
     const [saveScrollPosition, setSaveScrollPosition] = useState(0)
-
     const [editCommentsFieldActive, setEditCommentsFieldActive] = useState(false)
     const [enableSaveButton, setEnableSaveButton] = useState(false)
 
+    const allUserPlants = props[0].userPlants
         
     useEffect(() => {
         if (!inspectViewOn) {
@@ -101,7 +101,8 @@ const Archive = (props) => {
         setEnableSaveButton(false)
         let editPlant = makePlantObject()
         API.updateOne(editPlant, id, "userPlants")
-        .then(() => getUserPlants() )
+        .then(() => API.getAll("userPlants")
+        .then(setUserPlants));
     }
 
 ///***  End of Details section  ***///
@@ -128,15 +129,10 @@ const Archive = (props) => {
         setUserPlants(onlyArchivePlantData)     
     }
 
-    //Get the user plants from state along with the expanded plant data//
-    const getUserPlants = () => {    
-            onlyArchivePlantData(props[0].userPlants)                    
-    }
 
     useEffect (() => {
-        onlyArchivePlantData(props[0].userPlants)  
-    // eslint-disable-next-line react-hooks/exhaustive-deps
-    }, [props[0].userPlants])
+        onlyArchivePlantData(allUserPlants)  
+    }, [allUserPlants])
 
     
 

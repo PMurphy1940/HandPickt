@@ -1,8 +1,25 @@
-import React from 'react'
+import React, { useState } from 'react'
 import { Link } from 'react-router-dom'
+import LogOutAdd from "./LogOutADD"
 import "./Logout.css"
 
 const Logout = (props) => {
+
+const [openAdd, setOpenAdd] = useState(false)
+const [addRun, setAddRun] = useState(false)
+
+const showAdd = () => {
+    setOpenAdd(true)
+    setAddRun(true)
+}
+
+if (addRun === false) {
+setTimeout(showAdd, 2000)}
+
+
+const closeAdd = () => {
+    setOpenAdd(false)
+}
 
     return (
         <div className="login_Containter">
@@ -18,6 +35,11 @@ const Logout = (props) => {
                 </picture>
                     <Link to="/login" className="returnTo__Login" >Didn't mean to leave? Return to login here</Link>
             </div>
+            <LogOutAdd 
+                closeAdd={closeAdd} 
+                openAdd={openAdd}                
+                {...props}
+                /> 
         </div>
     )
     

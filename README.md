@@ -14,6 +14,10 @@ To connect with saved routes use<br>
 
 ```json-server -p5002 -w sample.json```<br>
 
+To install the required node modules<br>
+
+```npm install``<br>
+
 To launch use<br>
 
 ```npm start```

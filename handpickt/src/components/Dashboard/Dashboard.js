@@ -14,7 +14,6 @@ const Dashboard = (props) => {
         props[0].history.push("/logout");
 
     }
-    // <button type="button" className="fas fa-search search__button"></button>
         
     return (
         <div className="dashboard__Container">

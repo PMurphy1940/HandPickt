@@ -10,17 +10,17 @@ const SearchResultNoteCard = (props) => {
     let pic= `pic${props.note.imageNumber}`
 
     useEffect(() => {
+        const checkForNoteAlert = (note) => {
+            let date = new Date()
+            let dayOfWeek = date.getDay()
+            dayOfWeek = "day" + dayOfWeek
+            
+                checkRecurrence(note, dayOfWeek)         
+        }
         checkForNoteAlert(note)
-        // eslint-disable-next-line react-hooks/exhaustive-deps
     }, [note])
 
-    const checkForNoteAlert = (note) => {
-        let date = new Date()
-        let dayOfWeek = date.getDay()
-        dayOfWeek = "day" + dayOfWeek
-        
-            checkRecurrence(note, dayOfWeek)         
-    }
+    
 
     const checkRecurrence = (singleNote, day) => {
 

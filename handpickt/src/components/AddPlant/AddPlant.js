@@ -86,7 +86,6 @@ const AddPlant = (props) => {
 
     useEffect(() => {
         categoryArrayMaker()
-        // eslint-disable-next-line react-hooks/exhaustive-deps
     }, [plantList])
 
     //Produce an array of the available categories//
